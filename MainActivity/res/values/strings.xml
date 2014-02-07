@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">AkLog</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Dodaj</string>
+    <string name="title_section2">Zegar</string>
+    <string name="title_section3">Lista</string>
+    <string name="Band">Band</string>
+    <string name="Mode">Mode</string>
+    <string name="DateStart">Start</string>
+    <string name="Callsign">Callsign</string>
+    <string name="RST">RST s/r</string>
+    <string name="Przycisk_dodaj">Dodaj</string>
+    <string-array name="ListaMode">
+        <item >SSB</item>
+        <item >USB</item>
+        <item >CBT</item>
+    </string-array>
+
+</resources>
