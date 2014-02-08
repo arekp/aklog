@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Preference xmlns:android="http://schemas.android.com/apk/res/android" >
+        <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="pref_checkbox"
+        android:summary="Otrzymujemy true albo false"
+        android:title="Checkbox" />
+ 
+    <EditTextPreference
+        android:dialogTitle="EditText"
+        android:key="pref_edittext"
+        android:summary="Dowolna, wpisana wartość"
+        android:title="EditText" />
+ 
+
+
+</Preference>
