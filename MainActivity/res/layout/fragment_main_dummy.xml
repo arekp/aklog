@@ -32,7 +32,7 @@
                 android:id="@+id/editBand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="none|numberDecimal" />
 
         </TableRow>
 
@@ -89,7 +89,8 @@
                 android:id="@+id/editCallsign"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10" >
+                android:ems="10" 
+                android:inputType="textCapCharacters">
 
                 <requestFocus />
             </EditText>
@@ -106,19 +107,30 @@
                 android:layout_height="wrap_content"
                 android:text="@string/RST" />
 
-            <EditText
-                android:id="@+id/editRstS"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number" />
+                android:layout_height="wrap_content" >
 
-            <EditText
-                android:id="@+id/editRstR"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="number" />
+                <EditText
+                    android:id="@+id/editRstS"
+                    android:layout_width="116dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="59" 
+                    android:maxLength="5"/>
+
+                <EditText
+                    android:id="@+id/editRstR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:text="59" />
+
+            </LinearLayout>
 
         </TableRow>
 

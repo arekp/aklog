@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.support.v4.app.Fragment;
@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity {
 	private EditText callSign;
 	private EditText rstR;
 	private EditText rstS;
-	private TextView  tekst;
+	private static TextView  tekst;
 	
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -81,6 +81,36 @@ public class MainActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+		 String ktoryElement = "";
+		 
+	        switch (item.getItemId()) {
+	 
+	        case R.id.action_settings:
+	            ktoryElement = "pierwszy";
+	            break;
+	        case R.id.action_settings2:
+	            ktoryElement = "drugi";
+	            break;
+	            /*     case R.id.item3:
+	            ktoryElement = "trzeci";
+	            break;*/
+	        default:
+	            ktoryElement = "żaden";
+	 
+	        }
+	 
+	        Toast.makeText(getApplicationContext(), "Element: " + ktoryElement,
+	                Toast.LENGTH_LONG).show();
+	 
+	        return true;
+
+
+	//Czytaj więcej na: http://javastart.pl/programowanie-android/menu/#ixzz2svy3jBTM
+	}
+	
 
 	/**
 	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -225,6 +255,8 @@ public class MainActivity extends FragmentActivity {
 		 * fragment.
 		 */
 		public static final String ARG_SECTION_NUMBER = "section_number";
+		
+	
 
 		public MyFragment3() {
 		}
@@ -232,13 +264,34 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public View onCreateView(final LayoutInflater inflater,
 				final ViewGroup container, final Bundle savedInstanceState) {
+						
 			final View v = inflater
 					.inflate(R.layout.fragment_lista_dummy, null);
+			
+			tekst = (TextView) v.findViewById(R.id.textDane2);
+			
+	    	final File file = new File(container.getContext().getExternalFilesDir(null), "dane.txt");
+			StringBuilder text = new StringBuilder();
+
+	    	try {
+	    	    BufferedReader br = new BufferedReader(new FileReader(file));
+	    	    String line;
+
+	    	    while ((line = br.readLine()) != null) {
+	    	        text.append(line);
+	    	        text.append('\n');
+	    	    }
+	    	}
+	    	catch (IOException e) {
+	    	    //You'll need to add proper error handling here
+	    	}
+	    	tekst.setText(text);
 			// TextView dummyTextView = (TextView)
 			// v.findViewById(R.id.section_label);
 			// dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 			return v;
 		}
+		
 	}
 
 	

@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginRight="96dp"
-  
-        android:textSize="40sp" />
+        android:textSize="80sp" />
 
 </RelativeLayout>
