@@ -11,6 +11,7 @@ W punktach:
 na początek do wersji 0.02:
  * brak wygaszania ekranu (może być w settings on/off)
  * tekst w Callsighn - znak z dużych liter jak się da
- * raport dla LSB, USB,FM - ograniczenie do 2 cyfr, dla DIGI do 3 cyfr
- * lista wczytywana z automatu
+ * raport do 3 cyfr
+ * lista raportów wczytywana z automatu
+ * lista raportów - tabela z nagłówkiem
  * eksport do ADIFF (http://www.adif.org/)
