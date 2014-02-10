@@ -15,3 +15,7 @@ na początek do wersji 0.02:
  * lista raportów wczytywana z automatu
  * lista raportów - tabela z nagłówkiem
  * eksport do ADIFF (http://www.adif.org/)
+
+
+= Inne podobne linki =
+ * [http://jlog.org/index.htm]
