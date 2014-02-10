@@ -1,0 +1,12 @@
+#summary Spisane wymagnia .
+
+= Wymagania do projektu=
+
+Bedziemy tutaj spisywać co jest do zrobienia
+
+
+= Szczegóły =
+
+W punktach:
+  * założenie *pierwsze* i _drugie_
+ 
