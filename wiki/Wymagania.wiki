@@ -8,5 +8,9 @@ Bedziemy tutaj spisywać co jest do zrobienia
 = Szczegóły =
 
 W punktach:
-  * założenie *pierwsze* i _drugie_
- 
+na początek do wersji 0.02:
+ * brak wygaszania ekranu (może być w settings on/off)
+ * tekst w Callsighn - znak z dużych liter jak się da
+ * raport dla LSB, USB,FM - ograniczenie do 2 cyfr, dla DIGI do 3 cyfr
+ * lista wczytywana z automatu
+ * eksport do ADIFF
