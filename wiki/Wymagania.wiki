@@ -1,4 +1,5 @@
 #summary Spisane wymagnia .
+#labels adroid,krótkofalarstwo
 
 = Wymagania do projektu=
 
@@ -17,5 +18,6 @@ na początek do wersji 0.02:
  * eksport do ADIFF (http://www.adif.org/)
 
 
-= Inne podobne linki =
+= Inne przydatne linki =
+
  * [http://jlog.org/index.htm]
