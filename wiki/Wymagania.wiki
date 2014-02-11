@@ -11,9 +11,9 @@ Bedziemy tutaj spisywać co jest do zrobienia
 W punktach:
 na początek do wersji 0.02:
  * brak wygaszania ekranu (może być w settings on/off)
- * tekst w Callsighn - znak z dużych liter jak się da
+~~ * tekst w Callsighn - znak z dużych liter jak się da~~
  * raport do 3 cyfr
- * lista raportów wczytywana z automatu
+~~ * lista raportów wczytywana z automatu~~
  * lista raportów - tabela z nagłówkiem
  * zaznaczenie  któregokolwiek pola skutkuje zaznaczeniem tekstu
  * guzik clear na pierwszej stronie (obok dodaj)
