@@ -23,4 +23,4 @@ na początek do wersji 0.02:
 = Inne przydatne linki =
 
  * [http://jlog.org/index.htm]
- * DX Cluster [http://cluster.sdr-radio.com/Spots/14MHz.aspx]
+ * DX Cluster [http://cluster.sdr-radio.com]
