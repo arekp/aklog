@@ -18,7 +18,7 @@ na początek do wersji 0.02:
  * eksport do ADIFF (http://www.adif.org/)
  * guzik clear na pierwszej stronie (obok dodaj)
  * przy dodawaniu QSO, automatyczne czyszczenie pola callsign
- * DX Cluster
+ * DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx)
 
 = Inne przydatne linki =
 
