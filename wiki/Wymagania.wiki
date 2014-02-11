@@ -15,6 +15,7 @@ na początek do wersji 0.02:
  * raport do 3 cyfr
  * lista raportów wczytywana z automatu
  * lista raportów - tabela z nagłówkiem
+ * zaznaczenie  któregokolwiek pola skutkuje zaznaczeniem tekstu
  * eksport do ADIFF (http://www.adif.org/)
  * guzik clear na pierwszej stronie (obok dodaj)
  * przy dodawaniu QSO, automatyczne czyszczenie pola callsign
