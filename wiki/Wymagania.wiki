@@ -16,9 +16,10 @@ na początek do wersji 0.02:
  * lista raportów wczytywana z automatu
  * lista raportów - tabela z nagłówkiem
  * zaznaczenie  któregokolwiek pola skutkuje zaznaczeniem tekstu
- * eksport do ADIFF (http://www.adif.org/)
  * guzik clear na pierwszej stronie (obok dodaj)
+ * "lista ostatnio..." na "lista QSO"
  * przy dodawaniu QSO, automatyczne czyszczenie pola callsign
+ * eksport do ADIFF (http://www.adif.org/)
  * DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx)
 
 = Inne przydatne linki =
