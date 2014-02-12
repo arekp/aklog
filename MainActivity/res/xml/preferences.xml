@@ -5,13 +5,20 @@
         android:key="pref_checkbox"
         android:summary="Otrzymujemy true albo false"
         android:title="Checkbox" />
- 
+        
+ <PreferenceCategory android:title="Parametry raportów">
     <EditTextPreference
         android:dialogTitle="EditText"
-        android:key="pref_edittext"
-        android:summary="Dowolna, wpisana wartość"
+        android:key="pref_plik"
+        android:summary="Nazwa Pliku"
         android:title="EditText" />
- 
+    
+        <EditTextPreference
+        android:dialogTitle="EditText"
+        android:key="pref_katalog"
+        android:summary="Katalog"
+        android:title="EditText" /> 
+ </PreferenceCategory>
 
 
 </Preference>

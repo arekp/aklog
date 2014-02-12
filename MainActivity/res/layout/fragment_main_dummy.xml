@@ -113,12 +113,12 @@
 
                 <EditText
                     android:id="@+id/editRstS"
-                    android:layout_width="116dp"
+                    android:layout_width="96dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="number"
-                    android:text="59" 
-                    android:maxLength="5"/>
+                    android:maxLength="3"
+                    android:text="59" />
 
                 <EditText
                     android:id="@+id/editRstR"
@@ -127,7 +127,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="number"
-                    android:maxLength="5"
+                    android:maxLength="3"
                     android:text="59" />
 
             </LinearLayout>
@@ -139,13 +139,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" >
 
-            <Button
-                android:id="@+id/button1"
-                style="?android:attr/buttonStyleSmall"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Przycisk_dodaj"
-                android:onClick="zapiszPlikKarta" />
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/button1"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="zapiszPlikKarta"
+                    android:text="@string/Przycisk_dodaj" />
+
+                <Button
+                    android:id="@+id/button2"
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                       android:onClick="kasujPola"
+                    android:text="@string/Przycisk_kasuj" />
+
+            </LinearLayout>
 
         </TableRow>
 

@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -88,11 +89,18 @@ public class MainActivity extends FragmentActivity {
 		 
 	        switch (item.getItemId()) {
 	 
-	        case R.id.action_settings:
+	        case R.id.main_pref:
 	            ktoryElement = "pierwszy";
+	            //getFragmentManager().beginTransaction()
+                //.replace(android.R.id.content, new View_Preference()).commit();
+	            //Intent i = new Intent(this, View_Preference.class);
+	            //startActivityForResult(i, 1);
+	    		Intent intent = new Intent(this,SettingsActivity.class);
+	    		startActivity(intent);
 	            break;
 	        case R.id.action_settings2:
-	            ktoryElement = "drugi";
+
+	        	ktoryElement = "drugi";
 	            break;
 	            /*     case R.id.item3:
 	            ktoryElement = "trzeci";
@@ -132,14 +140,17 @@ public class MainActivity extends FragmentActivity {
 			final Bundle args = new Bundle();
 			switch (position) {
 			case 0:
-				fragment = new MyFragment1();
-				args.putInt(MyFragment1.ARG_SECTION_NUMBER, position + 1);
+				fragment = new DodajFragment();
+				args.putInt(DodajFragment.ARG_SECTION_NUMBER, position + 1);
 				break;
 			case 1:
-				fragment = new MyFragment2();
+				fragment = new ZegarFragment();
 				break;
 			case 2:
-				fragment = new MyFragment3();
+				fragment = new RaportFragment();
+				break;
+			case 3:
+				fragment = new DxClasterFragment();
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid section number");
@@ -152,7 +163,7 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return 4;
 		}
 
 		@Override
@@ -165,145 +176,38 @@ public class MainActivity extends FragmentActivity {
 				return getString(R.string.title_section2).toUpperCase(l);
 			case 2:
 				return getString(R.string.title_section3).toUpperCase(l);
+			case 3:
+				return getString(R.string.title_section4).toUpperCase(l);
 			}
 			return null;
 		}
 	}
 
-	public static class MyFragment1 extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
 
-		public MyFragment1() {
-		}
-
-		@Override
-		public View onCreateView(final LayoutInflater inflater,
-				final ViewGroup container, final Bundle savedInstanceState) {
-			final View v = inflater.inflate(R.layout.fragment_main_dummy, null);
-			return v;
-		}
-
-		/*
-		 * public View onCreateView(LayoutInflater inflater, ViewGroup
-		 * container, Bundle savedInstanceState) { // View rootView =
-		 * inflater.inflate(R.layout.fragment_main_dummy, false); View rootView
-		 * = inflater.inflate(R.layout.m, null); TextView dummyTextView =
-		 * (TextView) rootView.findViewById(R.id.section_label);
-		 * dummyTextView.setText
-		 * (Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER))); return
-		 * rootView; }
-		 */
-		/**
-		 * @param view
-		 * @param fileContext
-		 */
-		/*
-		 * public void zapiszPlik(View view, Context fileContext) { band =
-		 * (EditText) getFragmentManager()
-		 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-		 * .findViewById(R.id.editBand); callSign = (EditText)
-		 * getFragmentManager()
-		 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-		 * .findViewById(R.id.editCallsign); rstR = (EditText)
-		 * getFragmentManager()
-		 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-		 * .findViewById(R.id.editRstR); rstS = (EditText) getFragmentManager()
-		 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-		 * .findViewById(R.id.editRstS); String linia =
-		 * band.getText().toString() + ";" + callSign.getText().toString() + ";"
-		 * + rstR.getText().toString() + ";" + rstS.getText().toString();
-		 * 
-		 * try { FileOutputStream fos = fileContext.openFileOutput("lista.txt",
-		 * MODE_PRIVATE); fos.write(linia.getBytes()); fos.close(); } catch
-		 * (FileNotFoundException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
-		 * catch block e.printStackTrace(); }
-		 * 
-		 * }
-		 */
-	}
-
-	public static class MyFragment2 extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-
-		public MyFragment2() {
-		}
-
-		@Override
-		public View onCreateView(final LayoutInflater inflater,
-				final ViewGroup container, final Bundle savedInstanceState) {
-			final View v = inflater
-					.inflate(R.layout.fragment_zegar_dummy, null);
-			// TextView dummyTextView = (TextView)
-			// v.findViewById(R.id.section_label);
-			// dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-			return v;
-		}
-	}
-
-	public static class MyFragment3 extends Fragment {
-		/**
-		 * The fragment argument representing the section number for this
-		 * fragment.
-		 */
-		public static final String ARG_SECTION_NUMBER = "section_number";
-		
-	
-
-		public MyFragment3() {
-		}
-
-		@Override
-		public View onCreateView(final LayoutInflater inflater,
-				final ViewGroup container, final Bundle savedInstanceState) {
-						
-			final View v = inflater
-					.inflate(R.layout.fragment_lista_dummy, null);
-			
-			tekst = (TextView) v.findViewById(R.id.textDane2);
-			
-	    	final File file = new File(container.getContext().getExternalFilesDir(null), "dane.txt");
-			StringBuilder text = new StringBuilder();
-
-	    	try {
-	    	    BufferedReader br = new BufferedReader(new FileReader(file));
-	    	    String line;
-
-	    	    while ((line = br.readLine()) != null) {
-	    	        text.append(line);
-	    	        text.append('\n');
-	    	    }
-	    	}
-	    	catch (IOException e) {
-	    	    //You'll need to add proper error handling here
-	    	}
-	    	tekst.setText(text);
-			// TextView dummyTextView = (TextView)
-			// v.findViewById(R.id.section_label);
-			// dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-			return v;
-		}
-		
-	}
-
-	
 	public void zapiszPlikKarta(final View view) {
 		band = (EditText) findViewById(R.id.editBand);
 		callSign = (EditText)findViewById(R.id.editCallsign);
 		rstR = (EditText)findViewById(R.id.editRstR);
 		rstS = (EditText)findViewById(R.id.editRstS);
 		Spinner spinner = (Spinner) findViewById(R.id.mode1Spin);
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
 		String currentDateandTime = sdf.format(new Date());
-		
+		Log.e("DodawanieB","band test");
+		Log.e("DodawanieB","band "+band.getText().toString());
+		Log.e("DodawanieC","call "+callSign.getText().toString());
+		 
+		if (band.getText().toString().equals("")){
+			Log.e("Dodawanie1","band"+band.getText().toString());
+			Toast.makeText(getBaseContext(),
+					"Frequency nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		}else if (callSign.getText().toString().isEmpty()) {
+			Log.e("Dodawanie2","call"+callSign.getText().toString());
+			Toast.makeText(getBaseContext(),
+					"Callsign nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		}else{
 		final String linia= band.getText().toString() + ";"
 				+ callSign.getText().toString() + ";" 
 				+ spinner.getSelectedItem().toString()+ ";"
@@ -330,36 +234,22 @@ public class MainActivity extends FragmentActivity {
 		}finally{
 			
 		}
-		
-		
+		callSign.setText("");
+		rstR.setText("59");
+		rstS.setText("59");
+		}
+	}
+	public void kasujPola (final View view){
+		band = (EditText) findViewById(R.id.editBand);
+		callSign = (EditText)findViewById(R.id.editCallsign);
+		rstR = (EditText)findViewById(R.id.editRstR);
+		rstS = (EditText)findViewById(R.id.editRstS);
+		callSign.setText("");
+		rstR.setText("59");
+		rstS.setText("59");
+		band.setText("");
 		
 	}
     
-	public void Wczytaj(View view){
-    tekst= (TextView) findViewById(R.id.textDane2);
-    
-    	final File file = new File(this.getExternalFilesDir(null), "dane.txt");
-    
-    	Toast.makeText(getBaseContext(),
-				"test",
-				Toast.LENGTH_SHORT).show();
 
-    	StringBuilder text = new StringBuilder();
-
-    	try {
-    	    BufferedReader br = new BufferedReader(new FileReader(file));
-    	    String line;
-
-    	    while ((line = br.readLine()) != null) {
-    	        text.append(line);
-    	        text.append('\n');
-    	    }
-    	}
-    	catch (IOException e) {
-    	    //You'll need to add proper error handling here
-    	}
-
-    	tekst.setText(text);
-  
-}
 }

@@ -7,19 +7,40 @@
     <string name="title_section1">Dodaj</string>
     <string name="title_section2">Zegar</string>
     <string name="title_section3">Raport</string>
+    <string name="title_section4">Simon DX Cluster</string>
     <string name="Band">Frequency</string>
     <string name="Mode">Mode</string>
     <string name="DateStart">Date</string>
     <string name="Callsign">Callsign</string>
     <string name="RST">Raport</string>
-    <string name="raport_tekst">Lista ostatnio zarejestrowanych połączeń</string>
+    <string name="raport_tekst">Lista QSO</string>
     <string name="Przycisk_dodaj">Dodaj</string>
+      <string name="Przycisk_kasuj">Clear</string>
     <string-array name="ListaMode">
         <item >LSB</item>
         <item >USB</item>
         <item >FM</item>
         <item >DIGI</item>
         <item >CW</item>
+    </string-array>
+        <string-array name="ListaSpinerWeb">
+        <item >All</item>
+        <item >HF</item>
+        <item >137kHz</item>
+        <item >1.8MHz</item>
+        <item >5MHz</item>
+        <item >7MHz</item>
+        <item >10MHz</item>
+        <item >14MHz</item>
+        <item >18MHz</item>
+        <item >21MHz</item>
+        <item >24MHz</item>
+        <item >28MHz</item>
+        <item >50MHz</item>
+        <item >70MHz</item>
+        <item >144MHz</item>
+        <item >220MHz</item>
+        <item >430MHz</item>        
     </string-array>
 
 </resources>
