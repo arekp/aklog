@@ -20,7 +20,7 @@ na początek do wersji 0.02:
  * "lista QSO" scentrowana
  * ~~przy dodawaniu QSO, automatyczne czyszczenie pola callsign~~
  * eksport do ADIFF (http://www.adif.org/) [http://www.adif.org/304/adx304.xsd]
- * DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx)
+ * DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx) [http://dxcluster.sdr-radio.com/top_250_7_MHz.html]
 
 = Inne przydatne linki =
 
