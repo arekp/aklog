@@ -8,11 +8,11 @@
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
     <string name="pref_title_social_recommendations">UTM 0</string>
-    <string name="pref_description_social_recommendations">Zostanie ustawiony zegar w aplikacji na strefe czasową 0</string>
+    <string name="pref_description_social_recommendations">Zostanie ustawiony zegar w aplikacji na strefe czasową Zulu</string>
     <string name="pref_title_display_plik">Nazwa Pliku</string>
     <string name="pref_default_display_plik">dane.txt</string>
     <string name="pref_title_display_katalog">Katalog</string>
-    <string name="pref_default_display_katalog">/sdcard/dane/</string>
+    <string name="pref_default_display_katalog">TO na razie nie dziala</string>
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
 
     <string-array name="pref_example_list_titles">

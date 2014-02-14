@@ -1,10 +1,20 @@
 package com.arekp.aklog;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class DodajFragment extends Fragment {
 	/**
@@ -12,7 +22,12 @@ public class DodajFragment extends Fragment {
 	 * fragment.
 	 */
 	public static final String ARG_SECTION_NUMBER = "section_number";
+	SharedPreferences zapisane_ustawienia;
 
+	private TextView textCzasDodaj;
+
+	private Handler mHandler = new Handler();
+	
 	public DodajFragment() {
 	}
 
@@ -20,46 +35,38 @@ public class DodajFragment extends Fragment {
 	public View onCreateView(final LayoutInflater inflater,
 			final ViewGroup container, final Bundle savedInstanceState) {
 		final View v = inflater.inflate(R.layout.fragment_main_dummy, null);
+		zapisane_ustawienia = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+	 textCzasDodaj = (TextView) v.findViewById(R.id.textCzasDodaj);
+
 		return v;
 	}
 
-	/*
-	 * public View onCreateView(LayoutInflater inflater, ViewGroup
-	 * container, Bundle savedInstanceState) { // View rootView =
-	 * inflater.inflate(R.layout.fragment_main_dummy, false); View rootView
-	 * = inflater.inflate(R.layout.m, null); TextView dummyTextView =
-	 * (TextView) rootView.findViewById(R.id.section_label);
-	 * dummyTextView.setText
-	 * (Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER))); return
-	 * rootView; }
-	 */
-	/**
-	 * @param view
-	 * @param fileContext
-	 */
-	/*
-	 * public void zapiszPlik(View view, Context fileContext) { band =
-	 * (EditText) getFragmentManager()
-	 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-	 * .findViewById(R.id.editBand); callSign = (EditText)
-	 * getFragmentManager()
-	 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-	 * .findViewById(R.id.editCallsign); rstR = (EditText)
-	 * getFragmentManager()
-	 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-	 * .findViewById(R.id.editRstR); rstS = (EditText) getFragmentManager()
-	 * .findFragmentById(R.layout.fragment_main_dummy).getView()
-	 * .findViewById(R.id.editRstS); String linia =
-	 * band.getText().toString() + ";" + callSign.getText().toString() + ";"
-	 * + rstR.getText().toString() + ";" + rstS.getText().toString();
-	 * 
-	 * try { FileOutputStream fos = fileContext.openFileOutput("lista.txt",
-	 * MODE_PRIVATE); fos.write(linia.getBytes()); fos.close(); } catch
-	 * (FileNotFoundException e) { // TODO Auto-generated catch block
-	 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated
-	 * catch block e.printStackTrace(); }
-	 * 
-	 * }
-	 */
+
+	private Runnable mUpdateTimeTask = new Runnable() {
+		public void run() {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			if (zapisane_ustawienia.getBoolean("utm_checkbox", false)) {
+				sdf.setTimeZone(TimeZone.getTimeZone("Zulu"));
+			}
+			String currentDateandTime = sdf.format(new Date());
+
+			textCzasDodaj.setText(currentDateandTime);
+			mHandler.postAtTime(this, (SystemClock.uptimeMillis() + 1000));
+		}
+	};
+
+	@Override
+	public void onStart() {
+		super.onPause();
+		mHandler.removeCallbacks(mUpdateTimeTask);
+		mHandler.postDelayed(mUpdateTimeTask, 100);
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		mHandler.removeCallbacks(mUpdateTimeTask);
+	}
+
 
 }

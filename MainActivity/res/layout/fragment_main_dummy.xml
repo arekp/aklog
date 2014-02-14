@@ -42,7 +42,7 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textDane2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Mode" />
@@ -67,11 +67,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/DateStart" />
 
-            <DigitalClock
-                android:id="@+id/digitalClock1"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/textCzasDodaj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+            </LinearLayout>
+
         </TableRow>
 
         <TableRow
