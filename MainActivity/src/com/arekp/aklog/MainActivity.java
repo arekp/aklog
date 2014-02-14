@@ -11,9 +11,15 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.provider.OpenableColumns;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -29,6 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -42,8 +49,10 @@ public class MainActivity extends FragmentActivity {
 	private EditText callSign;
 	private EditText rstR;
 	private EditText rstS;
-	private static TextView  tekst;
-	
+	private static TextView tekst;
+
+	SharedPreferences zapisane_ustawienia;
+
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -53,6 +62,7 @@ public class MainActivity extends FragmentActivity {
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
+	private SharedPreferences preferences;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents.
@@ -73,6 +83,8 @@ public class MainActivity extends FragmentActivity {
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		
+		zapisane_ustawienia = PreferenceManager
+				.getDefaultSharedPreferences(this);
 
 	}
 
@@ -82,48 +94,41 @@ public class MainActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-		 String ktoryElement = "";
-		 
-	        switch (item.getItemId()) {
-	 
-	        case R.id.main_pref:
-	            ktoryElement = "pierwszy";
-	            //getFragmentManager().beginTransaction()
-                //.replace(android.R.id.content, new View_Preference()).commit();
-	            //Intent i = new Intent(this, View_Preference.class);
-	            //startActivityForResult(i, 1);
-	    		Intent intent = new Intent(this,SettingsActivity.class);
-	    		startActivity(intent);
-	            break;
-	        case R.id.action_settings2:
+	public boolean onOptionsItemSelected(MenuItem item) {
+		String ktoryElement = "";
 
-	        	ktoryElement = "drugi";
-	            break;
-	            /*     case R.id.item3:
-	            ktoryElement = "trzeci";
-	            break;*/
-	        default:
-	            ktoryElement = "żaden";
-	 
-	        }
-	 
-	        Toast.makeText(getApplicationContext(), "Element: " + ktoryElement,
-	                Toast.LENGTH_LONG).show();
-	 
-	        return true;
+		switch (item.getItemId()) {
 
+		case R.id.main_pref:
+			ktoryElement = "pierwszy";
+			// getFragmentManager().beginTransaction()
+			// .replace(android.R.id.content, new View_Preference()).commit();
+			// Intent i = new Intent(this, View_Preference.class);
+			// startActivityForResult(i, 1);
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.action_settings2:
 
-	//Czytaj więcej na: http://javastart.pl/programowanie-android/menu/#ixzz2svy3jBTM
+			ktoryElement = "drugi";
+			break;
+		/*
+		 * case R.id.item3: ktoryElement = "trzeci"; break;
+		 */
+		default:
+			ktoryElement = "żaden";
+
+		}
+
+		return true;
+
+		// Czytaj więcej na:
+		// http://javastart.pl/programowanie-android/menu/#ixzz2svy3jBTM
 	}
-	
 
-	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
-	 */
+
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 		public SectionsPagerAdapter(final FragmentManager fm) {
@@ -183,73 +188,80 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-
 	public void zapiszPlikKarta(final View view) {
 		band = (EditText) findViewById(R.id.editBand);
-		callSign = (EditText)findViewById(R.id.editCallsign);
-		rstR = (EditText)findViewById(R.id.editRstR);
-		rstS = (EditText)findViewById(R.id.editRstS);
+		callSign = (EditText) findViewById(R.id.editCallsign);
+		rstR = (EditText) findViewById(R.id.editRstR);
+		rstS = (EditText) findViewById(R.id.editRstS);
 		Spinner spinner = (Spinner) findViewById(R.id.mode1Spin);
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		String currentDateandTime = sdf.format(new Date());
-		Log.e("DodawanieB","band test");
-		Log.e("DodawanieB","band "+band.getText().toString());
-		Log.e("DodawanieC","call "+callSign.getText().toString());
-		 
-		if (band.getText().toString().equals("")){
-			Log.e("Dodawanie1","band"+band.getText().toString());
-			Toast.makeText(getBaseContext(),
-					"Frequency nie może być puste",
-					Toast.LENGTH_SHORT).show();
-		}else if (callSign.getText().toString().isEmpty()) {
-			Log.e("Dodawanie2","call"+callSign.getText().toString());
-			Toast.makeText(getBaseContext(),
-					"Callsign nie może być puste",
-					Toast.LENGTH_SHORT).show();
-		}else{
-		final String linia= band.getText().toString() + ";"
-				+ callSign.getText().toString() + ";" 
-				+ spinner.getSelectedItem().toString()+ ";"
-				+ currentDateandTime + ";"
-				+ rstR.getText().toString() + ";"
-				+ rstS.getText().toString();
 		
-		final File plik = new File(this.getExternalFilesDir(null), "dane.txt");
-		Toast.makeText(getBaseContext(),
-				linia,
-				Toast.LENGTH_SHORT).show();
-		try {
-			final FileOutputStream fos1 = new FileOutputStream(plik, true);
-			fos1.write(linia.getBytes());
-			fos1.write(13);
-			fos1.write(10);
-			fos1.close();
-		} catch (final FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (final IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			
+		if (zapisane_ustawienia.getBoolean("utm_checkbox", false)){
+		sdf.setTimeZone(TimeZone.getTimeZone("Zulu"));
 		}
-		callSign.setText("");
-		rstR.setText("59");
-		rstS.setText("59");
+		String currentDateandTime = sdf.format(new Date());
+
+		
+		Log.e("DodawanieB", "band test");
+		Log.e("DodawanieB", "band " + band.getText().toString());
+		Log.e("DodawanieC", "call " + callSign.getText().toString());
+
+		if (band.getText().toString().equals("")) {
+			Log.e("Dodawanie1", "band" + band.getText().toString());
+			Toast.makeText(getBaseContext(), "Frequency nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		} else if (callSign.getText().toString().isEmpty()) {
+			Log.e("Dodawanie2", "call" + callSign.getText().toString());
+			Toast.makeText(getBaseContext(), "Callsign nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		} else {
+			final String linia = band.getText().toString() + ";"
+					+ callSign.getText().toString() + ";"
+					+ spinner.getSelectedItem().toString() + ";"
+					+ currentDateandTime + ";" + rstR.getText().toString()
+					+ ";" + rstS.getText().toString();
+
+			
+			final File plik = new File(this.getExternalFilesDir(null),
+					zapisane_ustawienia.getString("plik", "dane.txt"));
+			
+			
+			Toast.makeText(getBaseContext(), linia, Toast.LENGTH_SHORT).show();
+			try {
+				final FileOutputStream fos1 = new FileOutputStream(plik, true);
+				fos1.write(linia.getBytes());
+				fos1.write(13);
+				fos1.write(10);
+				fos1.close();
+			} catch (final FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (final IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+
+			}
+			callSign.setText("");
+			rstR.setText("59");
+			rstS.setText("59");
 		}
 	}
-	public void kasujPola (final View view){
+
+	public void kasujPola(final View view) {
 		band = (EditText) findViewById(R.id.editBand);
-		callSign = (EditText)findViewById(R.id.editCallsign);
-		rstR = (EditText)findViewById(R.id.editRstR);
-		rstS = (EditText)findViewById(R.id.editRstS);
+		callSign = (EditText) findViewById(R.id.editCallsign);
+		rstR = (EditText) findViewById(R.id.editRstR);
+		rstS = (EditText) findViewById(R.id.editRstS);
 		callSign.setText("");
 		rstR.setText("59");
 		rstS.setText("59");
 		band.setText("");
-		
+
 	}
-    
+
+	
 
 }

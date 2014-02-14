@@ -34,15 +34,15 @@ public final class R {
         public static final int logo=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings2=0x7f0a001c;
+        public static final int action_settings2=0x7f0a0020;
         public static final int button1=0x7f0a0019;
         public static final int button2=0x7f0a001a;
-        public static final int digitalClock1=0x7f0a0010;
         public static final int editBand=0x7f0a000a;
         public static final int editCallsign=0x7f0a0013;
         public static final int editRstR=0x7f0a0017;
         public static final int editRstS=0x7f0a0016;
-        public static final int main_pref=0x7f0a001b;
+        public static final int listRaportu=0x7f0a0007;
+        public static final int main_pref=0x7f0a001f;
         public static final int mode1Spin=0x7f0a000d;
         public static final int pager=0x7f0a0000;
         public static final int pager_title_strip=0x7f0a0001;
@@ -54,13 +54,17 @@ public final class R {
         public static final int tableRow4=0x7f0a000e;
         public static final int tableRow5=0x7f0a0011;
         public static final int tableRow6=0x7f0a0018;
+        public static final int textCzasDodaj=0x7f0a0010;
         public static final int textDane=0x7f0a0009;
-        public static final int textDane2=0x7f0a0007;
-        public static final int textView1=0x7f0a0006;
-        public static final int textView2=0x7f0a000c;
+        public static final int textDane2=0x7f0a000c;
         public static final int textView3=0x7f0a000f;
         public static final int textView4=0x7f0a0012;
         public static final int textView5=0x7f0a0015;
+        public static final int text_lista_wiersz1=0x7f0a001b;
+        public static final int text_lista_wiersz2=0x7f0a001c;
+        public static final int text_lista_wiersz3=0x7f0a001d;
+        public static final int text_lista_wiersz4=0x7f0a001e;
+        public static final int textmTimeLabel=0x7f0a0006;
         public static final int webView1=0x7f0a0005;
         public static final int web_spinner=0x7f0a0003;
     }
@@ -71,6 +75,7 @@ public final class R {
         public static final int fragment_lista_dummy=0x7f030003;
         public static final int fragment_main_dummy=0x7f030004;
         public static final int fragment_zegar_dummy=0x7f030005;
+        public static final int lista_wiersz=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f090000;
