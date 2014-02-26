@@ -16,7 +16,7 @@ na początek do wersji 0.02:
  * ~~lista raportów wczytywana z automatu~~
  * ~~lista raportów - tabela z nagłówkiem~~
  * ~~guzik clear na pierwszej stronie (obok dodaj)~~
- * "lista QSO" scentrowana
+ * ~~"lista QSO" scentrowana
  * ~~przy dodawaniu QSO, automatyczne czyszczenie pola callsign~~
  * usunięcie 59 :)
  * dodanie pola comment/notes
