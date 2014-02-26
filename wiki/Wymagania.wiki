@@ -24,6 +24,7 @@ na początek do wersji 0.02:
  * w simon dx cluster usunięcie 5 MHz w liście rozwijalnej 
  * w simon dx cluster -po kliknięciu w link otwiera sie przeglądarka lub możliwość powrotu do aplikacji
  * dodanie edycji QSO
+ * dodanie usunięcia QSO
  * eksport do ADIFF (http://www.adif.org/) [http://www.adif.org/304/adx304.xsd]
  * DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx) [http://dxcluster.sdr-radio.com/top_250_7_MHz.html]
 
