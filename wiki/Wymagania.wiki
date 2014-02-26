@@ -14,11 +14,11 @@ na początek do wersji 0.02:
  * ~~tekst w Callsighn - znak z dużych liter jak się da~~
  * ~~raport do 3 cyfr~~
  * ~~lista raportów wczytywana z automatu~~
- * lista raportów - tabela z nagłówkiem
- * zaznaczenie  któregokolwiek pola skutkuje zaznaczeniem tekstu
+ * ~~lista raportów - tabela z nagłówkiem~~
  * ~~guzik clear na pierwszej stronie (obok dodaj)~~
  * "lista QSO" scentrowana
  * ~~przy dodawaniu QSO, automatyczne czyszczenie pola callsign~~
+ * usunięcie 59 :)
  * eksport do ADIFF (http://www.adif.org/) [http://www.adif.org/304/adx304.xsd]
  * DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx) [http://dxcluster.sdr-radio.com/top_250_7_MHz.html]
 
