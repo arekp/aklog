@@ -18,8 +18,8 @@ na początek do wersji 0.02:
  * ~~guzik clear na pierwszej stronie (obok dodaj)~~
  * ~~"lista QSO" scentrowana~~
  * ~~przy dodawaniu QSO, automatyczne czyszczenie pola callsign~~
- * usunięcie 59 :)
- * dodanie pola comment/notes
+ * ~~usunięcie 59~~
+ * ~~dodanie pola comment/notes~~
  * ~~do simon dx cluster dodanie 3,5 MHz w liście rozwijalnej~~
  * ~~w simon dx cluster usunięcie 5 MHz w liście rozwijalnej~~
  * w simon dx cluster -po kliknięciu w link otwiera sie przeglądarka lub możliwość powrotu do aplikacji
