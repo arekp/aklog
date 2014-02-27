@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,16 @@ public class DodajFragment extends Fragment {
 		final View v = inflater.inflate(R.layout.fragment_main_dummy, null);
 		zapisane_ustawienia = PreferenceManager.getDefaultSharedPreferences(v.getContext());
 	 textCzasDodaj = (TextView) v.findViewById(R.id.textCzasDodaj);
+	 
+/*		if (zapisane_ustawienia.getBoolean("screen_off",false)){
+			Log.e("screen_off_Dodaj","true");
+			v.setKeepScreenOn(true);
 
+		}else if (!zapisane_ustawienia.getBoolean("screen_off",false)) {
+			Log.e("screen_off_Dodaj","false");
+			v.setKeepScreenOn(false);
+		}*/
+		
 		return v;
 	}
 

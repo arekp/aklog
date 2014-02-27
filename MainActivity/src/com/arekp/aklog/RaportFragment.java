@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.os.Environment;
 
 public class RaportFragment extends Fragment {
 	private static TextView tekst;
@@ -43,12 +44,14 @@ public class RaportFragment extends Fragment {
 	    rozbudowana_lista = (ListView) v.findViewById(R.id.listRaportu);
 	    List<RaportBean> przykladowe_dane2 = new ArrayList<RaportBean>();
 	    
-	    przykladowe_dane2.add(new RaportBean("frq", "callsign", "mode", "data", "rs", "rt"));
+	    przykladowe_dane2.add(new RaportBean("frq", "callsign", "mode", "data", "rs", "rt","Note"));
 
 	 
 	    
 		final File file = new File(container.getContext().getExternalFilesDir(
 				null),zapisane_ustawienia.getString("plik", "dane.txt"));
+
+		
 		StringBuilder text = new StringBuilder();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(file));
@@ -57,7 +60,13 @@ public class RaportFragment extends Fragment {
 			while ((line = br.readLine()) != null) {
 				Log.e("wiersze_danych",line);
 				String[] parts = line.split(";");
-				 przykladowe_dane2.add(new RaportBean(parts[0],parts[1], parts[2], parts[3], parts[4], parts[5]));
+				Log.e("raport_ilosc_pul",Integer.toString(parts.length));
+				if (parts.length==6){
+				 przykladowe_dane2.add(new RaportBean(parts[0],parts[1], parts[2], parts[3], parts[4], parts[5],""));
+				}else 
+				{
+					przykladowe_dane2.add(new RaportBean(parts[0],parts[1], parts[2], parts[3], parts[4], parts[5],parts[6]));
+				}
 				//text.append(line);
 				//text.append('\n');
 			}

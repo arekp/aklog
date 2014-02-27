@@ -12,7 +12,9 @@
     <string name="pref_title_display_plik">Nazwa Pliku</string>
     <string name="pref_default_display_plik">dane.txt</string>
     <string name="pref_title_display_katalog">Katalog</string>
-    <string name="pref_default_display_katalog">TO na razie nie dziala</string>
+    <string name="pref_default_display_katalog">/aklog</string>
+    <string name="pref_title_screen_off">Wyłącz wygaszacz</string>
+    <string name="pref_description_screen_off">Opcja pozwala wyłączyć wygaszacz systemowy na tej usłudze</string>
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
 
     <string-array name="pref_example_list_titles">

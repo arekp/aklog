@@ -15,7 +15,7 @@
 
     <TableLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="match_parent" >
 
         <TableRow
             android:id="@+id/tableRow2"
@@ -125,7 +125,7 @@
                     android:ems="10"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:text="59" />
+                    android:text="" />
 
                 <EditText
                     android:id="@+id/editRstR"
@@ -135,9 +135,29 @@
                     android:ems="10"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:text="59" />
+                    android:text="" />
 
             </LinearLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Note" />
+
+            <EditText
+                android:id="@+id/editNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine" />
 
         </TableRow>
 

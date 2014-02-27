@@ -17,7 +17,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.os.PowerManager;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.OpenableColumns;
@@ -49,8 +51,10 @@ public class MainActivity extends FragmentActivity {
 	private EditText callSign;
 	private EditText rstR;
 	private EditText rstS;
+	private EditText note;
 	private static TextView tekst;
-
+	protected PowerManager.WakeLock mWakeLock;
+	
 	SharedPreferences zapisane_ustawienia;
 
 	/**
@@ -59,13 +63,13 @@ public class MainActivity extends FragmentActivity {
 	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
 	 * will keep every loaded fragment in memory. If this becomes too memory
 	 * intensive, it may be best to switch to a
-	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+	 * {@link android.support.v4.app.FragmentStatePagerAdapter}. 
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	private SharedPreferences preferences;
 
 	/**
-	 * The {@link ViewPager} that will host the section contents.
+	 * The {@link ViewPager} that will host the section contents. 
 	 */
 	ViewPager mViewPager;
 
@@ -85,9 +89,28 @@ public class MainActivity extends FragmentActivity {
 		
 		zapisane_ustawienia = PreferenceManager
 				.getDefaultSharedPreferences(this);
+		
+		//  final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+      //    this.mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "My Tag");
+		
+	//	Log.e("screen_off_Main",zapisane_ustawienia.getBoolean("screen_off", false)); 
 
+		
 	}
 
+	@Override
+	protected void onResume() {
+		
+		if (zapisane_ustawienia.getBoolean("screen_off", false)){
+			Log.e("screen_off_Main","true");
+			mViewPager.setKeepScreenOn(true);
+         // this.mWakeLock.acquire();
+		}else if (zapisane_ustawienia.getBoolean("screen_off", false)==false) {
+			Log.e("screen_off_Main","false");
+			mViewPager.setKeepScreenOn(false);
+		}
+		super.onResume();
+	}
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -193,6 +216,7 @@ public class MainActivity extends FragmentActivity {
 		callSign = (EditText) findViewById(R.id.editCallsign);
 		rstR = (EditText) findViewById(R.id.editRstR);
 		rstS = (EditText) findViewById(R.id.editRstS);
+		note = (EditText) findViewById(R.id.editNote);
 		Spinner spinner = (Spinner) findViewById(R.id.mode1Spin);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -203,10 +227,6 @@ public class MainActivity extends FragmentActivity {
 		}
 		String currentDateandTime = sdf.format(new Date());
 
-		
-		Log.e("DodawanieB", "band test");
-		Log.e("DodawanieB", "band " + band.getText().toString());
-		Log.e("DodawanieC", "call " + callSign.getText().toString());
 
 		if (band.getText().toString().equals("")) {
 			Log.e("Dodawanie1", "band" + band.getText().toString());
@@ -216,17 +236,26 @@ public class MainActivity extends FragmentActivity {
 			Log.e("Dodawanie2", "call" + callSign.getText().toString());
 			Toast.makeText(getBaseContext(), "Callsign nie może być puste",
 					Toast.LENGTH_SHORT).show();
-		} else {
+		} else if (rstR.getText().toString().isEmpty()) {
+			Log.e("Dodawanie2", "call" + callSign.getText().toString());
+			Toast.makeText(getBaseContext(), "rstt nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		} else if (rstS.getText().toString().isEmpty()) {
+			Log.e("Dodawanie2", "call" + callSign.getText().toString());
+			Toast.makeText(getBaseContext(), "rstS nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		}else {
 			final String linia = band.getText().toString() + ";"
 					+ callSign.getText().toString() + ";"
 					+ spinner.getSelectedItem().toString() + ";"
 					+ currentDateandTime + ";" + rstR.getText().toString()
-					+ ";" + rstS.getText().toString();
+					+ ";" + rstS.getText().toString()
+					+ ";" + note.getText().toString();
 
-			
+			if(isExternalStorageWritable()){
 			final File plik = new File(this.getExternalFilesDir(null),
 					zapisane_ustawienia.getString("plik", "dane.txt"));
-			
+			Log.e("main_zpisz_plik",this.getExternalFilesDir(null).toString());
 			
 			Toast.makeText(getBaseContext(), linia, Toast.LENGTH_SHORT).show();
 			try {
@@ -245,9 +274,13 @@ public class MainActivity extends FragmentActivity {
 
 			}
 			callSign.setText("");
-			rstR.setText("59");
-			rstS.setText("59");
+			rstR.setText("");
+			rstS.setText("");
 		}
+			} 
+				
+	
+		
 	}
 
 	public void kasujPola(final View view) {
@@ -256,12 +289,28 @@ public class MainActivity extends FragmentActivity {
 		rstR = (EditText) findViewById(R.id.editRstR);
 		rstS = (EditText) findViewById(R.id.editRstS);
 		callSign.setText("");
-		rstR.setText("59");
-		rstS.setText("59");
+		rstR.setText("");
+		rstS.setText("");
 		band.setText("");
 
 	}
 
-	
+	/* Sprawdza czy zewnętrzna pamięć jest gotowa do zapisu */
+	public boolean isExternalStorageWritable() {
+	 String state = Environment.getExternalStorageState();
+	 if (Environment.MEDIA_MOUNTED.equals(state)) {
+	 return true;
+	 }
+	 return false;
+	}
+	/* Sprawdza czy zewnętrzna pamięć jest gotowa do odczytu */
+	public boolean isExternalStorageReadable() {
+	 String state = Environment.getExternalStorageState();
+	 if (Environment.MEDIA_MOUNTED.equals(state) ||
+	 Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+	 return true;
+	 }
+	 return false;
+	}
 
 }

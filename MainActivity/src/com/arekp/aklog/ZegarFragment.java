@@ -12,6 +12,7 @@ import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,10 +47,8 @@ public class ZegarFragment extends Fragment {
 		else {
 			mTimeLabel.setTextSize(30);
 		}
-		// TextView dummyTextView = (TextView)
-		// v.findViewById(R.id.section_label);
 		
-		// dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+		
 		return v;
 	}
 

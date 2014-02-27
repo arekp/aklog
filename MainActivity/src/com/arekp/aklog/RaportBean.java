@@ -7,6 +7,13 @@ public class RaportBean {
     private String callsign;
     private String rs;
     private String rt;
+    private String note;
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 	public String getFrequency() {
 		return frequency;
 	}
@@ -44,7 +51,7 @@ public class RaportBean {
 		this.rt = rt;
 	}
 	public RaportBean(String frequency, String mode, String data,
-			String callsign, String rs, String rt) {
+			String callsign, String rs, String rt, String note) {
 		//super();
 		this.frequency = frequency;
 		this.mode = mode;
@@ -52,10 +59,11 @@ public class RaportBean {
 		this.callsign = callsign;
 		this.rs = rs;
 		this.rt = rt;
+		this.note = note;
 	}
 	public String ExportSplit(){
 		String linia="";
-		linia=getFrequency()+";"+getMode()+";"+getData()+";"+getCallsign()+";"+getRs()+";"+getRt();
+		linia=getFrequency()+";"+getMode()+";"+getData()+";"+getCallsign()+";"+getRs()+";"+getRt()+";"+getNote()+";";
 		return linia;
 	}
     
