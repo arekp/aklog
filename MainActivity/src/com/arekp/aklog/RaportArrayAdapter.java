@@ -40,11 +40,11 @@ public class RaportArrayAdapter extends ArrayAdapter<RaportBean> {
 	 
 	        RaportBean item = getItem(position);
 	        TextView t1 = (TextView)view.findViewById(R.id.text_lista_wiersz1);
-	        t1.setText(item.getFrequency());
+	        t1.setText(item.getFrequency().toString());
 	        TextView t2 = (TextView)view.findViewById(R.id.text_lista_wiersz2);
 	        t2.setText(item.getMode());
 	        TextView t3 = (TextView)view.findViewById(R.id.text_lista_wiersz3);
-	        t3.setText(item.getData());
+	        t3.setText(item.getTime());
 	        TextView t4 = (TextView)view.findViewById(R.id.text_lista_wiersz4);
 	        t4.setText(item.getCallsign());
 	       // TextView t5 = (TextView)view.findViewById(R.id.text_lista_wiersz5);

@@ -8,10 +8,14 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
+
+import com.arekp.aklog.database.RaportDbAdapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -104,7 +108,6 @@ public class MainActivity extends FragmentActivity {
 		if (zapisane_ustawienia.getBoolean("screen_off", false)){
 			Log.e("screen_off_Main","true");
 			mViewPager.setKeepScreenOn(true);
-         // this.mWakeLock.acquire();
 		}else if (zapisane_ustawienia.getBoolean("screen_off", false)==false) {
 			Log.e("screen_off_Main","false");
 			mViewPager.setKeepScreenOn(false);
@@ -211,6 +214,59 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
+	public void zapiszDbKarta(final View view) {
+		band = (EditText) findViewById(R.id.editBand);
+		callSign = (EditText) findViewById(R.id.editCallsign);
+		rstR = (EditText) findViewById(R.id.editRstR);
+		rstS = (EditText) findViewById(R.id.editRstS);
+		note = (EditText) findViewById(R.id.editNote);
+		Spinner mode = (Spinner) findViewById(R.id.mode1Spin);
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		
+		if (zapisane_ustawienia.getBoolean("utm_checkbox", false)){
+		sdf.setTimeZone(TimeZone.getTimeZone("Zulu"));
+		}
+		String currentDateandTime = sdf.format(new Date());
+
+/*		Date data=new Date();
+		try {
+			data = sdf.parse(currentDateandTime);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+
+		if (band.getText().toString().equals("")) {
+			Log.e("Dodawanie1", "band" + band.getText().toString());
+			Toast.makeText(getBaseContext(), "Frequency nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		} else if (callSign.getText().toString().isEmpty()) {
+			Log.e("Dodawanie2", "call" + callSign.getText().toString());
+			Toast.makeText(getBaseContext(), "Callsign nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		} else if (rstR.getText().toString().isEmpty()) {
+			Log.e("Dodawanie2", "call" + callSign.getText().toString());
+			Toast.makeText(getBaseContext(), "rstt nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		} else if (rstS.getText().toString().isEmpty()) {
+			Log.e("Dodawanie2", "call" + callSign.getText().toString());
+			Toast.makeText(getBaseContext(), "rstS nie może być puste",
+					Toast.LENGTH_SHORT).show();
+		}else {
+		
+		RaportBean rap = new RaportBean(band.getText().toString(), mode.getSelectedItem().toString(), currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
+	    RaportDbAdapter Raportdb = new RaportDbAdapter(view.getContext());
+	    Raportdb.open();
+	    Raportdb.insertRaport(rap);
+	    Raportdb.close();
+		callSign.setText("");
+		rstR.setText("");
+		rstS.setText("");
+		}
+	}
+	
 	public void zapiszPlikKarta(final View view) {
 		band = (EditText) findViewById(R.id.editBand);
 		callSign = (EditText) findViewById(R.id.editCallsign);

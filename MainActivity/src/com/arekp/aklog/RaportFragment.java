@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.arekp.aklog.database.RaportDbAdapter;
+
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -44,10 +47,22 @@ public class RaportFragment extends Fragment {
 	    rozbudowana_lista = (ListView) v.findViewById(R.id.listRaportu);
 	    List<RaportBean> przykladowe_dane2 = new ArrayList<RaportBean>();
 	    
-	    przykladowe_dane2.add(new RaportBean("frq", "callsign", "mode", "data", "rs", "rt","Note"));
-
-	 
+	//    przykladowe_dane2.add(new RaportBean("frq", "callsign", "mode", "data", "rs", "rt","Note"));
+	    RaportDbAdapter Raportdb = new RaportDbAdapter(v.getContext());
+	    Raportdb.open();
+	    Cursor mCursor = Raportdb.getAllReports();
+	    getActivity().startManagingCursor(mCursor);
 	    
+	    while (mCursor.moveToNext()) {
+	    	//RaportBean rap = new RaportBean(mCursor.getString(1), mCursor.getString(2), mCursor.getString(3) , mCursor.getString(4), mCursor.getString(5), mCursor.getString(6), mCursor.getString(7));
+	    	RaportBean rap = new RaportBean(mCursor);
+	    	przykladowe_dane2.add(rap); 
+	   }
+	        
+	   // przykladowe_dane2 = (List<RaportBean>) Raportdb.getAllReports();
+	    Raportdb.close();
+	    
+/*	    
 		final File file = new File(container.getContext().getExternalFilesDir(
 				null),zapisane_ustawienia.getString("plik", "dane.txt"));
 
@@ -72,7 +87,7 @@ public class RaportFragment extends Fragment {
 			}
 		} catch (IOException e) {
 
-		}
+		}*/
 		
 
 	    RaportArrayAdapter RaportArrayAdapter1 =new RaportArrayAdapter(v.getContext());
