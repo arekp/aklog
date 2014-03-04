@@ -33,3 +33,4 @@ na początek do wersji 0.02:
 
  * [http://jlog.org/index.htm]
  * DX Cluster [http://cluster.sdr-radio.com]
+ * [http://www.javacodegeeks.com/2013/02/jaxb-tutorial-getting-started.html]
