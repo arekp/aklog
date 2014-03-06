@@ -26,7 +26,7 @@ na początek do wersji 0.02:
  * dodanie edycji QSO
  * dodanie usunięcia QSO
  * eksport do ADIFF (http://www.adif.org/) [http://www.adif.org/304/adx304.xsd]
- * DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx) [http://dxcluster.sdr-radio.com/top_250_7_MHz.html]
+ * ~~DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx) [http://dxcluster.sdr-radio.com/top_250_7_MHz.html]~~
  * bandplan KF http://sq5obu.com/viewpage.php?page_id=9
  * kod Q http://sq5obu.com/viewpage.php?page_id=12
 = Inne przydatne linki =
