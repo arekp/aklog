@@ -9,7 +9,7 @@ Bedziemy tutaj spisywać co jest do zrobienia
 = Szczegóły =
 
 W punktach:
-na początek do wersji 0.02:
+na początek do wersji 0.11:
  * brak wygaszania ekranu (może być w settings on/off)
  * w simon dx cluster -po kliknięciu w link otwiera sie przeglądarka lub możliwość powrotu do aplikacji
  * dodanie edycji QSO
