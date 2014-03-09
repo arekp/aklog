@@ -18,7 +18,7 @@ import android.util.Log;
 public class RaportDbAdapter {
 	 private static final String DEBUG_TAG = "SqLiteTodoManager";
 	 
-	    private static final int DB_VERSION = 1;
+	    private static final int DB_VERSION = 2;
 	    private static final String DB_NAME = "databaseAkLog.db";
 	    private static final String DB_TODO_TABLE = "raport";
 	 
@@ -54,6 +54,10 @@ public class RaportDbAdapter {
 	    public static final String NOTE_OPTIONS = "TEXT";
 	    public static final int NOTE_COLUMN = 7;
 	    
+	    public static final String KEY_STATUS = "status";
+	    public static final String STATUS_OPTIONS = "INTEGER";
+	    public static final int STATUS_COLUMN = 8;
+	    
 	    private static final String DB_CREATE_TODO_TABLE =
 	            "CREATE TABLE " + DB_TODO_TABLE + "( " +
 	            KEY_ID + " " + ID_OPTIONS + ", " +
@@ -64,6 +68,7 @@ public class RaportDbAdapter {
 	            KEY_RS + " " + RS_OPTIONS + ", " +
 	            KEY_RT + " " + RT_OPTIONS + ", " +
 	            KEY_NOTE + " " + NOTE_OPTIONS +
+	             KEY_STATUS + " " + STATUS_OPTIONS +
 	            ");";
 	    private static final String DROP_TODO_TABLE =
 	            "DROP TABLE IF EXISTS " + DB_TODO_TABLE;
@@ -129,23 +134,33 @@ public class RaportDbAdapter {
 	        newRaportValues.put(KEY_NOTE, rap.getNote());
 	        return db.insert(DB_TODO_TABLE, null, newRaportValues);
 	    }
-	 
-/*	    public boolean updateTodo(RaportBean rap) {
+	 /*
+	    public boolean updateTodo(RaportBean rap) {
 	        long id = rap.getId();
 	        String description = rap.getCallsign();
+	        
 	        boolean completed = task.isCompleted();
 	        return updateTodo(id, description, completed);
 	    }
-	 
-	    public boolean updateTodo(long id, String description, boolean completed) {
+	 */
+	    public boolean updateTodoStatus(long id,Boolean status) {
 	        String where = KEY_ID + "=" + id;
-	        int completedTask = completed ? 1 : 0;
+     int statusTask = status ? 1 : 0;
+	        Log.d("raportAdapter","up");
 	        ContentValues updateTodoValues = new ContentValues();
-	        updateTodoValues.put(KEY_FREQ, description);
-	        updateTodoValues.put(KEY_COMPLETED, completedTask);
+	        //updateTodoValues.put(KEY_FREQ, description);
+	        updateTodoValues.put(KEY_STATUS, 1);
 	        return db.update(DB_TODO_TABLE, updateTodoValues, where, null) > 0;
-	    }*/
+	    }
 	 
+	    public void updateAllOffStatus() {
+	    //    String where = KEY_ID + "=" + id;
+	       // int statusTask = status ? 1 : 0;
+	        ContentValues updateTodoValues = new ContentValues();
+	        //updateTodoValues.put(KEY_FREQ, description);
+	        updateTodoValues.put(KEY_STATUS, 0);
+	       db.update(DB_TODO_TABLE, updateTodoValues, null, null);
+	    }
 	    public boolean deleteTodo(long id){
 	        String where = KEY_ID + "=" + id;
 	        return db.delete(DB_TODO_TABLE, where, null) > 0;

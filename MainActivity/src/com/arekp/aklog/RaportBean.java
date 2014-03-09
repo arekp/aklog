@@ -28,8 +28,15 @@ public class RaportBean {
     private Integer rs;
     private Integer rt;
     private String note;
+    private Boolean status;
     
     
+	public Boolean getStatus() {
+		return status;
+	}
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
 	public long getId() {
 		return id;
 	}
@@ -135,7 +142,7 @@ public class RaportBean {
 		this.note = mCursor.getString(7);
 	}
 	// Do poprawy 
-	public String ExportSplit(){
+	public String ExportCvs(){
 		String linia="";
 		linia=getFrequency()+";"+getMode()+";"+getData()+";"+getCallsign()+";"+getRs()+";"+getRt()+";"+getNote();
 		return linia;

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="kodQTytyl">Kod Q</string>
+    <string name="kodQHtml">
+        <![CDATA[
+        <font size="-1">
+<br>
+<b>QAZ</b> &nbsp;&nbsp;&nbsp;&nbsp; burza, wyłączam stację<br>
+<b>QHL</b>&nbsp;&nbsp;&nbsp;&nbsp; przeszukiwanie pasma od największych częstotliwości<br>
+<b>QHM</b>&nbsp;&nbsp;&nbsp; przeszukiwanie pasma od największych do środkowych częstotliwości<br>
+<b>QML</b>&nbsp;&nbsp;&nbsp;&nbsp; przeszukiwanie pasma od środkowej do najmniejszej częstotliwości<br>
+<b>QQQ</b>&nbsp;&nbsp;&nbsp;&nbsp; muszę przerwać łączność, wyjaśnię póżniej<br>
+<b>QRA</b>&nbsp;&nbsp;&nbsp;&nbsp; nazwa mojej stacji<br>
+<b>QRAA</b>&nbsp;&nbsp;&nbsp;&nbsp; mój adres w call booku jest prawidłowy<br>
+<b>QRB</b>&nbsp;&nbsp;&nbsp;&nbsp; odległość między nami wynosi około ... km<br>
+<b>QRG</b>&nbsp;&nbsp;&nbsp;&nbsp; dokładna wasza częstotliwość jest ... MHz, kHz<br>
+<b>QRH</b>&nbsp;&nbsp;&nbsp;&nbsp; twoja częstotliwość zmienia się<br>
+<b>QRI</b> &nbsp;&nbsp;&nbsp;&nbsp; przez Ciebie nadawany ton jest zły<br>
+<b>QRJ</b> &nbsp;&nbsp;&nbsp;&nbsp; twój sygnał słabnie, jest nie do odczytania<br>
+<b>QRK</b>&nbsp;&nbsp;&nbsp;&nbsp; czytelność Twojego sygnału jest ... np. 5 (podajemy w skali 1-5)<br>
+<b>QRL</b>&nbsp;&nbsp;&nbsp;&nbsp; jestem zajęty, proszę poczekać<br>
+<b>QRM</b>&nbsp;&nbsp;&nbsp;&nbsp; mam zakłócenia od innych stacji<br>
+<b>QRN</b>&nbsp;&nbsp;&nbsp;&nbsp; mam zakłócenia atmosferyczne<br>
+<b>QRO</b>&nbsp;&nbsp;&nbsp;&nbsp; proszę zwiększyć moc<br>
+<b>QRP</b>&nbsp;&nbsp;&nbsp;&nbsp; proszę zmniejszyć moc, zmniejszam moc<br>
+<b>QRQ</b>&nbsp;&nbsp;&nbsp;&nbsp; nadawaj szybciej<br>
+<b>QRRR</b> &nbsp;&nbsp;&nbsp;&nbsp; znak niebezpieczeństwa na lądzie (tylko w ruchu radioamatorskim)<br>
+<b>QRS</b>&nbsp;&nbsp;&nbsp;&nbsp; nadawajcie wolniej<br>
+<b>QRT</b> &nbsp;&nbsp;&nbsp;&nbsp; kończę nadawanie, wyłączam stację<br>
+<b>QRU</b>&nbsp;&nbsp;&nbsp;&nbsp; nie mam wiadomości dla ciebie<br>
+<b>QRV</b>&nbsp;&nbsp;&nbsp;&nbsp; jestem gotowy do pracy w eterze<br>
+<b>QRW</b> &nbsp;&nbsp;&nbsp;&nbsp; przekażcie kol. ---- że go wołam ...<br>
+<b>QRX</b> &nbsp;&nbsp;&nbsp;&nbsp; proszę poczekać, zawołam o......<br>
+<b>QRY</b>&nbsp;&nbsp;&nbsp;&nbsp; twoja kolejność jest ....<br>
+<b>QRZ</b>&nbsp;&nbsp;&nbsp;&nbsp; kto mnie wołał, woła cię .....<br>
+<b>QSA</b>&nbsp;&nbsp;&nbsp;&nbsp; siła twojego sygnału jest  1....9<br>
+<b>QSB</b>&nbsp;&nbsp;&nbsp;&nbsp; twój sygnał okresowo zanika (faluje)<br>
+<b>QSD</b> &nbsp;&nbsp;&nbsp;&nbsp; źle nadajesz kluczem, złe znaki CW<br>
+<b>QSK</b> &nbsp;&nbsp;&nbsp;&nbsp; mogę słuchać w przerwach nadawania (BK)<br>
+<b>QSL</b>&nbsp;&nbsp;&nbsp;&nbsp; odbiór potwierdzam, prześlę kartę<br>
+<b>QSLL</b>&nbsp;&nbsp;&nbsp;&nbsp; chcemy wzajemnie wymienić karty QSL<br>
+<b>QSLN</b>&nbsp;&nbsp;&nbsp;&nbsp; proszę nie wysyłać karty QSL<br>
+<b>QSM</b>&nbsp;&nbsp;&nbsp;&nbsp; proszę powtórzyć <br>
+<b>QSN</b>&nbsp;&nbsp;&nbsp;&nbsp; słyszałem cię na ..... kHz<br>
+<b>QSO</b>&nbsp;&nbsp;&nbsp;&nbsp; mam połączenie, łączność<br>
+<b>QSP</b> &nbsp;&nbsp;&nbsp;&nbsp; przekaż komunikat do ....<br>
+<b>QSQ</b> &nbsp;&nbsp;&nbsp;&nbsp; nadawaj każde słowo jeden raz<br>
+<b>QST</b>&nbsp;&nbsp;&nbsp;&nbsp; komunikat do wszystkich<br>
+<b>QSU</b>&nbsp;&nbsp;&nbsp;&nbsp; nadawaj na częstotliwości ..... kHz<br>
+<b>QSUF</b>&nbsp;&nbsp;&nbsp;&nbsp; proszę o skomunikowanie się ze mną telefonicznie<br>
+<b>QSW</b>&nbsp;&nbsp;&nbsp;&nbsp; przechodzę na częstotliwość ...<br>
+<b>QSX</b>&nbsp;&nbsp;&nbsp;&nbsp; słucham na częstotliwości ....<br>
+<b>QSY</b>&nbsp;&nbsp;&nbsp;&nbsp; przejdż na częstotliwość ......<br>
+<b>QSZ</b>&nbsp;&nbsp;&nbsp;&nbsp; nadawaj każde słowo dwa razy<br>
+<b>QTC</b>&nbsp;&nbsp;&nbsp;&nbsp; mam dla ciebie wiadomość, radiogram etc...<br>
+<b>QTH</b>&nbsp;&nbsp;&nbsp;&nbsp; moje położenie geograficzne jest ....<br>
+<b>QTR</b>&nbsp;&nbsp;&nbsp;&nbsp; dokładny czas jest ....<br>
+<b>QTU</b>&nbsp;&nbsp;&nbsp;&nbsp; pracuje od .... do ......<br>
+<b>QUA</b> &nbsp;&nbsp;&nbsp;&nbsp; przekazuje wiadomość od .....<br>
+<b>QUE</b> &nbsp;&nbsp;&nbsp;&nbsp; mogę pracować fonią <br>
+<b>QUH</b> &nbsp;&nbsp;&nbsp;&nbsp; ciśnienie barometryczne wynosi ....<br>
+<b>QWX</b>&nbsp;&nbsp;&nbsp;&nbsp; stan pogody<br>
+</font>
+]]>
+</string>
+    <string name="bandPlanTytul">BANDPLAN KF</string>
+    <string name="bandPlanHtml"><![CDATA[ 
+ <h3>160m</h3><br>
+
+<b> 1.810-1.838</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 1.838-1.840</b> &nbsp;&nbsp;cyfrowe (baudot), telegrafia <br>
+<b> 1.840-1.842</b> &nbsp;&nbsp;cyfrowe (baudot), fonia, telegrafia <br>
+<b> 1.842-2.000</b> &nbsp;&nbsp;fonia, telegrafia <br>
+
+<h3>80m</h3><br>
+<b> 3.500-3.510</b> &nbsp;&nbsp;telegrafia międzykontynentalna <br>
+<b> 3.500-3.560</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 3.560-3.580</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 3.580-3.590</b> &nbsp;&nbsp;cyfrowe, telegrafia <br>
+<b> 3.580-3.600</b> &nbsp;&nbsp;cyfrowe (packet), telegrafia <br>
+<b> 3.600-3.620</b> &nbsp;&nbsp;fonia, cyfrowe, telegrafia <br>
+<b> 3.600-3.650</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 3.650-3.775</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 3.700-3.800</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 3.730-3.740</b> &nbsp;&nbsp;sstv i fax, fonia, telegrafia <br>
+<b> 3.775-3.800</b> &nbsp;&nbsp;fonia międzykontynentalna, telegrafia <br>
+
+<h3>40m</h3><br>
+<b> 7.000-7.035</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 7.035-7.040</b> &nbsp;&nbsp;cyfrowe, sstv, fax, telegrafia <br>
+<b> 7.040-7.045</b> &nbsp;&nbsp;cyfrowe, sstv, fax, fonia, telegrafia <br>
+<b> 7.045-7.200</b> &nbsp;&nbsp;fonia, telegrafia <br>
+
+30m</h3><br>
+<b> 10.100-10.140</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 10.140-10.150</b> &nbsp;&nbsp;cyfrowe, telegrafia <br>
+
+<h3>20m</h3><br>
+<b> 14.000-14.060</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 14.060-14.070</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 14.070-14.089</b> &nbsp;&nbsp;cyfrowe, telegrafia <br>
+<b> 14.089-14.099</b> &nbsp;&nbsp;cyfrowe (packet), telegrafia <br>
+<b> 14.099-14.101</b> &nbsp;&nbsp;RADIOLATARNIE <br>
+<b> 14.101-14.112</b> &nbsp;&nbsp;cyfrowe (packet), fonia, telegrafia <br>
+<b> 14.112-14.125</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 14.125-14.300</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 14.225-14.235</b> &nbsp;&nbsp;sstv i fax, fonia, telegrafia <br>
+<b> 14.300-14.350</b> &nbsp;&nbsp;fonia, telegrafia <br>
+
+<h3>17m</h3><br>
+<b> 18.068-18.100</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 18.100-18.109</b> &nbsp;&nbsp;cyfrowe, telegrafia <br>
+<b> 18.109-18.111</b> &nbsp;&nbsp;RADIOLATARNIE <br>
+<b> 18.111-18.168</b> &nbsp;&nbsp;fonia, telegrafia <br>
+
+<h3>15m</h3><br>
+<b> 21.000-21.080</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 21.080-21.100</b> &nbsp;&nbsp;cyfrowe, telegrafia <br>
+<b> 21.100-21.120</b> &nbsp;&nbsp;cyfrowe (packet), telegrafia <br>
+<b> 21.120-21.149</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 21.149-21.151</b> &nbsp;&nbsp;RADIOLATARNIE <br>
+<b> 21.151-21.335</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 21.335-21.345</b> &nbsp;&nbsp;sstv i fax, fonia, telegrafia <br>
+<b> 21.345-21.450</b> &nbsp;&nbsp;fonia, telegrafia <br>
+
+<h3>12m</h3><br>
+<b> 24.890-24.920</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 24.920-24.929</b> &nbsp;&nbsp;cyfrowe, telegrafia <br>
+<b> 24.929-24.931</b> &nbsp;&nbsp;RADIOLATARNIE <br>
+<b> 24.931-24.990</b> &nbsp;&nbsp;fonia, telegrafia <br>
+
+<h3>10m</h3><br>
+<b> 28.000-28.050</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 28.050-28.120</b> &nbsp;&nbsp;cyfrowe, telegrafia <br>
+<b> 28.120-28.150</b> &nbsp;&nbsp;cyfrowe (packet), telegrafia <br>
+<b> 28.150-28.190</b> &nbsp;&nbsp;tylko telegrafia <br>
+<b> 28.190-28.199</b> &nbsp;&nbsp;RADIOLATARNIE cykliczne, TELEGRAFIA <br>
+<b> 28.199-28.201</b> &nbsp;&nbsp;RADIOLATARNIE cykliczne <br>
+<b> 28.201-28.255</b> &nbsp;&nbsp;RADIOLATARNIE cišgłe, fonia, telegrafia <br>
+<b> 28.255-28.675</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 28.675-28.685</b> &nbsp;&nbsp;sstv i fax, fonia, telegrafia <br>
+<b> 28.685-29.200</b> &nbsp;&nbsp;fonia, telegrafia <br>
+<b> 29.200-29.300</b> &nbsp;&nbsp;cyfrowe (packet NBFM), fonia, telegrafia <br>
+<b> 29.300-29.550</b> &nbsp;&nbsp;satelity (downlink) <br>
+<b> 29.550-29.700</b> &nbsp;&nbsp;fonia, telegrafia <br>
+        ]]>
+        </string>
+    
+</resources>

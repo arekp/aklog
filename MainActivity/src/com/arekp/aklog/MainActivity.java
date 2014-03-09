@@ -17,6 +17,7 @@ import java.util.TimeZone;
 
 import com.arekp.aklog.database.RaportDbAdapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
@@ -33,6 +34,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -140,11 +142,19 @@ public class MainActivity extends FragmentActivity {
 
 			ktoryElement = "drugi";
 			break;
+		case R.id.action_KodQ:
+			ktoryElement = "kodQ";
+			KodQ();
+			break;
+		case R.id.actionBandPlan:
+			ktoryElement = "action_BandPlan";
+			BandPlan();
+			break;
 		/*
 		 * case R.id.item3: ktoryElement = "trzeci"; break;
 		 */
 		default:
-			ktoryElement = "żaden";
+			ktoryElement = "zaden";
 
 		}
 
@@ -153,8 +163,28 @@ public class MainActivity extends FragmentActivity {
 		// Czytaj więcej na:
 		// http://javastart.pl/programowanie-android/menu/#ixzz2svy3jBTM
 	}
+public void KodQ(){
+	
+	final Dialog dialog = new Dialog(mViewPager.getContext());
+	dialog.setContentView(R.layout.dialog_info);
+	dialog.setTitle(R.string.kodQTytyl);
 
+	// set the custom dialog components - text, image and button
+	TextView text = (TextView) dialog.findViewById(R.id.textDialogInfo);
+	text.setText(Html.fromHtml(getString(R.string.kodQHtml)));
+	dialog.show();
+}
 
+public void BandPlan(){
+	final Dialog dialog = new Dialog(mViewPager.getContext());
+	dialog.setContentView(R.layout.dialog_info);
+	dialog.setTitle(R.string.bandPlanTytul);
+
+	// set the custom dialog components - text, image and button
+	TextView text = (TextView) dialog.findViewById(R.id.textDialogInfo);
+	text.setText(Html.fromHtml(getString(R.string.bandPlanHtml)));
+	dialog.show();
+}
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
 		public SectionsPagerAdapter(final FragmentManager fm) {
