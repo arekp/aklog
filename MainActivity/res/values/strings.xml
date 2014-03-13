@@ -42,5 +42,7 @@
         <item >220MHz</item>
         <item >430MHz</item>        
     </string-array>
+        <string name="menuusun">Usuń</string>
+        <string name="menuedytuj">Edytuj</string>
 
 </resources>

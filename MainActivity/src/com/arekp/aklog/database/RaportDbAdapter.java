@@ -18,7 +18,7 @@ import android.util.Log;
 public class RaportDbAdapter {
 	 private static final String DEBUG_TAG = "SqLiteTodoManager";
 	 
-	    private static final int DB_VERSION = 2;
+	    private static final int DB_VERSION =3 ;
 	    private static final String DB_NAME = "databaseAkLog.db";
 	    private static final String DB_TODO_TABLE = "raport";
 	 
@@ -67,7 +67,7 @@ public class RaportDbAdapter {
 	            KEY_CALLSIGN + " " + CALLSIGN_OPTIONS + ", " +
 	            KEY_RS + " " + RS_OPTIONS + ", " +
 	            KEY_RT + " " + RT_OPTIONS + ", " +
-	            KEY_NOTE + " " + NOTE_OPTIONS +
+	            KEY_NOTE + " " + NOTE_OPTIONS +", " +
 	             KEY_STATUS + " " + STATUS_OPTIONS +
 	            ");";
 	    private static final String DROP_TODO_TABLE =
@@ -144,21 +144,19 @@ public class RaportDbAdapter {
 	    }
 	 */
 	    public boolean updateTodoStatus(long id,Boolean status) {
-	        String where = KEY_ID + "=" + id;
+	        String where = KEY_ID + "=" + (id+1);
      int statusTask = status ? 1 : 0;
-	        Log.d("raportAdapter","up");
+	        Log.d("raportAdapter_updateTodoStatus",where+" "+status.toString());
 	        ContentValues updateTodoValues = new ContentValues();
 	        //updateTodoValues.put(KEY_FREQ, description);
-	        updateTodoValues.put(KEY_STATUS, 1);
+	        updateTodoValues.put(KEY_STATUS, statusTask);
 	        return db.update(DB_TODO_TABLE, updateTodoValues, where, null) > 0;
 	    }
 	 
 	    public void updateAllOffStatus() {
-	    //    String where = KEY_ID + "=" + id;
-	       // int statusTask = status ? 1 : 0;
 	        ContentValues updateTodoValues = new ContentValues();
-	        //updateTodoValues.put(KEY_FREQ, description);
 	        updateTodoValues.put(KEY_STATUS, 0);
+	        Log.d("raportAdapter_updateTodoStatus","Wszystko na 0 ");
 	       db.update(DB_TODO_TABLE, updateTodoValues, null, null);
 	    }
 	    public boolean deleteTodo(long id){

@@ -36,7 +36,6 @@ public class RaportArrayAdapter extends ArrayAdapter<RaportBean> {
 	        public TextView lvRst;
 	        public TextView lvRsr;
 	        public TextView lvNote;
-
 	    }
 	    
 	    /**
@@ -66,7 +65,7 @@ public class RaportArrayAdapter extends ArrayAdapter<RaportBean> {
 	        viewHolder.lvDate.setText(item.getTime());
 	        viewHolder.lvCall.setText(item.getCallsign());
 //Log.d("ArrayAdapter",item.getStatus().toString());
-/*      if(item.getStatus()) {
+/*     if(item.getStatus()) {
 	            viewHolder.lvFreq
 	                .setPaintFlags(viewHolder.lvFreq.getPaintFlags() |
 	                        Paint.STRIKE_THRU_TEXT_FLAG);

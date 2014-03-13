@@ -9,16 +9,22 @@ import java.util.List;
 
 import com.arekp.aklog.database.RaportDbAdapter;
 
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -34,7 +40,9 @@ public class RaportFragment extends Fragment {
 
 	private ListView rozbudowana_lista;
 	private RaportDbAdapter Raportdb;
-
+    private View v;
+    private List<RaportBean> przykladowe_dane2;
+    private RaportArrayAdapter RaportArrayAdapter1;
 	SharedPreferences zapisane_ustawienia;
 
 	public RaportFragment() {
@@ -44,15 +52,15 @@ public class RaportFragment extends Fragment {
 	public View onCreateView(final LayoutInflater inflater,
 			final ViewGroup container, final Bundle savedInstanceState) {
 
-		final View v = inflater.inflate(R.layout.fragment_lista_dummy, null);
+		//final View 
+		v = inflater.inflate(R.layout.fragment_lista_dummy, null);
 		zapisane_ustawienia = PreferenceManager.getDefaultSharedPreferences(v
 				.getContext());
 
 		rozbudowana_lista = (ListView) v.findViewById(R.id.listRaportu);
-		View backToTop = inflater.inflate(R.layout.lista_wiersz_footer, null);
+	
 
-		rozbudowana_lista.addFooterView(backToTop);
-		List<RaportBean> przykladowe_dane2 = new ArrayList<RaportBean>();
+	przykladowe_dane2 = new ArrayList<RaportBean>();
 
 		Raportdb = new RaportDbAdapter(v.getContext());
 		Raportdb.open();
@@ -64,12 +72,11 @@ public class RaportFragment extends Fragment {
 			przykladowe_dane2.add(rap);
 		}
 
-		// Raportdb.close();
-
-		RaportArrayAdapter RaportArrayAdapter1 = new RaportArrayAdapter(
+		 RaportArrayAdapter1 = new RaportArrayAdapter(
 				v.getContext());
 		RaportArrayAdapter1.setData(przykladowe_dane2);
 
+		RaportArrayAdapter1.notifyDataSetChanged();
 		rozbudowana_lista.setAdapter(RaportArrayAdapter1);
 
 		rozbudowana_lista.setOnItemClickListener(new OnItemClickListener() {
@@ -83,16 +90,70 @@ public class RaportFragment extends Fragment {
 						new Integer(pos).toString(), Toast.LENGTH_SHORT).show();
 				} else {
 					Toast.makeText(v.getContext(),				
-							new Integer(pos).toString()+"NIe udalo sie :( ", Toast.LENGTH_SHORT).show();
+							new Integer(pos).toString()+" NIe udalo sie :( ", Toast.LENGTH_SHORT).show();
 				}
 
 			}
 		});
-	
+	//Podpinamy menu pod liste
+		registerForContextMenu(rozbudowana_lista);
 		return v;
 	}
+	
+	public void refreshList()
+	{
 
+		Cursor mCursor=	 mCursor = Raportdb.getAllReports();
+		przykladowe_dane2.clear();
+ 	while (mCursor.moveToNext()) {
+		RaportBean rap = new RaportBean(mCursor);
+		przykladowe_dane2.add(rap);
+	}
+	RaportArrayAdapter1.setData(przykladowe_dane2);
+	RaportArrayAdapter1.notifyDataSetChanged();
+	
+	rozbudowana_lista.refreshDrawableState();
+	}
 
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterContextMenuInfo info = (AdapterContextMenuInfo)item.getMenuInfo();
+        
+        switch (item.getItemId()) {
+        case R.id.menuedytuj:
+        
+            Toast.makeText(v.getContext(), 
+                    "Opcja item01 na elemencie: " + przykladowe_dane2.get(info.position).getCallsign() , 
+                    Toast.LENGTH_LONG).show();
+            break;
+            
+        case R.id.menuusun:
+         	Raportdb.deleteTodo(przykladowe_dane2.get(info.position).getId());
+         	refreshList();
+                  	
+/*        	Toast.makeText(v.getContext(), 
+                    "Opcja item02 na elemencie: " + przykladowe_dane2.get(info.position).getCallsign(), 
+                    Toast.LENGTH_LONG).show();*/
+            break;
+            
+        default:
+            break;
+        }
+        return true;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+            ContextMenuInfo menuInfo) {
+        MenuInflater inflater = getActivity().getMenuInflater();
+        
+        inflater.inflate(R.menu.listraport_context_menu, menu);
+        
+        AdapterContextMenuInfo info = (AdapterContextMenuInfo) menuInfo;
+        
+        menu.setHeaderTitle(przykladowe_dane2.get(info.position).getCallsign()+" "+przykladowe_dane2.get(info.position).getFrequency() );
+        
+    }
 	   @Override
 	public void onResume() {
 	        // TODO Auto-generated method stub
@@ -109,6 +170,7 @@ public class RaportFragment extends Fragment {
 	    	
 	        if(Raportdb != null)
 	        	Raportdb.updateAllOffStatus();
+	        
 	        	Raportdb.close();
 	        super.onDestroy();
 	    }
