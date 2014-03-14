@@ -10,13 +10,12 @@ Bedziemy tutaj spisywać co jest do zrobienia
 
 W punktach:
 na początek do wersji 0.11:
- * brak wygaszania ekranu (może być w settings on/off)
- * w simon dx cluster -po kliknięciu w link otwiera sie przeglądarka lub możliwość powrotu do aplikacji
- * dodanie edycji QSO
- * dodanie usunięcia QSO
  * frequency - 4 miejsca po przecinku.
- * ~~bandplan KF http://sq5obu.com/viewpage.php?page_id=9~~
- * ~~kod Q http://sq5obu.com/viewpage.php?page_id=12~~
+ * w simon dx cluster -po kliknięciu w link otwiera sie przeglądarka lub możliwość powrotu do aplikacji
+ * ~~dodanie edycji QSO
+ * ~~dodanie usunięcia QSO
+ * ~~bandplan KF http://sq5obu.com/viewpage.php?page_id=9
+ * ~~kod Q http://sq5obu.com/viewpage.php?page_id=12
  * eksport do ADIFF (http://www.adif.org/) [http://www.adif.org/304/adx304.xsd]
  * ~~DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx) [http://dxcluster.sdr-radio.com/top_250_7_MHz.html]~~
  * ~~tekst w Callsighn - znak z dużych liter jak się da~~
@@ -30,7 +29,7 @@ na początek do wersji 0.11:
  * ~~dodanie pola comment/notes~~
  * ~~do simon dx cluster dodanie 3,5 MHz w liście rozwijalnej~~
  * ~~w simon dx cluster usunięcie 5 MHz w liście rozwijalnej~~
-
+ * ~~brak wygaszania ekranu (może być w settings on/off)
 = Inne przydatne linki =
 
  * [http://jlog.org/index.htm]
