@@ -15,34 +15,40 @@
     <string name="RST">Raport</string>
     <string name="raport_tekst">Lista QSO</string>
     <string name="Przycisk_dodaj">Dodaj</string>
-      <string name="Przycisk_kasuj">Clear</string>
+    <string name="Przycisk_kasuj">Czysc</string>
+    <string name="Przycisk_popraw">Popraw</string>
+    <string name="Przycisk_wroc">Wróc</string>
     <string-array name="ListaMode">
-        <item >LSB</item>
-        <item >USB</item>
-        <item >FM</item>
-        <item >DIGI</item>
-        <item >CW</item>
+        <item>LSB</item>
+        <item>USB</item>
+        <item>FM</item>
+        <item>DIGI</item>
+        <item>CW</item>
     </string-array>
-        <string-array name="ListaSpinerWeb">
-        <item >All</item>
-        <item >HF</item>
-        <item >137kHz</item>
-        <item >1.8MHz</item>
-        <item >3.5MHz</item>
-        <item >7MHz</item>
-        <item >10MHz</item>
-        <item >14MHz</item>
-        <item >18MHz</item>
-        <item >21MHz</item>
-        <item >24MHz</item>
-        <item >28MHz</item>
-        <item >50MHz</item>
-        <item >70MHz</item>
-        <item >144MHz</item>
-        <item >220MHz</item>
-        <item >430MHz</item>        
+    <string-array name="ListaSpinerWeb">
+        <item>All</item>
+        <item>HF</item>
+        <item>137kHz</item>
+        <item>1.8MHz</item>
+        <item>3.5MHz</item>
+        <item>7MHz</item>
+        <item>10MHz</item>
+        <item>14MHz</item>
+        <item>18MHz</item>
+        <item>21MHz</item>
+        <item>24MHz</item>
+        <item>28MHz</item>
+        <item>50MHz</item>
+        <item>70MHz</item>
+        <item>144MHz</item>
+        <item>220MHz</item>
+        <item>430MHz</item>
     </string-array>
-        <string name="menuusun">Usuń</string>
-        <string name="menuedytuj">Edytuj</string>
+
+    <string name="menuusun">Usuń</string>
+    <string name="menuedytuj">Edytuj</string>
+    <string name="menudetal">Szczególy</string>
+    <string name="title_activity_edit_list">EditListActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

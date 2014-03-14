@@ -10,9 +10,11 @@
     <string name="pref_title_social_recommendations">UTM 0</string>
     <string name="pref_description_social_recommendations">Zostanie ustawiony zegar w aplikacji na strefe czasową Zulu</string>
     <string name="pref_title_display_plik">Nazwa Pliku</string>
-    <string name="pref_default_display_plik">dane.txt</string>
+    <string name="pref_default_display_plik">dane</string>
     <string name="pref_title_display_katalog">Katalog</string>
-    <string name="pref_default_display_katalog">/aklog</string>
+    <string name="pref_default_display_qth">KO11RD</string>
+    <string name="pref_title_display_qth">QTH</string>
+    <string name="pref_default_display_katalog">aklog</string>
     <string name="pref_title_screen_off">Wyłącz wygaszacz</string>
     <string name="pref_description_screen_off">Opcja pozwala wyłączyć wygaszacz systemowy na tej usłudze</string>
     <string name="pref_title_add_friends_to_messages">Add friends to messages</string>

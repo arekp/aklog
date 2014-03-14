@@ -69,7 +69,7 @@ public class MainActivity extends FragmentActivity {
 	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
 	 * will keep every loaded fragment in memory. If this becomes too memory
 	 * intensive, it may be best to switch to a
-	 * {@link android.support.v4.app.FragmentStatePagerAdapter}. 
+	 * {@link android.support.v4.app.FragmentStatePagerAdapter}. FragmentActivity
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
 	private SharedPreferences preferences;
@@ -95,11 +95,6 @@ public class MainActivity extends FragmentActivity {
 		
 		zapisane_ustawienia = PreferenceManager
 				.getDefaultSharedPreferences(this);
-		
-		//  final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-      //    this.mWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "My Tag");
-		
-	//	Log.e("screen_off_Main",zapisane_ustawienia.getBoolean("screen_off", false)); 
 
 		
 	}
@@ -286,7 +281,7 @@ public void BandPlan(){
 					Toast.LENGTH_SHORT).show();
 		}else {
 		
-		RaportBean rap = new RaportBean(band.getText().toString(), mode.getSelectedItem().toString(), currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
+		RaportBean rap = new RaportBean(0,band.getText().toString(), mode.getSelectedItem().toString(), currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
 	    RaportDbAdapter Raportdb = new RaportDbAdapter(view.getContext());
 	    Raportdb.open();
 	    Raportdb.insertRaport(rap);
@@ -398,5 +393,11 @@ public void BandPlan(){
 	 }
 	 return false;
 	}
+    @Override
+	public void onDestroy() {
+
+        super.onDestroy();
+    }
+
 
 }

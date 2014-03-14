@@ -3,5 +3,5 @@
     <item android:id="@+id/menuedytuj" android:title="@string/menuedytuj" 
         android:checkable="false"></item>
 <item android:id="@+id/menuusun" android:title="@string/menuusun"></item>
-
+<item android:id="@+id/menudetal" android:title="@string/menudetal"></item>
 </menu>

@@ -134,17 +134,25 @@ public class RaportDbAdapter {
 	        newRaportValues.put(KEY_NOTE, rap.getNote());
 	        return db.insert(DB_TODO_TABLE, null, newRaportValues);
 	    }
-	 /*
-	    public boolean updateTodo(RaportBean rap) {
+	
+	    public boolean updateRaport(RaportBean rap) {
+	    	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	        long id = rap.getId();
-	        String description = rap.getCallsign();
-	        
-	        boolean completed = task.isCompleted();
-	        return updateTodo(id, description, completed);
+	        String where = KEY_ID + "=" + id;
+	        Log.d("raportAdapter_updateTodoStatus",where);
+	        ContentValues updateTodoValues = new ContentValues();
+	        updateTodoValues.put(KEY_FREQ, rap.getFrequency());
+	        updateTodoValues.put(KEY_MODE, rap.getMode());
+	        updateTodoValues.put(KEY_DATA, dateFormat.format(rap.getData()));
+	        updateTodoValues.put(KEY_CALLSIGN, rap.getCallsign());
+	        updateTodoValues.put(KEY_RS, rap.getRs());
+	        updateTodoValues.put(KEY_RT, rap.getRt());
+	        updateTodoValues.put(KEY_NOTE, rap.getNote());
+	        return db.update(DB_TODO_TABLE, updateTodoValues, where, null) > 0;
 	    }
-	 */
+	 
 	    public boolean updateTodoStatus(long id,Boolean status) {
-	        String where = KEY_ID + "=" + (id+1);
+	        String where = KEY_ID + "=" + id;
      int statusTask = status ? 1 : 0;
 	        Log.d("raportAdapter_updateTodoStatus",where+" "+status.toString());
 	        ContentValues updateTodoValues = new ContentValues();

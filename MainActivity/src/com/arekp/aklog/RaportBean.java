@@ -81,11 +81,17 @@ public class RaportBean {
 	public Integer getRs() {
 		return rs;
 	}
+	public String getRstoString() {
+		return new Integer(rs).toString();
+	}
 	public void setRs(Integer rs) {
 		this.rs = rs;
 	}
 	public Integer getRt() {
 		return rt;
+	}
+	public String getRttoString() {
+		return new Integer(rt).toString();
 	}
 	public void setRt(Integer rt) {
 		this.rt = rt;
@@ -103,12 +109,12 @@ public class RaportBean {
 		this.rt = Integer.parseInt(rt);
 		this.note = note2;
 	}
-	public RaportBean(String frequency, String mode, String data,
+	public RaportBean(long id,String frequency, String mode, String data,
 			String callsign, String rs, String rt, String note2) {
 		//super();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
-		this.id = 0;
+		this.id = id;
 		this.frequency = Float.valueOf(frequency);
 		this.mode = mode;
 		try {
@@ -143,10 +149,21 @@ public class RaportBean {
 	}
 	// Do poprawy 
 	public String ExportCvs(){
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String linia="";
-		linia=getFrequency()+";"+getMode()+";"+getData()+";"+getCallsign()+";"+getRs()+";"+getRt()+";"+getNote();
+		linia=getFrequency()+";"+getMode()+";"+dateFormat.format(getData())+";"+getCallsign()+";"+getRs()+";"+getRt()+";"+getNote();
 		return linia;
 	}
+	
     
-
+public String detalHtml(){
+	String html="";
+	html="<b><font color=#ff0000> Frequency : </font></b> "+getFrequency()+" <br>"+
+		 "<b>Mode : </b> "+getMode()+"<br>"+
+		 "<b>Data : </b>"+getData()+"<br>"+
+		 "<b>Callsign : </b>"+getCallsign()+"<br>"+
+		 "<b>Raport : </b> "+getRs()+" - "+getRt()+"<br>"+
+		 "<b>Note : </b> "+getNote()+"<br>";
+	return html;
+}
 }
