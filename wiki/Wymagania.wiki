@@ -25,7 +25,7 @@ na początek do wersji 0.11:
  * ~~dodanie pola comment/notes~~
  * ~~do simon dx cluster dodanie 3,5 MHz w liście rozwijalnej~~
  * ~~w simon dx cluster usunięcie 5 MHz w liście rozwijalnej~~
- * ~~brak wygaszania ekranu (może być w settings on/off)
+ * ~~brak wygaszania ekranu (może być w settings on/off)~~
  * ~~dodanie edycji QSO~~
  * ~~dodanie usunięcia QSO~~
  * ~~bandplan KF http://sq5obu.com/viewpage.php?page_id=9~~
