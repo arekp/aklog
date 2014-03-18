@@ -8,8 +8,8 @@ Bedziemy tutaj spisywać co jest do zrobienia
 
 = Szczegóły =
 
-Wersja 2.0
-pozostało
+==Wersja 2.0==
+pozostało:
 
  * note też powinno się czyścić
  * QTH w konfiguracji z dużej litery jak callsign
@@ -19,8 +19,8 @@ pozostało
  * eksport do ADIFF (http://www.adif.org/) http://www.adif.org/304/adx304.xsd 
 
 
-W punktach:
-na początek do wersji 0.11:
+==W punktach:
+na początek do wersji 0.11:==
  * frequency - 4 miejsca po przecinku.
  * w simon dx cluster -po kliknięciu w link otwiera sie przeglądarka lub możliwość powrotu do aplikacji
  * eksport do ADIFF (http://www.adif.org/) [http://www.adif.org/304/adx304.xsd]
