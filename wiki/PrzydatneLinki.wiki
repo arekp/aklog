@@ -1,0 +1,8 @@
+#summary Strona z linkami do stron
+
+= Linki =
+
+W trakcie każdego zadania przegląda się masę stron i czasami trafię na ciekawy opis danego rozwiązania. 
+
+I tak po kolei :
+  * Strona opisująca action bar [http://www.androidhive.info/2013/11/android-working-with-action-bar/]
