@@ -5,4 +5,5 @@
 W trakcie każdego zadania przegląda się masę stron i czasami trafię na ciekawy opis danego rozwiązania. 
 
 I tak po kolei :
-  * Strona opisująca action bar [http://www.androidhive.info/2013/11/android-working-with-action-bar/]
+  * Strona opisująca action bar [http://www.androidhive.info/2013/11/android-working-with-action-bar/],
+  * Piekny przykład pisania tablicy [http://mrbool.com/how-to-deal-with-table-layout-in-android/28008]
