@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -36,11 +37,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Environment;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class RaportFragment extends Fragment {
 	private static TextView tekst;
@@ -52,7 +57,9 @@ public class RaportFragment extends Fragment {
 	private View v;
 	private List<RaportBean> przykladowe_dane2;
 	private RaportArrayAdapter RaportArrayAdapter1;
+	private Spinner spinerCzas;
 	SharedPreferences zapisane_ustawienia;
+	long DAY_IN_MS = 1000 * 60 * 60 * 24;
 
 	public RaportFragment() {
 	}
@@ -106,29 +113,93 @@ public class RaportFragment extends Fragment {
 		// Podpinamy menu pod liste
 		registerForContextMenu(rozbudowana_lista);
 
-		final Button loginButton = (Button) v.findViewById(R.id.buttonListaExport);
-	    loginButton.setOnClickListener(new OnClickListener() {
-	        @Override
-	        public void onClick(final View v) {
-	            exportcsv(v);
-	            exportAdiShort(v);
-	        }
-	    });
+		final ImageButton loginButton = (ImageButton) v
+				.findViewById(R.id.buttonListaExport1);
+		loginButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(final View v) {
+				exportcsv(v);
+				exportAdiShort(v);
+				Toast.makeText(
+						v.getContext(),
+						"Dane zostały wyeksportowane do skonfigurowanego katalogu",
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+
+		spinerCzas = (Spinner) v.findViewById(R.id.spinnerOkresLista);
+		spinerCzas.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				Object item = arg0.getItemAtPosition(arg2);
+		
+
+				if (item != null) {					
+					if (item.equals("Wszystko")) {
+						refreshList(null);
+					} else if (item.equals("Dzień")) {
+						
+						refreshList(new Date(System.currentTimeMillis()
+								- (1 * DAY_IN_MS)));
+						Log.d("RaportFragment", "wybrana opcja "+new Date(System.currentTimeMillis()
+								- (1 * DAY_IN_MS)).toString());
+						
+					} else if (item.equals("Tydzień")) {
+						refreshList(new Date(System.currentTimeMillis()
+								- (7 * DAY_IN_MS)));
+						Log.d("RaportFragment", "wybieramy " + new Date(System.currentTimeMillis()
+								- (7 * DAY_IN_MS)).toString());
+					} else if (item.equals("Miesiąc")) {
+						refreshList(new Date(System.currentTimeMillis()
+								- (30 * DAY_IN_MS)));
+					}
+					Toast.makeText(v.getContext(), item.toString(),
+							Toast.LENGTH_SHORT).show();
+				}
+				Toast.makeText(v.getContext(), "Nic nie wybrano",
+						Toast.LENGTH_SHORT).show();
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
 		return v;
 	}
 
-	public void refreshList() {
+	public void refreshList(Date data) {
 
-		Cursor mCursor = mCursor = Raportdb.getAllReports();
-		przykladowe_dane2.clear();
-		while (mCursor.moveToNext()) {
-			RaportBean rap = new RaportBean(mCursor);
-			przykladowe_dane2.add(rap);
+		if (data == null) {
+			Log.d("RaportFragment", "refresh list null");
+			Cursor mCursor = mCursor = Raportdb.getAllReports();
+			przykladowe_dane2.clear();
+			while (mCursor.moveToNext()) {
+				RaportBean rap = new RaportBean(mCursor);
+				przykladowe_dane2.add(rap);
+			}
+			RaportArrayAdapter1.setData(przykladowe_dane2);
+			RaportArrayAdapter1.notifyDataSetChanged();
+
+			rozbudowana_lista.refreshDrawableState();
+		} else {
+			Log.d("RaportFragment", "refresh list not null " + data.toLocaleString());
+			Cursor mCursor = mCursor = Raportdb.getReportsSortDate(data);
+			przykladowe_dane2.clear();
+			while (mCursor.moveToNext()) {
+				RaportBean rap = new RaportBean(mCursor);
+				przykladowe_dane2.add(rap);
+			}
+			RaportArrayAdapter1.setData(przykladowe_dane2);
+			RaportArrayAdapter1.notifyDataSetChanged();
+
+			rozbudowana_lista.refreshDrawableState();
 		}
-		RaportArrayAdapter1.setData(przykladowe_dane2);
-		RaportArrayAdapter1.notifyDataSetChanged();
 
-		rozbudowana_lista.refreshDrawableState();
 	}
 
 	@Override
@@ -181,7 +252,7 @@ public class RaportFragment extends Fragment {
 							// Write your code here to execute after dialog
 							Raportdb.deleteTodo(przykladowe_dane2.get(
 									info.position).getId());
-							refreshList();
+							refreshList(null);
 						}
 					});
 			// Setting Negative "NO" Btn
@@ -272,19 +343,23 @@ public class RaportFragment extends Fragment {
 		Log.d("export", baseDir);
 		String cvs = "";
 		if (isExternalStorageWritable()) {
-			File plik = new File(baseDir + "/"+zapisane_ustawienia.getString("katalog", null));
-			if(!plik.exists()){
-			    if(plik.mkdirs())
-			    Toast.makeText(v.getContext(), "Nowy katalog zostal zalozony", Toast.LENGTH_SHORT).show();
+			File plik = new File(baseDir + "/"
+					+ zapisane_ustawienia.getString("katalog", null));
+			if (!plik.exists()) {
+				if (plik.mkdirs())
+					Toast.makeText(v.getContext(),
+							"Nowy katalog zostal zalozony", Toast.LENGTH_SHORT)
+							.show();
 			}
-			
-         plik = new File(baseDir + "/"+zapisane_ustawienia.getString("katalog", null)+"/"
-					+ zapisane_ustawienia.getString("plik", "dane")+".csv");
-         if (plik.exists()){
-        	 if(plik.delete()){
-        		 
-        	 }
-         }
+
+			plik = new File(baseDir + "/"
+					+ zapisane_ustawienia.getString("katalog", null) + "/"
+					+ zapisane_ustawienia.getString("plik", "dane") + ".csv");
+			if (plik.exists()) {
+				if (plik.delete()) {
+
+				}
+			}
 			try {
 				final FileOutputStream fos1 = new FileOutputStream(plik, true);
 				for (Iterator<RaportBean> i = przykladowe_dane2.iterator(); i
@@ -314,24 +389,27 @@ public class RaportFragment extends Fragment {
 		String baseDir = Environment.getExternalStorageDirectory()
 				.getAbsolutePath();
 		Log.d("export", baseDir);
-		String adi = "ADIF 2.0 "+
-"Wygenerowany przez program AkLog v.1.0.1 "+
-"<EOH> ";
-		
+		String adi = "ADIF 2.0 " + "Wygenerowany przez program AkLog v.1.0.1 "
+				+ "<EOH> ";
+
 		if (isExternalStorageWritable()) {
-			File plik = new File(baseDir + "/"+zapisane_ustawienia.getString("katalog", null));
-			if(!plik.exists()){
-			    if(plik.mkdirs())
-			    Toast.makeText(v.getContext(), "Nowy katalog zostal zalozony", Toast.LENGTH_SHORT).show();
+			File plik = new File(baseDir + "/"
+					+ zapisane_ustawienia.getString("katalog", null));
+			if (!plik.exists()) {
+				if (plik.mkdirs())
+					Toast.makeText(v.getContext(),
+							"Nowy katalog zostal zalozony", Toast.LENGTH_SHORT)
+							.show();
 			}
-			
-         plik = new File(baseDir + "/"+zapisane_ustawienia.getString("katalog", null)+"/"
-					+ zapisane_ustawienia.getString("plik", "dane")+".adi");
-         if (plik.exists()){
-        	 if(plik.delete()){
-        		 
-        	 }
-         }
+
+			plik = new File(baseDir + "/"
+					+ zapisane_ustawienia.getString("katalog", null) + "/"
+					+ zapisane_ustawienia.getString("plik", "dane") + ".adi");
+			if (plik.exists()) {
+				if (plik.delete()) {
+
+				}
+			}
 			try {
 				final FileOutputStream fos1 = new FileOutputStream(plik, true);
 				fos1.write(adi.getBytes());
@@ -340,20 +418,20 @@ public class RaportFragment extends Fragment {
 				for (Iterator<RaportBean> i = przykladowe_dane2.iterator(); i
 						.hasNext();) {
 					rap = i.next();
-					adi = "<QSO_DATE:8>"+ dat.format(rap.getData()) +
-" <TIME_ON:6>"+czas.format(rap.getData())+ 
-" <BAND:2> 2M" + 
-" <FREQ:7>"+rap.getFrequency().toString()+ 
-" <MODE:2>"+rap.getMode()+ 
-" <CALL:6>"+rap.getCallsign()+
-" <RST_RCVD:2>" + rap.getRstoString()+
-" <SRX:9>???L01KO11RD"+ 
-" <GRIDSQUARE:6> "+ zapisane_ustawienia.getString("qth", "logo")+
-" <RST_SENT:2>"+ rap.getRttoString()+ 
-" <STX:9>001KO11TH"+ 
-" <DISTANCE:2>22"+
-" <OPERATOR:6>SQ5NWD"+ 
-"<CONTEST_ID:5> 2014 <EOR>";
+					adi = "<QSO_DATE:8>" + dat.format(rap.getData())
+							+ " <TIME_ON:6>" + czas.format(rap.getData())
+							+ " <BAND:2>2M" + " " 
+							+ "<FREQ:"+new Integer(rap.getFrequency().toString().length()).toString() +">" + rap.getFrequency().toString()
+							+ " <MODE:"+new Integer(rap.getMode().length()).toString()+">" + rap.getMode() 
+							+ " <CALL:"+new Integer(rap.getCallsign().length()).toString()+">" + rap.getCallsign()
+							+ " <RST_RCVD:"+new Integer(rap.getRstoString().length()).toString()+">" + rap.getRstoString()
+							+ " <SRX:9>???L01KO11RD" 
+							+ " <GRIDSQUARE:"+new Integer(zapisane_ustawienia.getString("qth", "logo").length()).toString()+"> "+ zapisane_ustawienia.getString("qth", "logo")
+							+ " <RST_SENT:"+new Integer(rap.getRttoString().length()).toString()+">" + rap.getRttoString()
+							+ " <STX:9>001KO11TH" 
+							+ " <DISTANCE:2>22"
+							+ " <OPERATOR:6>SQ5NWD"
+							+ "<CONTEST_ID:5> 2014 <EOR>";
 					fos1.write(adi.getBytes());
 					fos1.write(13);
 					fos1.write(10);

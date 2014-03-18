@@ -174,7 +174,13 @@ public class RaportDbAdapter {
 	 
 	    public Cursor getAllReports() {
 	        String[] columns = {KEY_ID,KEY_FREQ, KEY_MODE,KEY_DATA,KEY_CALLSIGN,KEY_RS,KEY_RT,KEY_NOTE};
-	        return db.query(DB_TODO_TABLE, columns, null, null, null, null, null);
+	        return db.query(DB_TODO_TABLE, columns, null, null, null, null, KEY_DATA+" DESC");
+	    }
+	    public Cursor getReportsSortDate(Date data) {
+	     	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        String[] columns = {KEY_ID,KEY_FREQ, KEY_MODE,KEY_DATA,KEY_CALLSIGN,KEY_RS,KEY_RT,KEY_NOTE};
+	        String where = KEY_DATA + " > '" + dateFormat.format(data)+"'";
+	        return db.query(DB_TODO_TABLE, columns, where, null, null, null, KEY_DATA+" DESC");
 	    }
 	 
 	public RaportBean getReport(long id) {

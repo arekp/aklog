@@ -45,6 +45,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -134,7 +135,7 @@ public class MainActivity extends FragmentActivity {
 			startActivity(intent);
 			break;
 		case R.id.action_settings2:
-
+			Info();
 			ktoryElement = "drugi";
 			break;
 		case R.id.action_KodQ:
@@ -169,7 +170,19 @@ public void KodQ(){
 	text.setText(Html.fromHtml(getString(R.string.kodQHtml)));
 	dialog.show();
 }
+public void Info(){
+	
+	final Dialog dialog = new Dialog(mViewPager.getContext());
+	dialog.setContentView(R.layout.dialog_info);
+	dialog.setTitle(R.string.kodInfoDetal);
 
+	// set the custom dialog components - text, image and button
+	TextView text = (TextView) dialog.findViewById(R.id.textDialogInfo);
+	ImageView img = (ImageView)dialog.findViewById(R.id.imageDialogInfo);
+	img.setVisibility(mViewPager.VISIBLE);
+	text.setText(Html.fromHtml(getString(R.string.kodInfo)));
+	dialog.show();
+}
 public void BandPlan(){
 	final Dialog dialog = new Dialog(mViewPager.getContext());
 	dialog.setContentView(R.layout.dialog_info);

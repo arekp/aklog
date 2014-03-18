@@ -66,7 +66,7 @@ public class RaportBean {
 		return data;
 	}
 	public String getTime() {
-		SimpleDateFormat dateFormat = new SimpleDateFormat(" HH:mm:ss");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm:ss");
 		return dateFormat.format(this.data);
 	}
 	public void setData(Date data) {

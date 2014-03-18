@@ -146,5 +146,11 @@
         ]]>
         </string>
     <string name="raportDetal">Szczególy</string>
+        <string name="kodInfoDetal">Info</string>
+    <string name="kodInfo"><![CDATA[ 
+ <h3>Aplikacja AKLog</h3><br>
+ <h1> arekp @2014 - ver 1.0 </h1>
+        ]]>
+ </string>
     
 </resources>

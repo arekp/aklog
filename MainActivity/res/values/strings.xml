@@ -25,6 +25,13 @@
         <item>DIGI</item>
         <item>CW</item>
     </string-array>
+    <string name="ListaDatePrompt">Okresy</string>
+        <string-array name="ListaDate">
+        <item>Wszystko</item>
+        <item>Dzień</item>
+        <item>Tydzień</item>
+        <item>Miesiąc</item>
+    </string-array>
     <string-array name="ListaSpinerWeb">
         <item>All</item>
         <item>HF</item>
