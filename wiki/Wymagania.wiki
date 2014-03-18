@@ -39,8 +39,8 @@ na początek do wersji 0.11:
  * ~~brak wygaszania ekranu (może być w settings on/off)~~
  * ~~dodanie edycji QSO~~
  * ~~dodanie usunięcia QSO~~
- * ~~bandplan KF http://sq5obu.com/viewpage.php?page_id=9~~
- * ~~kod Q http://sq5obu.com/viewpage.php?page_id=12~~
+ * ~~bandplan KF http://sq5obu.com/viewpage.php?page_id=9 ~~
+ * ~~kod Q http://sq5obu.com/viewpage.php?page_id=12 ~~
 = Inne przydatne linki =
 
  * [http://jlog.org/index.htm]
