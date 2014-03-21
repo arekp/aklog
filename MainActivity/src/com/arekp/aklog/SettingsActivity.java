@@ -1,7 +1,7 @@
 package com.arekp.aklog;
 
 //import android.annotation.TargetApi;
-import android.annotation.TargetApi;
+//import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.media.Ringtone;
@@ -81,6 +81,8 @@ public class SettingsActivity extends PreferenceActivity {
 		bindPreferenceSummaryToValue(findPreference("katalog"));
 		bindPreferenceSummaryToValue(findPreference("plik"));
 		bindPreferenceSummaryToValue(findPreference("qth"));
+		bindPreferenceSummaryToValue(findPreference("callsign"));
+		
 /*		bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
 		bindPreferenceSummaryToValue(findPreference("sync_frequency"));*/
 	}
@@ -112,14 +114,14 @@ public class SettingsActivity extends PreferenceActivity {
 				|| !isXLargeTablet(context);
 	}
 
-	/** {@inheritDoc} */
+/*	*//** {@inheritDoc} *//*
 	@Override
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void onBuildHeaders(List<Header> target) {
 		if (!isSimplePreferences(this)) {
 			loadHeadersFromResource(R.xml.pref_headers, target);
 		}
-	}
+	}*/
 
 	/**
 	 * A preference value change listener that updates the preference's summary
@@ -200,7 +202,7 @@ public class SettingsActivity extends PreferenceActivity {
 	 * This fragment shows general preferences only. It is used when the
 	 * activity is showing a two-pane settings UI.
 	 */
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+/*	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public static class GeneralPreferenceFragment extends PreferenceFragment {
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
@@ -213,8 +215,10 @@ public class SettingsActivity extends PreferenceActivity {
 			// guidelines.
 			bindPreferenceSummaryToValue(findPreference("katalog"));
 			bindPreferenceSummaryToValue(findPreference("plik"));
+			bindPreferenceSummaryToValue(findPreference("qth"));
+			bindPreferenceSummaryToValue(findPreference("callsign"));
 		}
-	}
+	}*/
 
 	/**
 	 * This fragment shows notification preferences only. It is used when the

@@ -302,6 +302,7 @@ public void BandPlan(){
 		callSign.setText("");
 		rstR.setText("");
 		rstS.setText("");
+		note.setText("");
 		}
 	}
 	
@@ -386,6 +387,7 @@ public void BandPlan(){
 		rstR.setText("");
 		rstS.setText("");
 		band.setText("");
+		note.setText("");
 
 	}
 

@@ -420,18 +420,15 @@ public class RaportFragment extends Fragment {
 					rap = i.next();
 					adi = "<QSO_DATE:8>" + dat.format(rap.getData())
 							+ " <TIME_ON:6>" + czas.format(rap.getData())
-							+ " <BAND:2>2M" + " " 
-							+ "<FREQ:"+new Integer(rap.getFrequency().toString().length()).toString() +">" + rap.getFrequency().toString()
+							+ " <BAND:"+new Integer(getBand(rap.getFrequency()).length()).toString()+">"+getBand(rap.getFrequency()) + " " 
+							+ " <FREQ:"+new Integer(rap.getFrequency().toString().length()).toString() +">" + rap.getFrequency().toString()
 							+ " <MODE:"+new Integer(rap.getMode().length()).toString()+">" + rap.getMode() 
 							+ " <CALL:"+new Integer(rap.getCallsign().length()).toString()+">" + rap.getCallsign()
 							+ " <RST_RCVD:"+new Integer(rap.getRstoString().length()).toString()+">" + rap.getRstoString()
-							+ " <SRX:9>???L01KO11RD" 
 							+ " <GRIDSQUARE:"+new Integer(zapisane_ustawienia.getString("qth", "logo").length()).toString()+"> "+ zapisane_ustawienia.getString("qth", "logo")
 							+ " <RST_SENT:"+new Integer(rap.getRttoString().length()).toString()+">" + rap.getRttoString()
-							+ " <STX:9>001KO11TH" 
-							+ " <DISTANCE:2>22"
-							+ " <OPERATOR:6>SQ5NWD"
-							+ "<CONTEST_ID:5> 2014 <EOR>";
+							+ " <OPERATOR:"+new Integer(zapisane_ustawienia.getString("callsign", "st").length()).toString()+"> "+ zapisane_ustawienia.getString("callsign", "logo")
+							+ " <COMMENT:"+ new Integer(rap.getNote().length()).toString()+">"+rap.getNote()+" <EOR>";
 					fos1.write(adi.getBytes());
 					fos1.write(13);
 					fos1.write(10);
@@ -447,5 +444,37 @@ public class RaportFragment extends Fragment {
 
 			}
 		}
+	}
+	public String getBand(float freq){
+		String fr="";
+		if (freq>1.8 & freq <2){
+			fr="160m";	
+		}else if (freq>3.5 & freq <42){
+			fr="80m";	
+		}else if (freq>5.2 & freq <5.5){
+			fr="60m";	
+		}else if (freq>7 & freq <7.3){
+			fr="40m";	
+		}else if (freq>10 & freq <10.15){
+			fr="30m";	
+		}else if (freq>14 & freq <14.35){
+			fr="20m";	
+		}else if (freq>18 & freq <18.168){
+			fr="17m";	
+		}else if (freq>21 & freq <21.45){
+			fr="15m";	
+		}else if (freq>24 & freq <24.99){
+			fr="12m";	
+		}else if (freq>28 & freq <29.7){
+			fr="10m";	
+		}else if (freq>50 & freq <54){
+			fr="6m";	
+		}else if (freq>144 & freq <148){
+			fr="2m";	
+		}else if (freq>420 & freq <450){
+			fr="70cm";	
+		}else{fr="bład danych";}
+		
+		return fr;
 	}
 }

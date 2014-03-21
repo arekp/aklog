@@ -19,11 +19,10 @@
     <string name="Przycisk_popraw">Popraw</string>
     <string name="Przycisk_wroc">Wróc</string>
     <string-array name="ListaMode">
-        <item>LSB</item>
-        <item>USB</item>
+        <item>SSB</item>
         <item>FM</item>
         <item>DIGI</item>
-        <item>CW</item>
+        <item>RTTY</item>
     </string-array>
     <string name="ListaDatePrompt">Okresy</string>
         <string-array name="ListaDate">

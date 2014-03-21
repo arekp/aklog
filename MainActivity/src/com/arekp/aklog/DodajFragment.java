@@ -78,5 +78,9 @@ public class DodajFragment extends Fragment {
 		mHandler.removeCallbacks(mUpdateTimeTask);
 	}
 
+    @Override
+	public void onDestroy() {
 
+        super.onDestroy();
+    }
 }
