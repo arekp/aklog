@@ -148,7 +148,7 @@ public class SettingsActivity extends PreferenceActivity {
 				// using RingtoneManager.
 				if (TextUtils.isEmpty(stringValue)) {
 					// Empty values correspond to 'silent' (no ringtone).
-					preference.setSummary(R.string.pref_ringtone_silent);
+					//preference.setSummary(R.string.pref_ringtone_silent);
 
 				} else {
 					Ringtone ringtone = RingtoneManager.getRingtone(

@@ -1,5 +1,6 @@
 package com.arekp.aklog;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import android.content.Context;
@@ -44,7 +45,7 @@ public class RaportArrayAdapter extends ArrayAdapter<RaportBean> {
 	    @Override public View getView(int position, View convertView, ViewGroup parent) {
 	        View view = convertView;
 	        ViewHolder viewHolder;
-	        
+
 	        if (view == null) {
 	            view = mInflater.inflate(R.layout.lista_wiersz, parent, false);
 	            viewHolder = new ViewHolder();
@@ -60,7 +61,7 @@ public class RaportArrayAdapter extends ArrayAdapter<RaportBean> {
 	        }
 	 
 	        RaportBean item = getItem(position);
-	        viewHolder.lvFreq.setText(item.getFrequency().toString());
+	        viewHolder.lvFreq.setText(new DecimalFormat("#.####").format(item.getFrequency()).toString());
 	        viewHolder.lvMode.setText(item.getMode());
 	        viewHolder.lvDate.setText(item.getTime());
 	        viewHolder.lvCall.setText(item.getCallsign());

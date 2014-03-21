@@ -13,48 +13,6 @@
        android:layout_height="wrap_content"
        android:orientation="vertical" >
 
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:layout_weight="2.14" >
-
-           <Button
-               android:id="@+id/button1"
-               style="?android:attr/buttonStyleSmall"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:onClick="zapiszDbKarta"
-               android:text="@string/Przycisk_dodaj"
-               android:visibility="gone" />
-
-           <Button
-               android:id="@+id/button2"
-               style="?android:attr/buttonStyleSmall"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:onClick="kasujPola"
-               android:text="@string/Przycisk_kasuj"
-               android:visibility="gone" />
-
-           <ImageButton
-               android:id="@+id/buttonListaExport1"
-               android:layout_width="45dp"
-               android:layout_height="45dp"
-               android:onClick="zapiszDbKarta"
-               android:padding="2dp"
-               android:scaleType="fitCenter"
-               android:src="@drawable/add" />
-
-           <ImageButton
-               android:id="@+id/imageButton2"
-               android:layout_width="45dp"
-               android:layout_height="45dp"
-               android:onClick="kasujPola"
-               android:padding="2dp"
-               android:scaleType="fitCenter"
-               android:src="@drawable/sys_reboot" />
-       </LinearLayout>
-
        <ScrollView
            android:id="@+id/scrollView1"
            android:layout_width="wrap_content"
@@ -64,6 +22,48 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:orientation="vertical" >
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_weight="2.14" >
+
+                   <Button
+                       android:id="@+id/button1"
+                       style="?android:attr/buttonStyleSmall"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:onClick="zapiszDbKarta"
+                       android:text="@string/Przycisk_dodaj"
+                       android:visibility="gone" />
+
+                   <Button
+                       android:id="@+id/button2"
+                       style="?android:attr/buttonStyleSmall"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:onClick="kasujPola"
+                       android:text="@string/Przycisk_kasuj"
+                       android:visibility="gone" />
+
+                   <ImageButton
+                       android:id="@+id/buttonListaExport1"
+                       android:layout_width="45dp"
+                       android:layout_height="45dp"
+                       android:onClick="zapiszDbKarta"
+                       android:padding="2dp"
+                       android:scaleType="fitCenter"
+                       android:src="@drawable/add" />
+
+                   <ImageButton
+                       android:id="@+id/imageButton2"
+                       android:layout_width="45dp"
+                       android:layout_height="45dp"
+                       android:onClick="kasujPola"
+                       android:padding="2dp"
+                       android:scaleType="fitCenter"
+                       android:src="@drawable/sys_reboot" />
+               </LinearLayout>
 
                <LinearLayout
                    android:layout_width="wrap_content"
@@ -89,8 +89,10 @@
                            android:layout_width="226dp"
                            android:layout_height="wrap_content"
                            android:layout_weight="1"
+                           android:maxLength="5"
                            android:ems="10"
                            android:inputType="none|numberDecimal" />
+
                    </LinearLayout>
 
                    <LinearLayout
@@ -168,26 +170,57 @@
 
                        <LinearLayout
                            android:layout_width="match_parent"
-                           android:layout_height="wrap_content" >
+                           android:layout_height="wrap_content"
+                           android:layout_weight="2" >
 
-                           <EditText
-                               android:id="@+id/editRstS"
-                               android:layout_width="114dp"
-                               android:layout_height="wrap_content"
+                           <LinearLayout
+                               android:layout_width="wrap_content"
+                               android:layout_height="match_parent"
                                android:layout_weight="1"
-                               android:ems="10"
-                               android:inputType="number"
-                               android:maxLength="3" />
+                               android:orientation="vertical" >
 
-                           <EditText
-                               android:id="@+id/editRstR"
-                               android:layout_width="fill_parent"
-                               android:layout_height="wrap_content"
+                               <TextView
+                                   android:id="@+id/textView1"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="RX"
+                                   android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                               <EditText
+                                   android:id="@+id/editRstS"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:ems="10"
+                                   android:inputType="number"
+                                   android:maxLength="3" >
+
+                                   <requestFocus />
+                               </EditText>
+                           </LinearLayout>
+
+                           <LinearLayout
+                               android:layout_width="wrap_content"
+                               android:layout_height="match_parent"
                                android:layout_weight="1"
-                               android:ems="10"
-                               android:inputType="number"
-                               android:maxLength="3" />
+                               android:orientation="vertical" >
+
+                               <TextView
+                                   android:id="@+id/textView2"
+                                   android:layout_width="wrap_content"
+                                   android:layout_height="wrap_content"
+                                   android:text="TX"
+                                   android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                               <EditText
+                                   android:id="@+id/editRstR"
+                                   android:layout_width="match_parent"
+                                   android:layout_height="wrap_content"
+                                   android:ems="10"
+                                   android:inputType="number"
+                                   android:maxLength="3" />
+                           </LinearLayout>
                        </LinearLayout>
+
                    </LinearLayout>
 
                    <LinearLayout
@@ -211,7 +244,7 @@
                </LinearLayout>
 
                <TextView
-                   android:id="@+id/section_label"
+                   android:id="@+id/edit_id"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content" />
 

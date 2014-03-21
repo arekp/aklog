@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/menuedytuj" android:title="@string/menuedytuj" 
-        android:checkable="false"></item>
+
 <item android:id="@+id/menuusun" android:title="@string/menuusun"></item>
 <item android:id="@+id/menudetal" android:title="@string/menudetal"></item>
 </menu>

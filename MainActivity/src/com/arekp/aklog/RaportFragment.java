@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.arekp.aklog.database.RaportDbAdapter;
 
@@ -37,6 +38,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -60,6 +62,7 @@ public class RaportFragment extends Fragment {
 	private Spinner spinerCzas;
 	SharedPreferences zapisane_ustawienia;
 	long DAY_IN_MS = 1000 * 60 * 60 * 24;
+	private long id_tmp; 
 
 	public RaportFragment() {
 	}
@@ -98,15 +101,8 @@ public class RaportFragment extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
 					long arg3) {
-				if (Raportdb.updateTodoStatus(pos, true)) {
-					Log.d("RapotFragment", "true");
-					Toast.makeText(v.getContext(), new Integer(pos).toString(),
-							Toast.LENGTH_SHORT).show();
-				} else {
-					Toast.makeText(v.getContext(),
-							new Integer(pos).toString() + " NIe udalo sie :( ",
-							Toast.LENGTH_SHORT).show();
-				}
+				edit(przykladowe_dane2.get(pos));
+			
 
 			}
 		});
@@ -208,16 +204,16 @@ public class RaportFragment extends Fragment {
 				.getMenuInfo();
 
 		switch (item.getItemId()) {
-		case R.id.menuedytuj:
+/*		case R.id.menuedytuj:
 			Intent intent = new Intent(v.getContext(), EditListActivity.class);
 			intent.putExtra("id", przykladowe_dane2.get(info.position).getId());
 			startActivity(intent);
-			/*
+			
 			 * Toast.makeText(v.getContext(), "Opcja item01 na elemencie: " +
 			 * przykladowe_dane2.get(info.position).getCallsign() ,
 			 * Toast.LENGTH_LONG).show();
-			 */
-			break;
+			 
+			break;*/
 		case R.id.menudetal:
 			detal(przykladowe_dane2.get(info.position));
 			break;
@@ -242,10 +238,6 @@ public class RaportFragment extends Fragment {
 							+ przykladowe_dane2.get(info.position)
 									.getFrequency() + "?");
 
-			// Setting Icon to Dialog
-			// alertDialog2.setIcon(R.drawable.delete);
-
-			// Setting Positive "Yes" Btn
 			alertDialog2.setPositiveButton("YES",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
@@ -305,6 +297,80 @@ public class RaportFragment extends Fragment {
 		dialog.show();
 	}
 
+	public void edit(RaportBean rap) {
+
+		final Dialog dialog = new Dialog(v.getContext());
+		dialog.setContentView(R.layout.dialog_edit);
+		dialog.setTitle("Edit");
+
+		final EditText band = (EditText) dialog.findViewById(R.id.editBand);
+		final EditText callSign = (EditText) dialog.findViewById(R.id.editCallsign);
+		final EditText rstR = (EditText) dialog.findViewById(R.id.editRstR);
+		final EditText rstS = (EditText) dialog.findViewById(R.id.editRstS);
+		final EditText note = (EditText) dialog.findViewById(R.id.editNote);
+		final Spinner mode = (Spinner) dialog.findViewById(R.id.mode1Spin);
+		final TextView textCzasDodaj = (TextView) dialog.findViewById(R.id.textCzasDodaj);
+		final TextView id = (TextView) dialog.findViewById(R.id.edit_id);
+		final ImageButton ok = (ImageButton) dialog.findViewById(R.id.buttonListaExport1);
+		
+		band.setText(rap.getFrequency().toString());
+		callSign.setText(rap.getCallsign());
+		rstR.setText(new Integer(rap.getRt()).toString());
+		rstS.setText(new Integer(rap.getRs()).toString());
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		id_tmp=rap.getId();
+		textCzasDodaj.setText(sdf.format(rap.getData()));
+		mode.setSelection(getIndex(mode, rap.getMode()));
+		note.setText(rap.getNote());
+		ok.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				if (band.getText().toString().equals("")) {
+					Log.e("Dodawanie1", "band" + band.getText().toString());
+					Toast.makeText(v.getContext(), "Frequency nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				} else if (callSign.getText().toString().isEmpty()) {
+					Log.e("Dodawanie2", "call" + callSign.getText().toString());
+					Toast.makeText(v.getContext(), "Callsign nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				} else if (rstR.getText().toString().isEmpty()) {
+					Log.e("Dodawanie2", "call" + callSign.getText().toString());
+					Toast.makeText(v.getContext(), "rstt nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				} else if (rstS.getText().toString().isEmpty()) {
+					Log.e("Dodawanie2", "call" + callSign.getText().toString());
+					Toast.makeText(v.getContext(), "rstS nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				}else {
+				
+				RaportBean rap = new RaportBean(id_tmp,band.getText().toString(), mode.getSelectedItem().toString(), textCzasDodaj.getText().toString(), callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
+			    RaportDbAdapter Raportdb = new RaportDbAdapter(v.getContext());
+			    Raportdb.open();
+			    Raportdb.updateRaport(rap);
+			    Raportdb.close();
+			    refreshList(null);
+			    dialog.cancel();
+			}}
+		});
+
+		
+		dialog.show();
+	}
+	
+	private int getIndex(Spinner spinner, String myString)
+	 {
+	  int index = 0;
+
+	  for (int i=0;i<spinner.getCount();i++){
+	   if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+	    index = i;
+	    i=spinner.getCount();//will stop the loop, kind of break, by making condition false
+	   }
+	  }
+	  return index;
+	 } 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
@@ -477,4 +543,5 @@ public class RaportFragment extends Fragment {
 		
 		return fr;
 	}
+	
 }
