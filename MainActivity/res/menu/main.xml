@@ -22,4 +22,9 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="BANDPLAN KF"/>
+          <item
+        android:id="@+id/actionLiterowanie"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Literowanie"/>
 </menu>

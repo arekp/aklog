@@ -3,7 +3,9 @@ package com.arekp.aklog;
 
 import java.util.HashMap;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -105,8 +107,17 @@ public class DxClasterFragment extends Fragment {
 	  private class MyWebViewClient extends WebViewClient {  
 	         @Override
 	            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-	                view.loadUrl(url);
-	                return true;
+	             if (Uri.parse(url).getHost().equals("dxcluster.sdr-radio.com")) {
+	                 // This is my web site, so do not override; let my WebView load the page
+	                 return false;
+	             }
+	             // Otherwise, the link is not for a page on my site, so launch another Activity that handles URLs
+	             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+	             startActivity(intent);
+	             return true;
+	             
+	             //   view.loadUrl(url);
+	              //  return true;
 	            }
 	 
 	         @Override

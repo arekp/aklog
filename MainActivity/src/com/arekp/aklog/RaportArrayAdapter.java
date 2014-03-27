@@ -61,7 +61,8 @@ public class RaportArrayAdapter extends ArrayAdapter<RaportBean> {
 	        }
 	 
 	        RaportBean item = getItem(position);
-	        viewHolder.lvFreq.setText(new DecimalFormat("#.####").format(item.getFrequency()).toString());
+	        viewHolder.lvFreq.setText(String.format("%.4f", item.getFrequency()));
+	        		//new DecimalFormat("#.####").format(item.getFrequency()).toString());
 	        viewHolder.lvMode.setText(item.getMode());
 	        viewHolder.lvDate.setText(item.getTime());
 	        viewHolder.lvCall.setText(item.getCallsign());

@@ -1,5 +1,5 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-
+<PreferenceCategory android:title="Wyświetlanie">
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="utm_checkbox"
@@ -10,9 +10,10 @@
       android:summary="@string/pref_description_screen_off" 
       android:title="@string/pref_title_screen_off" 
       android:defaultValue="true"/>
-  
+   </PreferenceCategory>
     <!-- NOTE: EditTextPreference accepts EditText attributes. -->
     <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+    <PreferenceCategory android:title="Dane aplikacyjne">
     <EditTextPreference
         android:capitalize="words"
         android:defaultValue="@string/pref_default_display_katalog"
@@ -50,7 +51,7 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/pref_title_display_callsign" />
-        
+       </PreferenceCategory>    
     
     <!-- callsign
          NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to

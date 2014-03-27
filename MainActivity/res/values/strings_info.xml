@@ -152,5 +152,33 @@
  <h1> arekp @2014 - ver 1.0 </h1>
         ]]>
  </string>
-    
+      <string name="literowanieTytul">Literowanie</string>
+    <string name="literowanieHtml"><![CDATA[ 
+       <b>    A    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Alpha    &nbsp;&nbsp;&nbsp;&nbsp;    Adam    <br>
+<b>    B    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Bravo    &nbsp;&nbsp;&nbsp;&nbsp;    Barbara    <br>
+<b>    C    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Charlie    &nbsp;&nbsp;&nbsp;&nbsp;    Celina    <br>
+<b>    D    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Delta    &nbsp;&nbsp;&nbsp;&nbsp;    Dorota    <br>
+<b>    E    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Echo    &nbsp;&nbsp;&nbsp;&nbsp;    Ewa    <br>
+<b>    F    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Foxtrot    &nbsp;&nbsp;&nbsp;&nbsp;    Franciszek    <br>
+<b>    G    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Golf    &nbsp;&nbsp;&nbsp;&nbsp;    Genowefa    <br>
+<b>    H    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Hotel    &nbsp;&nbsp;&nbsp;&nbsp;    Henryk    <br>
+<b>    I    </b> &nbsp;&nbsp;&nbsp;&nbsp;    India    &nbsp;&nbsp;&nbsp;&nbsp;    Irena    <br>
+<b>    J    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Juliet    &nbsp;&nbsp;&nbsp;&nbsp;    Jadwiga    <br>
+<b>    K    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Kilo    &nbsp;&nbsp;&nbsp;&nbsp;    Karol    <br>
+<b>    L    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Lima    &nbsp;&nbsp;&nbsp;&nbsp;    Leon    <br>
+<b>    M    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Mike    &nbsp;&nbsp;&nbsp;&nbsp;    Maria    <br>
+<b>    N    </b> &nbsp;&nbsp;&nbsp;&nbsp;    November    &nbsp;&nbsp;&nbsp;&nbsp;    Natalia    <br>
+<b>    O    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Oscar    &nbsp;&nbsp;&nbsp;&nbsp;    Olga    <br>
+<b>    P    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Papa    &nbsp;&nbsp;&nbsp;&nbsp;    Paweł    <br>
+<b>    Q    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Quebec    &nbsp;&nbsp;&nbsp;&nbsp;    Quebec    <br>
+<b>    R    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Radio    &nbsp;&nbsp;&nbsp;&nbsp;    Roman    <br>
+<b>    S    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Sierra    &nbsp;&nbsp;&nbsp;&nbsp;    Stanisław    <br>
+<b>    T    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Tango    &nbsp;&nbsp;&nbsp;&nbsp;    Tadeusz    <br>
+<b>    U    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Uniform    &nbsp;&nbsp;&nbsp;&nbsp;    Urszula    <br>
+<b>    W    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Whisky    &nbsp;&nbsp;&nbsp;&nbsp;    Wacław    <br>
+<b>    X    </b> &nbsp;&nbsp;&nbsp;&nbsp;    X-Ray    &nbsp;&nbsp;&nbsp;&nbsp;    Xsawery    <br>
+<b>    Y    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Yankee    &nbsp;&nbsp;&nbsp;&nbsp;    Ypsylon    <br>
+<b>    Z    </b> &nbsp;&nbsp;&nbsp;&nbsp;    Zulu    &nbsp;&nbsp;&nbsp;&nbsp;    Zygmunt    <br>
+                ]]>
+        </string>
 </resources>

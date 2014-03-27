@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.os.StrictMode;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.provider.OpenableColumns;
@@ -61,6 +62,7 @@ public class MainActivity extends FragmentActivity {
 	private EditText note;
 	private static TextView tekst;
 	protected PowerManager.WakeLock mWakeLock;
+	private    RaportDbAdapter Raportdb;
 	
 	SharedPreferences zapisane_ustawienia;
 
@@ -82,9 +84,22 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
+		
+		 StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+         .detectDiskReads()
+         .detectDiskWrites()
+         .detectNetwork()   // or .detectAll() for all detectable problems
+         .penaltyLog()
+         .build());
+ StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+         .detectLeakedSqlLiteObjects()
+         .detectLeakedClosableObjects()
+         .penaltyLog()
+         .penaltyDeath()
+         .build());
+ 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-
+	    setContentView(R.layout.activity_main);	    
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
@@ -101,7 +116,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		
 		if (zapisane_ustawienia.getBoolean("screen_off", false)){
 			Log.e("screen_off_Main","true");
@@ -146,6 +161,9 @@ public class MainActivity extends FragmentActivity {
 			ktoryElement = "action_BandPlan";
 			BandPlan();
 			break;
+		case R.id.actionLiterowanie:
+			Literowanie();
+			break;
 		/*
 		 * case R.id.item3: ktoryElement = "trzeci"; break;
 		 */
@@ -158,6 +176,17 @@ public class MainActivity extends FragmentActivity {
 
 		// Czytaj więcej na:
 		// http://javastart.pl/programowanie-android/menu/#ixzz2svy3jBTM
+	}
+	public void Literowanie(){
+		
+		final Dialog dialog = new Dialog(mViewPager.getContext());
+		dialog.setContentView(R.layout.dialog_info);
+		dialog.setTitle(R.string.literowanieTytul);
+
+		// set the custom dialog components - text, image and button
+		TextView text = (TextView) dialog.findViewById(R.id.textDialogInfo);
+		text.setText(Html.fromHtml(getString(R.string.literowanieHtml)));
+		dialog.show();
 	}
 public void KodQ(){
 	
@@ -295,7 +324,7 @@ public void BandPlan(){
 		}else {
 		
 		RaportBean rap = new RaportBean(0,band.getText().toString(), mode.getSelectedItem().toString(), currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
-	    RaportDbAdapter Raportdb = new RaportDbAdapter(view.getContext());
+	     Raportdb = new RaportDbAdapter(view.getContext());
 	    Raportdb.open();
 	    Raportdb.insertRaport(rap);
 	    Raportdb.close();
@@ -383,6 +412,7 @@ public void BandPlan(){
 		callSign = (EditText) findViewById(R.id.editCallsign);
 		rstR = (EditText) findViewById(R.id.editRstR);
 		rstS = (EditText) findViewById(R.id.editRstS);
+		note = (EditText) findViewById(R.id.editNote);
 		callSign.setText("");
 		rstR.setText("");
 		rstS.setText("");
@@ -408,11 +438,14 @@ public void BandPlan(){
 	 }
 	 return false;
 	}
-    @Override
+/*  @Override
 	public void onDestroy() {
-
+    	if (Raportdb != null){
+			Raportdb.updateAllOffStatus();
+			Raportdb.close();
+		}
         super.onDestroy();
-    }
+    }*/
 
 
 }

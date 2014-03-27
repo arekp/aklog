@@ -15,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class DodajFragment extends Fragment {
+
 	/**
 	 * The fragment argument representing the section number for this
 	 * fragment.
@@ -83,4 +85,5 @@ public class DodajFragment extends Fragment {
 
         super.onDestroy();
     }
+
 }

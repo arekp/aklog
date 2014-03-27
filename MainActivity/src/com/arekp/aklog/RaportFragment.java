@@ -83,7 +83,7 @@ public class RaportFragment extends Fragment {
 		Raportdb = new RaportDbAdapter(v.getContext());
 		Raportdb.open();
 		Cursor mCursor = Raportdb.getAllReports();
-		getActivity().startManagingCursor(mCursor);
+	//getActivity().startManagingCursor(mCursor);
 
 		while (mCursor.moveToNext()) {
 			RaportBean rap = new RaportBean(mCursor);
@@ -95,7 +95,9 @@ public class RaportFragment extends Fragment {
 
 		RaportArrayAdapter1.notifyDataSetChanged();
 		rozbudowana_lista.setAdapter(RaportArrayAdapter1);
-
+		mCursor.close();
+		Raportdb.close();
+		
 		rozbudowana_lista.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -106,6 +108,8 @@ public class RaportFragment extends Fragment {
 
 			}
 		});
+	
+		
 		// Podpinamy menu pod liste
 		registerForContextMenu(rozbudowana_lista);
 
@@ -150,12 +154,12 @@ public class RaportFragment extends Fragment {
 						refreshList(new Date(System.currentTimeMillis()
 								- (30 * DAY_IN_MS)));
 					}
-					Toast.makeText(v.getContext(), item.toString(),
-							Toast.LENGTH_SHORT).show();
+					/*Toast.makeText(v.getContext(), item.toString(),
+							Toast.LENGTH_SHORT).show();*/
 				}
-				Toast.makeText(v.getContext(), "Nic nie wybrano",
-						Toast.LENGTH_SHORT).show();
-
+		/*		Toast.makeText(v.getContext(), "Nic nie wybrano",
+						Toast.LENGTH_SHORT).show();*/
+			
 			}
 
 			@Override
@@ -169,9 +173,10 @@ public class RaportFragment extends Fragment {
 	}
 
 	public void refreshList(Date data) {
-
+		Raportdb.open();
 		if (data == null) {
 			Log.d("RaportFragment", "refresh list null");
+			
 			Cursor mCursor = mCursor = Raportdb.getAllReports();
 			przykladowe_dane2.clear();
 			while (mCursor.moveToNext()) {
@@ -180,7 +185,7 @@ public class RaportFragment extends Fragment {
 			}
 			RaportArrayAdapter1.setData(przykladowe_dane2);
 			RaportArrayAdapter1.notifyDataSetChanged();
-
+			mCursor.close();
 			rozbudowana_lista.refreshDrawableState();
 		} else {
 			Log.d("RaportFragment", "refresh list not null " + data.toLocaleString());
@@ -192,10 +197,10 @@ public class RaportFragment extends Fragment {
 			}
 			RaportArrayAdapter1.setData(przykladowe_dane2);
 			RaportArrayAdapter1.notifyDataSetChanged();
-
+			mCursor.close();
 			rozbudowana_lista.refreshDrawableState();
 		}
-
+		 Raportdb.close();
 	}
 
 	@Override
@@ -242,8 +247,10 @@ public class RaportFragment extends Fragment {
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							// Write your code here to execute after dialog
+							Raportdb.open();
 							Raportdb.deleteTodo(przykladowe_dane2.get(
 									info.position).getId());
+							Raportdb.close();
 							refreshList(null);
 						}
 					});
@@ -346,7 +353,7 @@ public class RaportFragment extends Fragment {
 				}else {
 				
 				RaportBean rap = new RaportBean(id_tmp,band.getText().toString(), mode.getSelectedItem().toString(), textCzasDodaj.getText().toString(), callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
-			    RaportDbAdapter Raportdb = new RaportDbAdapter(v.getContext());
+			  //  RaportDbAdapter Raportdb = new RaportDbAdapter(v.getContext());
 			    Raportdb.open();
 			    Raportdb.updateRaport(rap);
 			    Raportdb.close();
@@ -373,7 +380,17 @@ public class RaportFragment extends Fragment {
 	 } 
 	@Override
 	public void onResume() {
-		// TODO Auto-generated method stub
+		Log.d("RaportFragment", "jestesmy w resume");
+		refreshList(null);
+		Log.d("RaportFragment", "po odnowieniu listy");
+		if (zapisane_ustawienia.getBoolean("screen_off", false)){
+			Log.e("screen_off_Main","true");
+			v.setKeepScreenOn(true);
+		}else if (zapisane_ustawienia.getBoolean("screen_off", false)==false) {
+			Log.e("screen_off_Main","false");
+			v.setKeepScreenOn(false);
+		}
+		Log.d("RaportFragment", "po zapisaniu zmian w setings");
 		super.onResume();
 	}
 
@@ -382,17 +399,21 @@ public class RaportFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onPause();
 	}
-
 	@Override
+	public void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+	}
+/*	@Override
 	public void onDestroy() {
 
-		if (Raportdb != null)
+		if (Raportdb != null){
 			Raportdb.updateAllOffStatus();
-
-		Raportdb.close();
+			Raportdb.close();
+		}
 		super.onDestroy();
 	}
-
+*/
 	/* Sprawdza czy zewnętrzna pamięć jest gotowa do zapisu */
 	public boolean isExternalStorageWritable() {
 		String state = Environment.getExternalStorageState();
@@ -491,9 +512,9 @@ public class RaportFragment extends Fragment {
 							+ " <MODE:"+new Integer(rap.getMode().length()).toString()+">" + rap.getMode() 
 							+ " <CALL:"+new Integer(rap.getCallsign().length()).toString()+">" + rap.getCallsign()
 							+ " <RST_RCVD:"+new Integer(rap.getRstoString().length()).toString()+">" + rap.getRstoString()
-							+ " <GRIDSQUARE:"+new Integer(zapisane_ustawienia.getString("qth", "logo").length()).toString()+"> "+ zapisane_ustawienia.getString("qth", "logo")
+							+ " <GRIDSQUARE:"+new Integer(zapisane_ustawienia.getString("qth", "logo").length()).toString()+">"+ zapisane_ustawienia.getString("qth", "logo")
 							+ " <RST_SENT:"+new Integer(rap.getRttoString().length()).toString()+">" + rap.getRttoString()
-							+ " <OPERATOR:"+new Integer(zapisane_ustawienia.getString("callsign", "st").length()).toString()+"> "+ zapisane_ustawienia.getString("callsign", "logo")
+							+ " <OPERATOR:"+new Integer(zapisane_ustawienia.getString("callsign", "st").length()).toString()+">"+ zapisane_ustawienia.getString("callsign", "logo")
 							+ " <COMMENT:"+ new Integer(rap.getNote().length()).toString()+">"+rap.getNote()+" <EOR>";
 					fos1.write(adi.getBytes());
 					fos1.write(13);
@@ -543,5 +564,6 @@ public class RaportFragment extends Fragment {
 		
 		return fr;
 	}
-	
+
+
 }
