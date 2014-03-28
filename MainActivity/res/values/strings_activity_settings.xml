@@ -19,6 +19,13 @@
     <string name="pref_default_display_katalog">aklog</string>
     <string name="pref_title_screen_off">Wyłącz wygaszacz</string>
     <string name="pref_description_screen_off">Opcja pozwala wyłączyć wygaszacz systemowy na tej usłudze</string>
-     
+    
+    <string name="pref_default_display_qrz_login"></string>
+    <string name="pref_title_display_qrz_login">Login</string>
+    <string name="pref_default_display_qrz_password"></string>
+    <string name="pref_title_display_qrz_password">Passwd</string>
+     <string name="pref_title_qrz_synch">Sync QRZ </string>
+    <string name="pref_description_qrz_synch">Czy informacje mają być pobierane ze strony http://www.qrz.com/ </string>
+   
 
 </resources>

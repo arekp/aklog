@@ -21,6 +21,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
@@ -100,6 +101,8 @@ public class MainActivity extends FragmentActivity {
  
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);	    
+	    
+	    getActionBar().setDisplayHomeAsUpEnabled(true);
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
@@ -130,6 +133,7 @@ public class MainActivity extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.menu_actions, menu);
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
@@ -280,7 +284,12 @@ public void BandPlan(){
 			return null;
 		}
 	}
-
+	public void qrzSprawdz (final View view) {
+		callSign = (EditText) findViewById(R.id.editCallsign);
+		String url="http://www.qrz.com/db/"+callSign.getText().toString();
+	    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+	}
 	public void zapiszDbKarta(final View view) {
 		band = (EditText) findViewById(R.id.editBand);
 		callSign = (EditText) findViewById(R.id.editCallsign);

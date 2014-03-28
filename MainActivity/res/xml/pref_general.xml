@@ -52,7 +52,32 @@
         android:singleLine="true"
         android:title="@string/pref_title_display_callsign" />
        </PreferenceCategory>    
-    
+    <PreferenceCategory android:title="QRZ Konfig">
+                <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="@string/pref_default_display_qrz_login"
+        android:inputType="textCapWords"
+        android:key="qrzLogin"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_display_qrz_login" />
+       <EditTextPreference
+        android:capitalize="words"
+        android:password="true" 
+        android:defaultValue="@string/pref_default_display_qrz_password"
+        android:inputType="textCapWords"
+        android:key="qrzPasswd"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_display_qrz_password" />
+        <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="qrzsynch"
+        android:summary="@string/pref_description_qrz_synch"
+        android:title="@string/pref_title_qrz_synch" />    
+    </PreferenceCategory>        
     <!-- callsign
          NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
          dismiss it.
