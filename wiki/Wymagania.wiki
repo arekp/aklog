@@ -46,3 +46,4 @@ pozostało:
  * [http://jlog.org/index.htm]
  * [http://cluster.sdr-radio.com]DX Cluster 
  * [http://www.javacodegeeks.com/2013/02/jaxb-tutorial-getting-started.html]
+ * [http://www.qrz.com/page/current_spec.html]
