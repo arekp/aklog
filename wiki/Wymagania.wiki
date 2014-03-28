@@ -13,6 +13,7 @@ Bedziemy tutaj spisywać co jest do zrobienia
  * logowanie do qrz.com
  * export do logbook na qrz.com
  * backup na drive.google.com
+ * pobieranie i wyświetlanie danych z qrz.com 
 
 
 ==W punktach: ==
