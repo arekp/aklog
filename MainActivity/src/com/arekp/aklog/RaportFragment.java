@@ -15,6 +15,7 @@ import java.util.TimeZone;
 
 import com.arekp.aklog.database.RaportDbAdapter;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -73,6 +74,9 @@ public class RaportFragment extends Fragment {
 
 		// final View
 		v = inflater.inflate(R.layout.fragment_lista_dummy, null);
+		
+
+	    
 		zapisane_ustawienia = PreferenceManager.getDefaultSharedPreferences(v
 				.getContext());
 

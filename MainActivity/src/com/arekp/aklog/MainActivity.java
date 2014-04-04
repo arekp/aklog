@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,8 +16,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import com.arekp.aklog.database.RaportDbAdapter;
+import org.apache.http.client.ClientProtocolException;
 
+import com.arekp.aklog.database.RaportDbAdapter;
+import com.arekp.aklog.web.QrzClient;
+import com.arekp.aklog.web.QrzSession;
+
+import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -53,6 +60,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 public class MainActivity extends FragmentActivity {
 	private EditText band;
 	private EditText mode;
@@ -83,6 +91,7 @@ public class MainActivity extends FragmentActivity {
 	 */
 	ViewPager mViewPager;
 
+
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
 		
@@ -102,7 +111,13 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);	    
 	    
-	    getActionBar().setDisplayHomeAsUpEnabled(true);
+	// Action bar //////////////////////////////
+	    ActionBar actionBar = getActionBar();
+// actionBar.setIcon(R.drawable.sys_eq);
+	    actionBar.show();
+	    //actionBar.setTitle("Pasek action Bar" );
+//////////////////////////////////////////	    
+	    
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
@@ -168,6 +183,9 @@ public class MainActivity extends FragmentActivity {
 		case R.id.actionLiterowanie:
 			Literowanie();
 			break;
+		case R.id.action_add:
+			zapiszDbKarta(item.getActionView().findViewById(R.layout.fragment_main_dummy));
+		break;
 		/*
 		 * case R.id.item3: ktoryElement = "trzeci"; break;
 		 */
@@ -285,10 +303,43 @@ public void BandPlan(){
 		}
 	}
 	public void qrzSprawdz (final View view) {
+		//QrzSession sess= new QrzSession();
+		if(zapisane_ustawienia.getBoolean("qrzsynch", false)){
+		QrzClient q = new QrzClient();
+		QrzSession sess = new QrzSession();
+		try {
+			 sess = q.getkey(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null));
+			final Dialog dialog = new Dialog(mViewPager.getContext());
+			dialog.setContentView(R.layout.dialog_info);
+			dialog.setTitle("Dane z QRZ");
+
+			// set the custom dialog components - text, image and button
+			TextView text = (TextView) dialog.findViewById(R.id.textDialogInfo);
+			text.setText(Html.fromHtml(sess.getHTMLDialog()));
+			dialog.show();		
+	
+		
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+		
+
+		}
+		else
+		{
 		callSign = (EditText) findViewById(R.id.editCallsign);
 		String url="http://www.qrz.com/db/"+callSign.getText().toString();
 	    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
+		}
 	}
 	public void zapiszDbKarta(final View view) {
 		band = (EditText) findViewById(R.id.editBand);
@@ -417,7 +468,8 @@ public void BandPlan(){
 	}
 
 	public void kasujPola(final View view) {
-		band = (EditText) findViewById(R.id.editBand);
+
+				band = (EditText) findViewById(R.id.editBand);
 		callSign = (EditText) findViewById(R.id.editCallsign);
 		rstR = (EditText) findViewById(R.id.editRstR);
 		rstS = (EditText) findViewById(R.id.editRstS);
