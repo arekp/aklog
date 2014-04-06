@@ -1,12 +1,17 @@
 package com.arekp.aklog.web;
 
+import android.util.Log;
+
 public class QrzSession {
+	//Session
 	public String Key;
 	public String Count;
 	public String SubExp;
 	public String GMTime;
 	public String Message;
-	public String Error;
+	public String Error="";
+	
+	//Callsign
 	
 	
 	
@@ -62,19 +67,27 @@ public class QrzSession {
 	}
 
 	   public String getHTMLDialog(){
-		   String html="";
-		   if(!this.Error.equals(""))
+		   String html="Brak danyh";
+		   Log.d("qrzSession", "1 " + getError());
+		   
+		   if(getError().equals(""))
 		   {
-		   html="<h1> ERROR: "+this.Error+"</h1>";
-		   return html;
-		   }else{
-		   html+="<b> Key </b> &nbsp;&nbsp;"+this.Key+" <br>";
-		   html+="<b> Count </b> &nbsp;&nbsp;"+this.Count+" <br>";
-		   html+="<b> SubExp </b> &nbsp;&nbsp;"+this.SubExp+" <br>";
-		   html+="<b> GMTime </b> &nbsp;&nbsp;"+this.GMTime+" <br>";
-		   html+="<b> Message </b> &nbsp;&nbsp;"+this.Message+" <br>";
-		   html+="<b> Error </b> &nbsp;&nbsp;"+this.Error+" <br>";
-		 }
+			   
+			   Log.d("qrzSession", "3 else " + html);
+		   html="<b> Key </b> &nbsp;&nbsp;"+getKey()+" <br>";
+		   html+="<b> Count </b> &nbsp;&nbsp;"+getCount()+" <br>";
+		   html+="<b> SubExp </b> &nbsp;&nbsp;"+getSubExp()+" <br>";
+		   html+="<b> GMTime </b> &nbsp;&nbsp;"+getGMTime()+" <br>";
+		   html+="<b> Message </b> &nbsp;&nbsp;"+getMessage()+" <br>";
+		   html+="<b> Error </b> &nbsp;&nbsp;"+getError()+" <br>";
+		  // return html;
+		   }else {
+			   Log.d("qrzSession", "2 error " + html);
+			   html="<h1> ERROR: "+this.Error+"</h1>";
+
+	 }
+			 Log.d("qrzSession", "4 end --" + getError() +"--");
+			 
 		   		   		   return html;
 	   
 	}

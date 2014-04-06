@@ -62,6 +62,7 @@ import android.widget.Toast;
 
 
 public class MainActivity extends FragmentActivity {
+	private static final String DEBUG_TAG = "MainActivity";
 	private EditText band;
 	private EditText mode;
 	private EditText start;
@@ -69,6 +70,7 @@ public class MainActivity extends FragmentActivity {
 	private EditText rstR;
 	private EditText rstS;
 	private EditText note;
+	private static String sessionID;
 	private static TextView tekst;
 	protected PowerManager.WakeLock mWakeLock;
 	private    RaportDbAdapter Raportdb;
@@ -303,9 +305,13 @@ public void BandPlan(){
 		}
 	}
 	public void qrzSprawdz (final View view) {
+		Log.d(DEBUG_TAG," qrzSprawd nacisnieto przyskicka" );
 		//QrzSession sess= new QrzSession();
 		if(zapisane_ustawienia.getBoolean("qrzsynch", false)){
-		QrzClient q = new QrzClient();
+			Log.d(DEBUG_TAG," przed wywolaniem watku" );
+			new QrzClient(this).execute(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null));
+			Log.d(DEBUG_TAG," POOOwwolaniu watku" );
+			/*		QrzClient q = new QrzClient();
 		QrzSession sess = new QrzSession();
 		try {
 			 sess = q.getkey(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null));
@@ -331,7 +337,7 @@ public void BandPlan(){
 			e.printStackTrace();
 		}
 		
-
+*/
 		}
 		else
 		{

@@ -82,7 +82,8 @@ public class SettingsActivity extends PreferenceActivity {
 		bindPreferenceSummaryToValue(findPreference("plik"));
 		bindPreferenceSummaryToValue(findPreference("qth"));
 		bindPreferenceSummaryToValue(findPreference("callsign"));
-		
+		bindPreferenceSummaryToValue(findPreference("qrzLogin"));
+		bindPreferenceSummaryToValue(findPreference("qrzPasswd"));
 /*		bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
 		bindPreferenceSummaryToValue(findPreference("sync_frequency"));*/
 	}
