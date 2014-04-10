@@ -3,4 +3,5 @@
 
 <item android:id="@+id/menuusun" android:title="@string/menuusun"></item>
 <item android:id="@+id/menudetal" android:title="@string/menudetal"></item>
+<item android:id="@+id/menuqrz" android:title="Sprawdz w qrz"></item>
 </menu>

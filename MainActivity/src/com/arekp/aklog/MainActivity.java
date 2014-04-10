@@ -77,6 +77,7 @@ public class MainActivity extends FragmentActivity {
 	
 	SharedPreferences zapisane_ustawienia;
 
+
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
 	 * fragments for each of the sections. We use a
@@ -86,7 +87,7 @@ public class MainActivity extends FragmentActivity {
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}. FragmentActivity
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
-	private SharedPreferences preferences;
+	//private SharedPreferences preferences;
 
 	/**
 	 * The {@link ViewPager} that will host the section contents. 
@@ -96,7 +97,7 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
-		
+/*		
 		 StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
          .detectDiskReads()
          .detectDiskWrites()
@@ -108,7 +109,7 @@ public class MainActivity extends FragmentActivity {
          .detectLeakedClosableObjects()
          .penaltyLog()
          .penaltyDeath()
-         .build());
+         .build());*/
  
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);	    
@@ -131,6 +132,7 @@ public class MainActivity extends FragmentActivity {
 		
 		zapisane_ustawienia = PreferenceManager
 				.getDefaultSharedPreferences(this);
+		
 
 		
 	}
@@ -306,38 +308,13 @@ public void BandPlan(){
 	}
 	public void qrzSprawdz (final View view) {
 		Log.d(DEBUG_TAG," qrzSprawd nacisnieto przyskicka" );
+		callSign = (EditText) findViewById(R.id.editCallsign);
 		//QrzSession sess= new QrzSession();
 		if(zapisane_ustawienia.getBoolean("qrzsynch", false)){
 			Log.d(DEBUG_TAG," przed wywolaniem watku" );
-			new QrzClient(this).execute(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null));
+			new QrzClient(this).execute(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null),callSign.getText().toString());
 			Log.d(DEBUG_TAG," POOOwwolaniu watku" );
-			/*		QrzClient q = new QrzClient();
-		QrzSession sess = new QrzSession();
-		try {
-			 sess = q.getkey(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null));
-			final Dialog dialog = new Dialog(mViewPager.getContext());
-			dialog.setContentView(R.layout.dialog_info);
-			dialog.setTitle("Dane z QRZ");
-
-			// set the custom dialog components - text, image and button
-			TextView text = (TextView) dialog.findViewById(R.id.textDialogInfo);
-			text.setText(Html.fromHtml(sess.getHTMLDialog()));
-			dialog.show();		
-	
-		
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			
-			e.printStackTrace();
-		}
-		
-*/
 		}
 		else
 		{

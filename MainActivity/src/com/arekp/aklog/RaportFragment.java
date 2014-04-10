@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.TimeZone;
 
 import com.arekp.aklog.database.RaportDbAdapter;
+import com.arekp.aklog.web.QrzClient;
 
 import android.app.ActionBar;
 import android.app.AlertDialog;
@@ -213,24 +214,15 @@ public class RaportFragment extends Fragment {
 				.getMenuInfo();
 
 		switch (item.getItemId()) {
-/*		case R.id.menuedytuj:
-			Intent intent = new Intent(v.getContext(), EditListActivity.class);
-			intent.putExtra("id", przykladowe_dane2.get(info.position).getId());
-			startActivity(intent);
-			
-			 * Toast.makeText(v.getContext(), "Opcja item01 na elemencie: " +
-			 * przykladowe_dane2.get(info.position).getCallsign() ,
-			 * Toast.LENGTH_LONG).show();
-			 
-			break;*/
+
 		case R.id.menudetal:
 			detal(przykladowe_dane2.get(info.position));
 			break;
+		case R.id.menuqrz:
+			new QrzClient(v.getContext()).execute(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null),przykladowe_dane2.get(info.position).getCallsign());
+		//	detal(przykladowe_dane2.get(info.position));
+			break;
 		case R.id.menuusun:
-			/*
-			 * Raportdb.deleteTodo(przykladowe_dane2.get(info.position).getId());
-			 * refreshList();
-			 */
 
 			AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(
 					v.getContext());
@@ -269,11 +261,7 @@ public class RaportFragment extends Fragment {
 
 			// Showing Alert Dialog
 			alertDialog2.show();
-			/*
-			 * Toast.makeText(v.getContext(), "Opcja item02 na elemencie: " +
-			 * przykladowe_dane2.get(info.position).getCallsign(),
-			 * Toast.LENGTH_LONG).show();
-			 */
+
 			break;
 
 		default:
@@ -357,7 +345,7 @@ public class RaportFragment extends Fragment {
 				}else {
 				
 				RaportBean rap = new RaportBean(id_tmp,band.getText().toString(), mode.getSelectedItem().toString(), textCzasDodaj.getText().toString(), callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
-			  //  RaportDbAdapter Raportdb = new RaportDbAdapter(v.getContext());
+	
 			    Raportdb.open();
 			    Raportdb.updateRaport(rap);
 			    Raportdb.close();
