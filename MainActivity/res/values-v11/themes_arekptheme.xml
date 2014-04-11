@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="arekpTheme" parent="android:Theme.Holo">
+
+    <item name="android:editTextBackground">@drawable/arekptheme_edit_text_holo_dark</item>
+
+    <item name="android:textColorHighlight">#9933b5e5</item>
+    <item name="android:textSelectHandleLeft">@drawable/arekptheme_text_select_handle_left</item>
+    <item name="android:textSelectHandleRight">@drawable/arekptheme_text_select_handle_right</item>
+    <item name="android:textSelectHandle">@drawable/arekptheme_text_select_handle_middle</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewarekpTheme</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/arekptheme_btn_check_holo_dark</item>
+
+    <item name="android:buttonStyle">@style/ButtonarekpTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonarekpTheme</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerarekpTheme</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBararekpTheme</item>
+
+  </style>
+
+</resources>

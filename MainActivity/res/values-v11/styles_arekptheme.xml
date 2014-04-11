@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="AutoCompleteTextViewarekpTheme" parent="android:Widget.Holo.AutoCompleteTextView">
+      <item name="android:dropDownSelector">@drawable/arekptheme_list_selector_holo_dark</item>
+	    <item name="android:background">@drawable/arekptheme_edit_text_holo_dark</item>
+  </style>
+
+  <style name="ButtonarekpTheme" parent="android:Widget.Holo.Button">
+	  <item name="android:background">@drawable/arekptheme_btn_default_holo_dark</item>
+  </style>
+
+  <style name="ImageButtonarekpTheme" parent="android:Widget.Holo.ImageButton">
+	  <item name="android:background">@drawable/arekptheme_btn_default_holo_dark</item>
+  </style>
+
+  <style name="SpinnerarekpTheme" parent="android:Widget.Holo.Spinner">
+      <item name="android:background">@drawable/arekptheme_spinner_background_holo_dark</item>
+      <item name="android:dropDownSelector">@drawable/arekptheme_list_selector_holo_dark</item>
+  </style>
+
+  <style name="ProgressBararekpTheme" parent="android:Widget.Holo.ProgressBar.Horizontal">
+      <item name="android:progressDrawable">@drawable/arekptheme_progress_horizontal_holo_dark</item>
+      <item name="android:indeterminateDrawable">@drawable/arekptheme_progress_indeterminate_horizontal_holo_dark</item>
+  </style>
+
+</resources>
