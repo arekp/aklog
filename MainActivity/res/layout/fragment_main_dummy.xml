@@ -48,6 +48,7 @@
                     android:onClick="zapiszDbKarta"
                     android:padding="2dp"
                     android:scaleType="fitCenter"
+                      android:visibility="gone"
                     android:src="@drawable/add" android:contentDescription="TODO"/>
 
                 <ImageButton
@@ -57,6 +58,7 @@
                     android:onClick="kasujPola"
                     android:padding="2dp"
                     android:scaleType="fitCenter"
+                      android:visibility="gone"
                     android:src="@drawable/sys_reboot" />
             </LinearLayout>
 

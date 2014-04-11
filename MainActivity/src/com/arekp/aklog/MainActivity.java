@@ -48,6 +48,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -149,8 +150,9 @@ public class MainActivity extends FragmentActivity {
 		}
 		super.onResume();
 	}
-	@Override
+	//@Override
 	public boolean onCreateOptionsMenu(final Menu menu) {
+	//public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
 		// Inflate the menu; this adds items to the action bar if it is present.
 //		getMenuInflater().inflate(R.menu.menu_actions, menu);
 		getMenuInflater().inflate(R.menu.main, menu);
@@ -187,18 +189,24 @@ public class MainActivity extends FragmentActivity {
 		case R.id.actionLiterowanie:
 			Literowanie();
 			break;
+
+/*		case R.id.action_clear:
+			kasujPola(item.getActionView().findViewById(R.layout.fragment_main_dummy));
+			break;
+			
 		case R.id.action_add:
 			zapiszDbKarta(item.getActionView().findViewById(R.layout.fragment_main_dummy));
 		break;
+		*/
 		/*
 		 * case R.id.item3: ktoryElement = "trzeci"; break;
 		 */
 		default:
-			ktoryElement = "zaden";
+			return super.onOptionsItemSelected(item);
 
 		}
 
-		return true;
+ 	return true;
 
 		// Czytaj więcej na:
 		// http://javastart.pl/programowanie-android/menu/#ixzz2svy3jBTM
@@ -324,7 +332,7 @@ public void BandPlan(){
         startActivity(intent);
 		}
 	}
-	public void zapiszDbKarta(final View view) {
+	public void zapiszDbKarta(MenuItem item) {
 		band = (EditText) findViewById(R.id.editBand);
 		callSign = (EditText) findViewById(R.id.editCallsign);
 		rstR = (EditText) findViewById(R.id.editRstR);
@@ -367,7 +375,7 @@ public void BandPlan(){
 		}else {
 		
 		RaportBean rap = new RaportBean(0,band.getText().toString(), mode.getSelectedItem().toString(), currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
-	     Raportdb = new RaportDbAdapter(view.getContext());
+	     Raportdb = new RaportDbAdapter(this.getBaseContext());
 	    Raportdb.open();
 	    Raportdb.insertRaport(rap);
 	    Raportdb.close();
@@ -450,7 +458,8 @@ public void BandPlan(){
 		
 	}
 
-	public void kasujPola(final View view) {
+	 
+	public void kasujPola(MenuItem item) {
 
 				band = (EditText) findViewById(R.id.editBand);
 		callSign = (EditText) findViewById(R.id.editCallsign);

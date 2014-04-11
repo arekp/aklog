@@ -6,13 +6,6 @@
         android:showAsAction="ifRoom"
         android:title="@string/action_settings"
         android:icon="@drawable/ic_menu_preferences"/>
-    
-         <item
-        android:id="@+id/action_add"
-        android:showAsAction="ifRoom"
-        android:icon="@drawable/add"
-        android:title="Add"
-        />
          
      <item
         android:id="@+id/action_settings2"

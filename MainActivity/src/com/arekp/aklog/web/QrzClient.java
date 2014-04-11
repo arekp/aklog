@@ -57,13 +57,15 @@ public class QrzClient extends AsyncTask<String, Void, Void> {
 		} else if (sess.getError().equals("Invalid session key")){
 			editor.putString("session", "");
 			text.setText(Html.fromHtml(sess.getHTMLDialog()));
+		}else if (sess.getError().equals("Session Timeout")){
+			editor.putString("session", "");
+			text.setText(Html.fromHtml(sess.getHTMLDialog()));
 		}else {
 			text.setText(Html.fromHtml(sess.getHTMLDialog()));
 		} 
 		editor.commit();
-		// sessionID=sess.getKey();
-		// Invalid session key
-		// TODO Auto-generated method stub
+		// 04-11 09:19:58.988: D/QRZClient(30470): Error: Session Timeout
+
 		dialog.show();
 		super.onPostExecute(result);
 	}

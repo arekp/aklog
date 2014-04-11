@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+       <item
+        android:id="@+id/action_clear"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/sys_reboot"
+        android:title="Add"
+        android:onClick="kasujPola"/>
+       <item
+        android:id="@+id/action_add"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/add"
+        android:title="Add"
+        android:onClick="zapiszDbKarta"/>
+
+</menu>

@@ -23,6 +23,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,7 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -173,11 +175,42 @@ public class RaportFragment extends Fragment {
 
 			}
 		});
+		//w celu spersonalizowania actionbar
+		setHasOptionsMenu(true);
 
 		return v;
 	}
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        inflater.inflate(R.menu.raport_menu, menu);
 
-	public void refreshList(Date data) {
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Log.d("RaportFragment", "jestwesmu w akcji menu");
+	    switch (item.getItemId()) {
+/*	    case R.id.activity_menu_item:
+	        // Not implemented here
+	        return false;*/
+	    case R.id.action_raport:
+	    	exportcsv(v);
+			exportAdiShort(v);
+			Toast.makeText(
+					v.getContext(),
+					"Dane zostały wyeksportowane do skonfigurowanego katalogu",
+					Toast.LENGTH_SHORT).show();
+	        return true;
+	    default:
+	    	return super.onOptionsItemSelected(item);
+	    }
+
+	    //return false;
+	}
+	
+
+public void refreshList(Date data) {
 		Raportdb.open();
 		if (data == null) {
 			Log.d("RaportFragment", "refresh list null");
@@ -219,8 +252,16 @@ public class RaportFragment extends Fragment {
 			detal(przykladowe_dane2.get(info.position));
 			break;
 		case R.id.menuqrz:
+			if(zapisane_ustawienia.getBoolean("qrzsynch", false)){
 			new QrzClient(v.getContext()).execute(zapisane_ustawienia.getString("qrzLogin",null),zapisane_ustawienia.getString("qrzPasswd",null),przykladowe_dane2.get(info.position).getCallsign());
-		//	detal(przykladowe_dane2.get(info.position));
+			}
+			else
+			{
+
+			String url="http://www.qrz.com/db/"+przykladowe_dane2.get(info.position).getCallsign();
+		    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+	        startActivity(intent);
+			}
 			break;
 		case R.id.menuusun:
 
