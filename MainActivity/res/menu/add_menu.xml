@@ -4,7 +4,7 @@
         android:id="@+id/action_clear"
         android:showAsAction="ifRoom"
         android:icon="@drawable/sys_reboot"
-        android:title="Add"
+        android:title="Clear"
         android:onClick="kasujPola"/>
        <item
         android:id="@+id/action_add"

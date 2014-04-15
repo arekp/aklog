@@ -34,18 +34,15 @@
             <ImageButton
                 android:id="@+id/buttonListaExport1"
                 android:layout_width="45dp"
-                android:layout_height="45dp"             
+                android:layout_height="45dp"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/add" />
-
-   
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2.14"
             android:orientation="vertical"
             android:overScrollMode="always"
             android:scrollbarAlwaysDrawVerticalTrack="true"
@@ -64,7 +61,7 @@
 
                 <EditText
                     android:id="@+id/editBand"
-                    android:layout_width="226dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -88,7 +85,7 @@
 
                 <Spinner
                     android:id="@+id/mode1Spin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:entries="@array/ListaMode"
@@ -130,7 +127,7 @@
 
                 <EditText
                     android:id="@+id/editCallsign"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right|center_vertical"
                     android:layout_weight="1"
@@ -149,9 +146,10 @@
                     android:text="@string/RST" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2" >
+                    android:layout_weight="2"
+                    android:baselineAligned="false" >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -160,14 +158,14 @@
                         android:orientation="vertical" >
 
                         <TextView
-                            android:id="@+id/textView1"
+                            android:id="@+id/textView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="RX"
+                            android:text="SEND"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <EditText
-                            android:id="@+id/editRstS"
+                            android:id="@+id/editRstR"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ems="10"
@@ -182,14 +180,14 @@
                         android:orientation="vertical" >
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TX"
+                            android:text="RECEIVE"
                             android:textAppearance="?android:attr/textAppearanceSmall" />
 
                         <EditText
-                            android:id="@+id/editRstR"
+                            android:id="@+id/editRstS"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ems="10"
@@ -211,7 +209,7 @@
 
                 <EditText
                     android:id="@+id/editNote"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"

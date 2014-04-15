@@ -98,7 +98,7 @@ public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
-/*		
+		
 		 StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
          .detectDiskReads()
          .detectDiskWrites()
@@ -110,7 +110,7 @@ public class MainActivity extends FragmentActivity {
          .detectLeakedClosableObjects()
          .penaltyLog()
          .penaltyDeath()
-         .build());*/
+         .build());
  
 		super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_main);	    
