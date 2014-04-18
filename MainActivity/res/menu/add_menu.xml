@@ -3,13 +3,13 @@
        <item
         android:id="@+id/action_clear"
         android:showAsAction="ifRoom"
-        android:icon="@drawable/sys_reboot"
+        android:icon="@drawable/ic_action_sys_reboot"
         android:title="Clear"
         android:onClick="kasujPola"/>
        <item
         android:id="@+id/action_add"
         android:showAsAction="ifRoom"
-        android:icon="@drawable/add"
+        android:icon="@drawable/ic_action_add"
         android:title="Add"
         android:onClick="zapiszDbKarta"/>
 
