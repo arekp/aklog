@@ -21,8 +21,8 @@ import org.apache.http.client.ClientProtocolException;
 import com.arekp.aklog.database.RaportDbAdapter;
 import com.arekp.aklog.web.QrzClient;
 import com.arekp.aklog.web.QrzSession;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.drive.Drive;
+//import com.google.android.gms.common.api.GoogleApiClient;
+//import com.google.android.gms.drive.Drive;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -79,7 +79,7 @@ public class MainActivity extends FragmentActivity {
 	private    RaportDbAdapter Raportdb;
 	
 	SharedPreferences zapisane_ustawienia;
-private GoogleApiClient mGoogleApiClient;
+//private GoogleApiClient mGoogleApiClient;
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
