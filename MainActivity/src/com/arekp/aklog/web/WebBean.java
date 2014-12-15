@@ -12,6 +12,7 @@ public class WebBean {
 		SpotterUrl = spotterUrl;
 		Comment = comment;
 	}
+	public WebBean(){}
 	
 	@Override
 	public String toString() {

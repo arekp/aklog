@@ -1,5 +1,7 @@
 package com.arekp.aklog.web;
 
+import com.arekp.aklog.R;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,15 +31,15 @@ public class WebAdapter extends ArrayAdapter<WebBean>{
  
         if(row == null)
         {
-            LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-            row = inflater.inflate(web_row, parent, false);
+            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);//((Activity)context).getLayoutInflater();
+            row = inflater.inflate(R.layout.web_row, parent, false);
  
             holder = new RowBeanHolder();
             holder.Name = (TextView)row.findViewById(R.id.txtName);
-            holder.Freq = (TextView)row.findViewById(R.id);
-            holder.UTC = (TextView)row.findViewById(R.id.imgIcon);
-            holder.Spotter = (TextView)row.findViewById(R.id.imgIcon);
-            holder.Comment = (TextView)row.findViewById(R.id.imgIcon);
+            holder.Freq = (TextView)row.findViewById(R.id.TextFreq);
+            holder.UTC = (TextView)row.findViewById(R.id.TextUtc);
+            holder.Spotter = (TextView)row.findViewById(R.id.TextSpotter);
+            holder.Comment = (TextView)row.findViewById(R.id.TextComment);
    
           
  
@@ -48,17 +50,26 @@ public class WebAdapter extends ArrayAdapter<WebBean>{
             holder = (RowBeanHolder)row.getTag();
         }
  
-        RowBean object = data[position];
-        holder.txtTitle.setText(object.title);
-        holder.imgIcon.setImageResource(object.icon);
+        WebBean object = data[position];
+        holder.Name.setText(object.Name);
+        holder.Freq.setText(object.Freq);
+        holder.UTC.setText(object.UTC);
+        holder.Comment.setText(object.Comment);
+        holder.Spotter.setText(object.Spotter);
+     
  
         return row;
     }
  
     static class RowBeanHolder
     {
-        ImageView imgIcon;
-        TextView txtTitle;
+    	TextView Name ;
+    	TextView Freq ;
+    	TextView UTC;
+    	TextView Spotter;
+    	TextView SpotterUrl;
+    	TextView Comment;
+  
     }
 
 }
