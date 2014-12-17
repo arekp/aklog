@@ -295,7 +295,7 @@ public void BandPlan(){
 				fragment = new RaportFragment();
 				break;
 			case 3:
-				fragment = new DxClasterFragment();
+				fragment = new DxClasterFragment2();
 				break;
 			default:
 				throw new IllegalArgumentException("Invalid section number");

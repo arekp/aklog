@@ -3,6 +3,9 @@ package com.arekp.aklog;
 
 import java.util.HashMap;
 
+import com.arekp.aklog.web.WebAdapter;
+import com.arekp.aklog.web.WebBean;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -17,6 +20,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -30,7 +34,8 @@ public class DxClasterFragment2 extends Fragment {
 	private WebView web;
 	private ProgressBar progres;
 	private Spinner spin;
-	
+	 private ListView listView1;
+	 
 	static HashMap<String, String> codeHash = new HashMap<String, String>();
 	 
 	public static void init() {
@@ -61,36 +66,48 @@ public class DxClasterFragment2 extends Fragment {
 	public View onCreateView(final LayoutInflater inflater,
 			final ViewGroup container, final Bundle savedInstanceState) {
 		init();
-		final View v = inflater.inflate(R.layout.fragment_dx_claster_dummy, null);
+		final View v = inflater.inflate(R.layout.fragment_dx_claster_dummy2, null);
 		spin = (Spinner) v.findViewById(R.id.web_spinner);
 		
-		web = (WebView) v.findViewById(R.id.webView1);
-		web.setWebViewClient(new MyWebViewClient());
+	//	web = (WebView) v.findViewById(R.id.webView1);
+	//	web.setWebViewClient(new MyWebViewClient());
 		
 		progres = (ProgressBar) v.findViewById(R.id.progressBar1);
 		progres.setVisibility(View.GONE);
 		
-		web.getSettings().setJavaScriptEnabled(true);
-		web.loadUrl(codeHash.get("ALL"));
-		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-	        /**
+	//	web.getSettings().setJavaScriptEnabled(true);
+	//	web.loadUrl(codeHash.get("ALL"));
+/*		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+	        *//**
 	         * Called when a new item is selected (in the Spinner)
-	         */
+	         *//*
 	         public void onItemSelected(AdapterView<?> parent, View view, 
 	                    int pos, long id) {
 	                // An spinnerItem was selected. You can retrieve the selected item using
 	                // parent.getItemAtPosition(pos)
 	
 	        	 Log.e("WEB_SPIN",spin.getSelectedItem().toString());
-	     	    web.getSettings().setJavaScriptEnabled(true);
-	    		web.loadUrl(codeHash.get(spin.getSelectedItem().toString()));
+	  //   	    web.getSettings().setJavaScriptEnabled(true);
+	   // 		web.loadUrl(codeHash.get(spin.getSelectedItem().toString()));
         	 	            }
 
 	            public void onNothingSelected(AdapterView<?> parent) {
 	                // Do nothing, just another required interface callback
 	            }
-
-	    }); // (optional)
+	            
+	            WebBean WebBean_data[] = new WebBean[] {
+	            		new WebBean("name","feq","comment","utc","spotter","spooterUrl"),
+	            		new WebBean("name","feq","comment","utc","spotter","spooterUrl")
+	            };
+	            
+	          WebAdapter adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data);
+	        		  
+	        		  
+	     
+	            listView1 = (ListView) v.findViewById(R.id.listViewWeb);
+	     
+	            listView1.setAdapter(adapter);
+	     // (optional)
 		
 		
 	 //   web.getSettings().setJavaScriptEnabled(true);
@@ -99,7 +116,22 @@ public class DxClasterFragment2 extends Fragment {
 		// v.findViewById(R.id.section_label);
 		// dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 		return v;
-	}
+	}*/
+		
+		  WebBean WebBean_data[] = new WebBean[] {
+          		new WebBean("name1","feq1","comment","utc","spotter","spooterUrl 1"),
+          		new WebBean("name2","feq2","comment","utc","spotter","spooterUrl 2")
+          };
+          
+        WebAdapter adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data);
+      		  
+      		  
+   
+          listView1 = (ListView) v.findViewById(R.id.listViewWeb);
+   
+          listView1.setAdapter(adapter);
+          return v;
+		};
 	
 	
 	
