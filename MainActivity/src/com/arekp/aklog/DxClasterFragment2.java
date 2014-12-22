@@ -3,6 +3,11 @@ package com.arekp.aklog;
 
 import java.util.HashMap;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import com.arekp.aklog.web.WebAdapter;
 import com.arekp.aklog.web.WebBean;
 
@@ -35,6 +40,7 @@ public class DxClasterFragment2 extends Fragment {
 	private ProgressBar progres;
 	private Spinner spin;
 	 private ListView listView1;
+	 private      WebAdapter adapter;
 	 
 	static HashMap<String, String> codeHash = new HashMap<String, String>();
 	 
@@ -75,50 +81,72 @@ public class DxClasterFragment2 extends Fragment {
 		progres = (ProgressBar) v.findViewById(R.id.progressBar1);
 		progres.setVisibility(View.GONE);
 		
+		listView1 = (ListView) v.findViewById(R.id.listViewWeb);
+		
 	//	web.getSettings().setJavaScriptEnabled(true);
 	//	web.loadUrl(codeHash.get("ALL"));
-/*		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-	        *//**
-	         * Called when a new item is selected (in the Spinner)
-	         *//*
+
+		
+		
+		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+	        //**
+	         // Called when a new item is selected (in the Spinner)
+	         //*
 	         public void onItemSelected(AdapterView<?> parent, View view, 
 	                    int pos, long id) {
 	                // An spinnerItem was selected. You can retrieve the selected item using
 	                // parent.getItemAtPosition(pos)
 	
-	        	 Log.e("WEB_SPIN",spin.getSelectedItem().toString());
+	        	 Log.e("WEB_SPIN",codeHash.get("ALL"));
 	  //   	    web.getSettings().setJavaScriptEnabled(true);
 	   // 		web.loadUrl(codeHash.get(spin.getSelectedItem().toString()));
-        	 	            }
+	        	 Document doc = Jsoup.parse(codeHash.get("ALL"));
+	        	 Elements tables = doc.select("table");
+	        	  Log.e("WEB_SPIN table","mamy tablice");
+	        	 for (Element table : tables) {
+
+	        	     Elements trs = table.select("tr");
+	        	     Log.e("WEB_SPIN table","mamy wiersz: "+trs.size());
+	        	     //Log.e("WEB_SPIN table",trs.size());
+	        	     String[][] trtd = new String[trs.size()][];
+	        	     //for (Element tableRow : trs){  
+	        	     for (int i = 0; i < trs.size(); i++) {
+	        	         Elements tds = trs.get(i).select("td");
+	        	         trtd[i] = new String[tds.size()];
+	        	  	     Log.e("WEB_SPIN table","mamy kolumne");
+	        	  	     Log.e("WEB_SPIN table","tds.size()");
+	        	         for (int j = 0; j < tds.size(); j++) {
+	        	             trtd[i][j] = tds.get(j).text(); 
+	        	             Log.e("WEB_SPIN table",tds.get(j).text());
+	        	         }
+	        	     }
+	        	     // trtd now contains the desired array for this table
+	        	 }
+		        		  WebBean WebBean_data[] = new WebBean[] {
+          		new WebBean("name1","feq1","comment","utc","spotter","spooterUrl 1"),
+          		new WebBean("name2","feq2","comment","utc","spotter","spooterUrl 2")
+          };    
+		        		  
+		          adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data);
+		          //  listView1 = (ListView) v.findViewById(R.id.listViewWeb);
+		            listView1.setAdapter(adapter);
+	         }
 
 	            public void onNothingSelected(AdapterView<?> parent) {
 	                // Do nothing, just another required interface callback
 	            }
-	            
-	            WebBean WebBean_data[] = new WebBean[] {
-	            		new WebBean("name","feq","comment","utc","spotter","spooterUrl"),
-	            		new WebBean("name","feq","comment","utc","spotter","spooterUrl")
-	            };
-	            
-	          WebAdapter adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data);
-	        		  
-	        		  
-	     
-	            listView1 = (ListView) v.findViewById(R.id.listViewWeb);
-	     
-	            listView1.setAdapter(adapter);
-	     // (optional)
-		
-		
+	           
+	  	
+
 	 //   web.getSettings().setJavaScriptEnabled(true);
 		//web.loadUrl(codeHash.get("ALL"));
 		// TextView dummyTextView = (TextView)
 		// v.findViewById(R.id.section_label);
 		// dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-		return v;
-	}*/
+	//return v;
+		});
 		
-		  WebBean WebBean_data[] = new WebBean[] {
+/*		  WebBean WebBean_data[] = new WebBean[] {
           		new WebBean("name1","feq1","comment","utc","spotter","spooterUrl 1"),
           		new WebBean("name2","feq2","comment","utc","spotter","spooterUrl 2")
           };
@@ -129,7 +157,7 @@ public class DxClasterFragment2 extends Fragment {
    
           listView1 = (ListView) v.findViewById(R.id.listViewWeb);
    
-          listView1.setAdapter(adapter);
+          listView1.setAdapter(adapter);*/
           return v;
 		};
 	
