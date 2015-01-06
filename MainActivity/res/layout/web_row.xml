@@ -34,12 +34,12 @@
                 android:id="@+id/TextFreq"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="freq"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/TextUtc"
@@ -49,8 +49,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="utc"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/TextSpotter"
@@ -60,8 +59,8 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:text="spooter"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold" />
+                android:textColor="#FFFFFF" />
+
         </LinearLayout>
 
         <TextView
@@ -72,8 +71,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="comment"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
 
