@@ -12,39 +12,59 @@ import org.jsoup.select.Elements;
 import com.arekp.aklog.R;
 import com.arekp.aklog.RaportBean;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 
-public class WebAsync extends AsyncTask<String, Void, Void> {
+public class WebAsync extends AsyncTask<String, Void,  List<WebBean> > {
 
 	 private Document doc=null;
 	 private  List<WebBean> WebBean_data;
+	 private      WebAdapter adapter;
+	 private Context context=null;
+	 private ListView listView1;
+		private ProgressBar progres;
 	 
 	private static final String DEBUG_TAG = "WebAsync";
 	@Override
 	protected void onPreExecute() {
 		Log.d(DEBUG_TAG, "jestesmy w onPreExecute przed preference");
-	}
-	
-	@Override
-	protected Void doInBackground(String... arg0) {
-		// TODO Auto-generated method stub
-		getWebBean_data("test");
-		return null;
+		progres.setVisibility(View.VISIBLE);
 		
 	}
-	  @Override
-	    protected void onPostExecute(Void result) {
-		 
-	        super.onPostExecute(result);
-	    }
+	
+	public WebAsync(Context context,ListView listView2,ProgressBar progres1) {
+		this.context = context;
+		this.listView1 = listView2;
+		this.progres = progres1;
+	}
+
+	@Override
+	protected List<WebBean> doInBackground(String... params) {
+		// TODO Auto-generated method stub
+		String url=params[0];
+	 
+		 List<WebBean> tmp=null;
+		 tmp = getWebBean_data(url);
+			return tmp;
+	}
+	
+	  protected void onPostExecute(List<WebBean> result) {
+		  progres.setVisibility(View.GONE);
+	       // super.onPostExecute(result);
+	        adapter = new WebAdapter(this.context, R.layout.web_row, result);
+	        listView1.setAdapter(adapter);  
+	  }
 	  
 	  
-	  private void getWebBean_data(String Url){
+	  private List<WebBean> getWebBean_data(String url1){
 		  WebBean_data= new ArrayList<WebBean>();
-		  
+		  Log.e(DEBUG_TAG,"adres " + url1);
 		  try {
-				doc = Jsoup.connect("http://dxcluster.sdr-radio.com/top_250_ALL.html").get();
+				doc = Jsoup.connect(url1).get();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				 Log.e(DEBUG_TAG,"blad czytania " + e.getMessage());
@@ -63,22 +83,23 @@ public class WebAsync extends AsyncTask<String, Void, Void> {
       	     for (int i = 0; i < trs.size(); i++) {
       	         Elements tds = trs.get(i).select("td");
       	         trtd[i] = new String[tds.size()];
-      	  	     Log.e(DEBUG_TAG,"mamy kolumne");
+      	  //	     Log.e(DEBUG_TAG,"mamy kolumne");
       	  	//     Log.e(DEBUG_TAG,new String(null, tds.size()));
       	//	
      if(tds.size() == 5){
     	 WebBean w =new WebBean(tds.get(0).text(), tds.get(1).text(), tds.get(2).text(), tds.get(3).text(), "url", tds.get(4).text());
    	 WebBean_data.add(w);
-         	   Log.e(DEBUG_TAG,w.toString());
+         	//   Log.e(DEBUG_TAG,w.toString());
      }      
 /*   	         for (int j = 0; j < tds.size(); j++) {
       	           //  trtd[i][j] = tds.get(j).text(); 
       	             Log.e(DEBUG_TAG,tds.get(j).text());
       	         }*/
-   	      Log.e(DEBUG_TAG,"----------");
+   	  //    Log.e(DEBUG_TAG,"----------");
       	     }
       	     // trtd now contains the desired array for this table
       	 }
+      	 return WebBean_data;
 	  }
 
 }

@@ -94,46 +94,28 @@ public class DxClasterFragment2 extends Fragment {
 	                // An spinnerItem was selected. You can retrieve the selected item using
 	                // parent.getItemAtPosition(pos)
 	
-	        	 Log.e("WEB_SPIN",codeHash.get("ALL"));
-	        	
-				new WebAsync().execute();
-				
-		        		  WebBean WebBean_data[] = new WebBean[] {
+	        	 Log.e("WEB_SPIN",new Integer(pos).toString());
+//	        	 spin.getSelectedItem()
+	       	if (pos != 0){
+			 new WebAsync(v.getContext(), listView1,progres).execute(codeHash.get(spin.getSelectedItem().toString()));
+	        	}
+		 /*       		  WebBean WebBean_data[] = new WebBean[] {
           		new WebBean("name1","feq1","comment","utc","spotter","spooterUrl 1"),
           		new WebBean("name2","feq2","comment","utc","spotter","spooterUrl 2")
-          };    
+          }; */   
 		        		  
-		       //   adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data);
+		         // adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data);
 		          //  listView1 = (ListView) v.findViewById(R.id.listViewWeb);
-		            listView1.setAdapter(adapter);
+		         //   listView1.setAdapter(adapter);
 	         }
 
 	            public void onNothingSelected(AdapterView<?> parent) {
 	                // Do nothing, just another required interface callback
 	            }
 	           
-	  	
 
-	 //   web.getSettings().setJavaScriptEnabled(true);
-		//web.loadUrl(codeHash.get("ALL"));
-		// TextView dummyTextView = (TextView)
-		// v.findViewById(R.id.section_label);
-		// dummyTextView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
-	//return v;
 		});
 		
-/*		  WebBean WebBean_data[] = new WebBean[] {
-          		new WebBean("name1","feq1","comment","utc","spotter","spooterUrl 1"),
-          		new WebBean("name2","feq2","comment","utc","spotter","spooterUrl 2")
-          };
-          
-        WebAdapter adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data);
-      		  
-      		  
-   
-          listView1 = (ListView) v.findViewById(R.id.listViewWeb);
-   
-          listView1.setAdapter(adapter);*/
           return v;
 		};
 	

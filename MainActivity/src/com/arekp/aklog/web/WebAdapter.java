@@ -1,5 +1,8 @@
 package com.arekp.aklog.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.arekp.aklog.R;
 
 import android.content.Context;
@@ -15,16 +18,15 @@ public class WebAdapter extends ArrayAdapter<WebBean>{
 	
     Context context;
     int layoutResourceId;   
-    WebBean data[] = null;
+    List<WebBean> data = null;
  
-    public WebAdapter(Context context, int layoutResourceId, WebBean[] data) {
-        super(context, layoutResourceId, data);
+    public WebAdapter(Context context, int layoutResourceId,  List<WebBean> result) {
+        super(context, layoutResourceId, result);
         this.layoutResourceId = layoutResourceId;
         this.context = context;
-        this.data = data;
+        this.data = result;
     }
  
-    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
         RowBeanHolder holder = null;
@@ -50,7 +52,7 @@ public class WebAdapter extends ArrayAdapter<WebBean>{
             holder = (RowBeanHolder)row.getTag();
         }
  
-        WebBean object = data[position];
+        WebBean object = data.get(position);
         holder.Name.setText(object.Name);
         holder.Freq.setText(object.Freq);
         holder.UTC.setText(object.UTC);
