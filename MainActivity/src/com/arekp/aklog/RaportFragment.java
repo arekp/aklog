@@ -243,9 +243,13 @@ public void refreshList(Date data) {
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
-				.getMenuInfo();
-
+		//final AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+			//	.getMenuInfo();
+		// fragment kodu dzieki ktoremu sprawdzam dla ktorej listy jest menu
+		 final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+		 if (info.targetView.getParent() != getView().findViewById(R.id.listRaportu))
+		        return super.onContextItemSelected(item);
+		 //////////////////////////
 		switch (item.getItemId()) {
 
 		case R.id.menudetal:

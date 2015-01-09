@@ -57,5 +57,6 @@
     <string name="menudetal">Szczególy</string>
     <string name="title_activity_edit_list">EditListActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="pdane">Przenieś dane</string>
 
 </resources>

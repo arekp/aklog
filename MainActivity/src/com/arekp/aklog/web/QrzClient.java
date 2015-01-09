@@ -100,6 +100,7 @@ public class QrzClient extends AsyncTask<String, Void, Void> {
 	}
 
 	public QrzClient(Context context) {
+		Log.d(DEBUG_TAG, "jestesmy w konstruktorze qrz");
 		this.context = context;
 	}
 

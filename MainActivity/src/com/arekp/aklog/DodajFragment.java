@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import com.arekp.aklog.web.WebBean;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +31,7 @@ public class DodajFragment extends Fragment {
 	 */
 	public static final String ARG_SECTION_NUMBER = "section_number";
 	SharedPreferences zapisane_ustawienia;
-
+	private static final String DEBUG_TAG = "DodajFragment";
 	private TextView textCzasDodaj;
 
 	private Handler mHandler = new Handler();
@@ -54,6 +56,10 @@ public class DodajFragment extends Fragment {
 		}*/
 		//w celu spersonalizowania actionbar
 		setHasOptionsMenu(true);
+		
+/*		  Bundle args = getArguments();
+		  WebBean aa = (WebBean) args.getSerializable("arek");
+			Log.e(DEBUG_TAG,aa.getName());*/
 		return v;
 	}
 

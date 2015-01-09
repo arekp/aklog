@@ -1,7 +1,9 @@
 package com.arekp.aklog.web;
 
-public class WebBean {
+import java.io.Serializable;
 
+public class WebBean implements Serializable {
+	private static final long serialVersionUID = -2163051469151804394L;
 	public WebBean(String name, String freq, String uTC, String spotter,
 			String spotterUrl, String comment) {
 		super();
