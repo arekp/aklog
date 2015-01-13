@@ -36,12 +36,13 @@ public class DodajFragment extends Fragment {
 
 	private Handler mHandler = new Handler();
 	
-	public DodajFragment() {
-	}
+	 public DodajFragment() {
+		 Log.d(DEBUG_TAG ,"Jestesmy w konstruktorze");
+	 }
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater,
-			final ViewGroup container, final Bundle savedInstanceState) {
+		final ViewGroup container, final Bundle savedInstanceState) {
 		final View v = inflater.inflate(R.layout.fragment_main_dummy, null);
 		zapisane_ustawienia = PreferenceManager.getDefaultSharedPreferences(v.getContext());
 	 textCzasDodaj = (TextView) v.findViewById(R.id.textCzasDodaj);

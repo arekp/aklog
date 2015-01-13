@@ -16,6 +16,7 @@ import com.arekp.aklog.web.WebAsync;
 import com.arekp.aklog.web.WebBean;
 
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -108,7 +109,7 @@ public class DxClasterFragment2 extends Fragment {
 
 		listView1 = (ListView) v.findViewById(R.id.listViewWeb);
 
-		// Podpinamy menu pod liste
+	// Podpinamy menu pod liste
 		registerForContextMenu(listView1);
 
 		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -182,13 +183,14 @@ public class DxClasterFragment2 extends Fragment {
 
 		case R.id.menuusun1:
 			// detal(przykladowe_dane2.get(info.position));
-			Bundle args = new Bundle();
-			args.putSerializable("arek", WebBean_data1.get(info1.position));
+		// Bundle args = new Bundle(); 
+		// args.putSerializable("arek", WebBean_data1.get(info1.position));
 			Fragment toFragment = new DodajFragment();
-			toFragment.setArguments(args);
-			//Fragment.instantiate(v.getContext(),DodajFragment.class.getName(),args).;
-			//return toFragment;
-			 getFragmentManager().beginTransaction().replace(this.getId(), toFragment, "arek").addToBackStack("arek").commit();
+	 //	toFragment.setArguments(args);
+			final android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction(); 
+			ft.replace(R.id.pager, toFragment); 
+			//ft.addToBackStack(null);
+			ft.commit(); 
 			
 			Log.e(DEBUG_TAG,"w pierwszym kroku");
 			break;
