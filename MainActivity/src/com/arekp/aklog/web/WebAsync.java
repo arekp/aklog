@@ -86,7 +86,9 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 			// TODO Auto-generated catch block
 			Log.e(DEBUG_TAG, "blad czytania " + e.getMessage());
 			e.printStackTrace();
-
+			WebBean w = new WebBean("Problem z połaczeniem","Data error","","","","");
+			WebBean_data.add(w);
+			return WebBean_data;
 		}
 		Elements tables = doc.select("tbody");
 		// Log.e(DEBUG_TAG,"mamy tablice" + doc.html());

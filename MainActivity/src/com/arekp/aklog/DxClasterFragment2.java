@@ -143,18 +143,21 @@ public class DxClasterFragment2 extends Fragment {
 					catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						WebBean_data1=null;
 					}
 					catch (ExecutionException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						WebBean_data1=null;
 					}
 
 					Log.e(DEBUG_TAG, "Wilekosc adaptera: " + new Integer(WebBean_data1.size()).toString());
-
+if (!WebBean_data1.isEmpty()){
 					adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data1);
 					listView1 = (ListView) v.findViewById(R.id.listViewWeb);
 					listView1.setAdapter(adapter);
 					// adapter = (WebAdapter) listView1.getAdapter();
+				}
 				}
 			}
 
