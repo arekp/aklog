@@ -118,8 +118,7 @@ public class DxClasterFragment2 extends Fragment {
 
 		listView1 = (ListView) v.findViewById(R.id.listViewWeb);
 
-	// Podpinamy menu pod liste
-		registerForContextMenu(listView1);
+
 
 		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			// **
@@ -133,6 +132,7 @@ public class DxClasterFragment2 extends Fragment {
 				// parent.getItemAtPosition(pos)
 				Log.d(DEBUG_TAG, "Wybrana pozycja listy "+new Integer(pos).toString());
 				
+				//progres.setVisibility(View.VISIBLE);
 				// spin.getSelectedItem()
 				if (pos != 0) {
 					try {
@@ -172,6 +172,9 @@ public class DxClasterFragment2 extends Fragment {
 				add(WebBean_data1.get(pos));
 			}
 		});
+		
+		// Podpinamy menu pod liste
+		registerForContextMenu(listView1);
 		
 		return v;
 	};

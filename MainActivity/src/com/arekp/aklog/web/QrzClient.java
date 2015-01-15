@@ -306,6 +306,7 @@ public class QrzClient extends AsyncTask<String, Void, Void> {
 			Log.d(DEBUG_TAG, "Przed sprawdzeniem klucza: " + sessionid);
 			if (sessionid.equals("")) {
 				sess = getkey(params[0], params[1], params[2]);
+				sess = getkey(sess.getKey(), "", params[2]); // dodane aby od razy wystawic dane od razu z automatyczna autoryzacja
 			} else {
 				Log.d(DEBUG_TAG, "Przed pobraniem danych: " + sessionid);
 				sess = getkey(sessionid, "", params[2]);

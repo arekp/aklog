@@ -40,12 +40,15 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 
 	@Override
 	protected void onPreExecute() {
+		 super.onPreExecute();
 		Log.d(DEBUG_TAG, "jestesmy w onPreExecute przed preference");
 		progres.setVisibility(View.VISIBLE);
-
+		
+		
 	}
 
 	public WebAsync(Context context, ListView listView2, ProgressBar progres1) {
+		Log.d(DEBUG_TAG, "jestesmy w konstruktorze");
 		this.context = context;
 		// this.listView1 = listView2;
 		 this.progres = progres1;
@@ -54,6 +57,7 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 
 	@Override
 	protected List<WebBean> doInBackground(String... params) {
+		Log.d(DEBUG_TAG, "WYKONUJEMY");
 		// TODO Auto-generated method stub
 		String url = params[0];
 
@@ -63,7 +67,9 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 	}
 
 	protected void onPostExecute(List<WebBean> result) {
+		Log.d(DEBUG_TAG, "Wydalamy dane");
 		progres.setVisibility(View.GONE);
+
 		// super.onPostExecute(result);
 		// adapter = new WebAdapter(this.context, R.layout.web_row, result);
 		// listView1.setAdapter(adapter);
