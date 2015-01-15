@@ -1,8 +1,11 @@
 package com.arekp.aklog;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.ExecutionException;
 
 import org.jsoup.Jsoup;
@@ -10,12 +13,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.arekp.aklog.database.RaportDbAdapter;
 import com.arekp.aklog.web.QrzClient;
 import com.arekp.aklog.web.WebAdapter;
 import com.arekp.aklog.web.WebAsync;
 import com.arekp.aklog.web.WebBean;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -38,9 +43,12 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
@@ -182,15 +190,7 @@ public class DxClasterFragment2 extends Fragment {
 		switch (item.getItemId()) {
 
 		case R.id.menuusun1:
-			// detal(przykladowe_dane2.get(info.position));
-		// Bundle args = new Bundle(); 
-		// args.putSerializable("arek", WebBean_data1.get(info1.position));
-			Fragment toFragment = new DodajFragment();
-	 //	toFragment.setArguments(args);
-			final android.support.v4.app.FragmentTransaction ft = getFragmentManager().beginTransaction(); 
-			ft.replace(R.id.pager, toFragment); 
-			//ft.addToBackStack(null);
-			ft.commit(); 
+	add(WebBean_data1.get(info1.position));
 			
 			Log.e(DEBUG_TAG,"w pierwszym kroku");
 			break;
@@ -237,5 +237,81 @@ public class DxClasterFragment2 extends Fragment {
 
 	public void setValue(int progress) {
 		this.progres.setProgress(progress);
+	}
+	
+	public void add(WebBean rap) {
+	final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		
+		if (zapisane_ustawienia.getBoolean("utm_checkbox", false)){
+		sdf.setTimeZone(TimeZone.getTimeZone("Zulu"));
+		}
+		
+		final Dialog dialog = new Dialog(v.getContext());
+		dialog.setContentView(R.layout.dialog_edit);
+		dialog.setTitle("Edit");
+
+		final EditText band = (EditText) dialog.findViewById(R.id.editBand);
+		final EditText callSign = (EditText) dialog.findViewById(R.id.editCallsign);
+		final EditText rstR = (EditText) dialog.findViewById(R.id.editRstR);
+		final EditText rstS = (EditText) dialog.findViewById(R.id.editRstS);
+		final EditText note = (EditText) dialog.findViewById(R.id.editNote);
+		final Spinner mode = (Spinner) dialog.findViewById(R.id.mode1Spin);
+		final TextView textCzasDodaj = (TextView) dialog.findViewById(R.id.textCzasDodaj);
+		final TextView id = (TextView) dialog.findViewById(R.id.edit_id);
+		final ImageButton ok = (ImageButton) dialog.findViewById(R.id.buttonListaExport1);
+		
+		band.setText(rap.getFreq().replaceAll("\\s+",""));
+		callSign.setText(rap.getName().replaceAll("\\s+",""));
+		rstR.setText("");
+		rstS.setText("");
+	//	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//id_tmp=rap.getId();
+		textCzasDodaj.setText("Data bedzie godzina zapisu");
+		//mode.setSelection(getIndex(mode, rap.getMode()));
+		//mode.setSelection(getIndex(mode, rap.getMode()));
+		note.setText(rap.getComment().replaceAll("\\s+",""));
+		ok.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+
+				if (band.getText().toString().equals("")) {
+					Log.e("Dodawanie1", "band" + band.getText().toString());
+					Toast.makeText(v.getContext(), "Frequency nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				} else if (callSign.getText().toString().isEmpty()) {
+					Log.e("Dodawanie2", "call" + callSign.getText().toString());
+					Toast.makeText(v.getContext(), "Callsign nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				} else if (rstR.getText().toString().isEmpty()) {
+					Log.e("Dodawanie2", "call" + callSign.getText().toString());
+					Toast.makeText(v.getContext(), "rstt nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				} else if (rstS.getText().toString().isEmpty()) {
+					Log.e("Dodawanie2", "call" + callSign.getText().toString());
+					Toast.makeText(v.getContext(), "rstS nie może być puste",
+							Toast.LENGTH_SHORT).show();
+				}else {
+					String currentDateandTime = sdf.format(new Date());
+					
+					RaportBean rap = new RaportBean(0,band.getText().toString(), mode.getSelectedItem().toString(), currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
+					RaportDbAdapter    Raportdb = new RaportDbAdapter(v.getContext());
+				    Raportdb.open();
+				    Raportdb.insertRaport(rap);
+				    Raportdb.close();
+				    
+/*					RaportBean rap = new RaportBean(id_tmp,band.getText().toString(), mode.getSelectedItem().toString(), textCzasDodaj.getText().toString(), callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
+	
+			    Raportdb.open();
+			    Raportdb.updateRaport(rap);
+			    Raportdb.close();
+			    refreshList(null);*/
+			    dialog.cancel();
+			}}
+		});
+
+		
+		dialog.show();
 	}
 }
