@@ -51,6 +51,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class DxClasterFragment2 extends Fragment {
 	/**
@@ -125,7 +126,9 @@ public class DxClasterFragment2 extends Fragment {
 			// Called when a new item is selected (in the Spinner)
 			// *
 			// WebBean_data = (List<WebBean>) listView1.getAdapter();
+			
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+			//	progres.setVisibility(View.VISIBLE);
 				// An spinnerItem was selected. You can retrieve the selected item using
 				// parent.getItemAtPosition(pos)
 				Log.d(DEBUG_TAG, "Wybrana pozycja listy "+new Integer(pos).toString());
@@ -133,7 +136,7 @@ public class DxClasterFragment2 extends Fragment {
 				// spin.getSelectedItem()
 				if (pos != 0) {
 					try {
-						progres.setVisibility(View.VISIBLE);
+			
 						WebBean_data1 = (List<WebBean>) new WebAsync(v.getContext(), listView1, progres).execute(
 								codeHash.get(spin.getSelectedItem().toString())).get();
 					}
@@ -159,8 +162,17 @@ public class DxClasterFragment2 extends Fragment {
 				// Do nothing, just another required interface callback
 			}
 
+			
 		});
+		listView1.setOnItemClickListener(new OnItemClickListener() {
 
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+					long arg3) {
+				add(WebBean_data1.get(pos));
+			}
+		});
+		
 		return v;
 	};
 
@@ -270,7 +282,7 @@ public class DxClasterFragment2 extends Fragment {
 		textCzasDodaj.setText("Data bedzie godzina zapisu");
 		//mode.setSelection(getIndex(mode, rap.getMode()));
 		//mode.setSelection(getIndex(mode, rap.getMode()));
-		note.setText(rap.getComment().replaceAll("\\s+",""));
+		note.setText("");
 		ok.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

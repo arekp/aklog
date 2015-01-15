@@ -91,7 +91,9 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 			// Log.e("WEB_SPIN table",trs.size());
 			String[][] trtd = new String[trs.size()][];
 			// for (Element tableRow : trs){
-			for (int i = 0; i < trs.size(); i++) {
+			int wiersze =0;
+			if (trs.size() > 20) wiersze=20; else wiersze=trs.size();
+			for (int i = 0; i < wiersze; i++) {
 				Elements tds = trs.get(i).select("td");
 				trtd[i] = new String[tds.size()];
 				// Log.e(DEBUG_TAG,"mamy kolumne");
