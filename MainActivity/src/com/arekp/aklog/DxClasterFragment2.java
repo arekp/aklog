@@ -58,6 +58,7 @@ public class DxClasterFragment2 extends Fragment {
 	 * The fragment argument representing the section number for this fragment.
 	 */
 	public static final String ARG_SECTION_NUMBER = "section_number";
+
 	private static final String DEBUG_TAG = "DxClasterFragment2";
 
 	private WebView web;
@@ -75,6 +76,8 @@ public class DxClasterFragment2 extends Fragment {
 	private List<WebBean> WebBean_data1 = null;
 
 	SharedPreferences zapisane_ustawienia;
+
+	private WebBean bean;
 
 	private View v;
 
@@ -108,7 +111,7 @@ public class DxClasterFragment2 extends Fragment {
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		init();
-	 v = inflater.inflate(R.layout.fragment_dx_claster_dummy2, null);
+		v = inflater.inflate(R.layout.fragment_dx_claster_dummy2, null);
 		spin = (Spinner) v.findViewById(R.id.web_spinner);
 
 		zapisane_ustawienia = PreferenceManager.getDefaultSharedPreferences(v.getContext());
@@ -118,67 +121,48 @@ public class DxClasterFragment2 extends Fragment {
 
 		listView1 = (ListView) v.findViewById(R.id.listViewWeb);
 
-
-
 		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			// **
 			// Called when a new item is selected (in the Spinner)
 			// *
 			// WebBean_data = (List<WebBean>) listView1.getAdapter();
-			
+
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-			//	progres.setVisibility(View.VISIBLE);
+				// progres.setVisibility(View.VISIBLE);
 				// An spinnerItem was selected. You can retrieve the selected item using
 				// parent.getItemAtPosition(pos)
-				Log.d(DEBUG_TAG, "Wybrana pozycja listy "+new Integer(pos).toString());
-				
-				//progres.setVisibility(View.VISIBLE);
-				// spin.getSelectedItem()
+				Log.d(DEBUG_TAG, "Wybrana pozycja listy " + new Integer(pos).toString());
+ 
 				if (pos != 0) {
-					try {
-			
-						WebBean_data1 = (List<WebBean>) new WebAsync(v.getContext(), listView1, progres).execute(
-								codeHash.get(spin.getSelectedItem().toString())).get();
-					}
-					catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						WebBean_data1=null;
-					}
-					catch (ExecutionException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						WebBean_data1=null;
-					}
-
-					Log.e(DEBUG_TAG, "Wilekosc adaptera: " + new Integer(WebBean_data1.size()).toString());
-if (!WebBean_data1.isEmpty()){
-					adapter = new WebAdapter(v.getContext(), R.layout.web_row, WebBean_data1);
-					listView1 = (ListView) v.findViewById(R.id.listViewWeb);
-					listView1.setAdapter(adapter);
-					// adapter = (WebAdapter) listView1.getAdapter();
+		 
+					new WebAsync(v.getContext(), listView1, progres).execute(codeHash.get(spin.getSelectedItem()
+							.toString()));
+				 
 				}
-				}
+			 
 			}
 
 			public void onNothingSelected(AdapterView<?> parent) {
 				// Do nothing, just another required interface callback
 			}
 
-			
 		});
 		listView1.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
-					long arg3) {
-				add(WebBean_data1.get(pos));
+			public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
+
+		 
+				bean = (WebBean) listView1.getItemAtPosition(pos);
+	  
+				Log.d(DEBUG_TAG, "mamy beana " + bean.getName());
+				add(bean);
 			}
 		});
-		
+
 		// Podpinamy menu pod liste
 		registerForContextMenu(listView1);
-		
+
 		return v;
 	};
 
@@ -189,58 +173,61 @@ if (!WebBean_data1.isEmpty()){
 		inflater.inflate(R.menu.listraport_context_web, menuWeb);
 
 		AdapterContextMenuInfo info1 = (AdapterContextMenuInfo) menuInfoWeb;
-		Log.e(DEBUG_TAG, "Wybrana nazwa z web "+WebBean_data1.get(info1.position).getName());
-		menuWeb.setHeaderTitle(WebBean_data1.get(info1.position).getName());
-
+		WebBean bean = (WebBean) listView1.getItemAtPosition(info1.position);
+		Log.e(DEBUG_TAG, "Wybrana nazwa z web " + bean.getName());
+		menuWeb.setHeaderTitle(bean.getName());
+  
 	}
 
 	@Override
 	public boolean onContextItemSelected(final MenuItem item) {
 		// fragment kodu dzieki ktoremu sprawdzam dla ktorej listy jest menu
 		Log.e(DEBUG_TAG, "onContextItemSelected");
-		  final AdapterView.AdapterContextMenuInfo info1 = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-		 if (info1.targetView.getParent() != getView().findViewById(R.id.listViewWeb))
-		        return super.onContextItemSelected(item);
-		 
-		Log.e(DEBUG_TAG, "Wybrana z menu "+item.getItemId());
-		//final AdapterContextMenuInfo info1 = (AdapterContextMenuInfo) item.getMenuInfo();
+		final AdapterView.AdapterContextMenuInfo info1 = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+		if (info1.targetView.getParent() != getView().findViewById(R.id.listViewWeb))
+			return super.onContextItemSelected(item);
+
+		Log.e(DEBUG_TAG, "Wybrana z menu " + item.getItemId());
+	 
 
 		switch (item.getItemId()) {
 
 		case R.id.menuusun1:
-	add(WebBean_data1.get(info1.position));
-			
-			Log.e(DEBUG_TAG,"w pierwszym kroku");
+			bean = (WebBean) listView1.getItemAtPosition(info1.position);
+			add(bean);
+
+			Log.e(DEBUG_TAG, "w pierwszym kroku");
 			break;
 		case R.id.menuqrz1:
-			String a = WebBean_data1.get(info1.position).getName().replaceAll("\\s+","");
-					Log.e(DEBUG_TAG, "Wybrana nazwa z web w qrz "+a);
-					
-					if (zapisane_ustawienia.getBoolean("qrzsynch", false)) {
+			bean = (WebBean) listView1.getItemAtPosition(info1.position);
+			String a = bean.getName().replaceAll("\\s+", "");
+			Log.e(DEBUG_TAG, "Wybrana nazwa z web w qrz " + a);
+
+			if (zapisane_ustawienia.getBoolean("qrzsynch", false)) {
 				new QrzClient(v.getContext()).execute(zapisane_ustawienia.getString("qrzLogin", null),
-						zapisane_ustawienia.getString("qrzPasswd", null),a);
+						zapisane_ustawienia.getString("qrzPasswd", null), a);
 			}
 			else {
-				String url = "http://www.qrz.com/db/" +a;
+				String url = "http://www.qrz.com/db/" + a;
 				Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 				startActivity(intent);
 			}
 			break;
-	//	case R.id.menuusun1:
-			/*
-			 * AlertDialog.Builder alertDialog2 = new AlertDialog.Builder( v.getContext()); // Setting Dialog Title
-			 * alertDialog2.setTitle("Potwierdz usuniecie..."); // Setting Dialog Message alertDialog2
-			 * .setMessage("Na pewno chcesz usunac ten wpis " + przykladowe_dane2.get(info.position) .getCallsign() +
-			 * " " + przykladowe_dane2.get(info.position) .getFrequency() + "?"); alertDialog2.setPositiveButton("YES",
-			 * new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int which) { // Write
-			 * your code here to execute after dialog Raportdb.open(); Raportdb.deleteTodo(przykladowe_dane2.get(
-			 * info.position).getId()); Raportdb.close(); refreshList(null); } }); // Setting Negative "NO" Btn
-			 * alertDialog2.setNegativeButton("NO", new DialogInterface.OnClickListener() { public void
-			 * onClick(DialogInterface dialog, int which) { // Write your code here to execute after dialog
-			 * dialog.cancel(); } }); // Showing Alert Dialog alertDialog2.show();
-			 */
+		// case R.id.menuusun1:
+		/*
+		 * AlertDialog.Builder alertDialog2 = new AlertDialog.Builder( v.getContext()); // Setting Dialog Title
+		 * alertDialog2.setTitle("Potwierdz usuniecie..."); // Setting Dialog Message alertDialog2
+		 * .setMessage("Na pewno chcesz usunac ten wpis " + przykladowe_dane2.get(info.position) .getCallsign() + " " +
+		 * przykladowe_dane2.get(info.position) .getFrequency() + "?"); alertDialog2.setPositiveButton("YES", new
+		 * DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int which) { // Write your
+		 * code here to execute after dialog Raportdb.open(); Raportdb.deleteTodo(przykladowe_dane2.get(
+		 * info.position).getId()); Raportdb.close(); refreshList(null); } }); // Setting Negative "NO" Btn
+		 * alertDialog2.setNegativeButton("NO", new DialogInterface.OnClickListener() { public void
+		 * onClick(DialogInterface dialog, int which) { // Write your code here to execute after dialog dialog.cancel();
+		 * } }); // Showing Alert Dialog alertDialog2.show();
+		 */
 
-		//	break;
+		// break;
 
 		default:
 			break;
@@ -256,15 +243,14 @@ if (!WebBean_data1.isEmpty()){
 	public void setValue(int progress) {
 		this.progres.setProgress(progress);
 	}
-	
+
 	public void add(WebBean rap) {
-	final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		
-		if (zapisane_ustawienia.getBoolean("utm_checkbox", false)){
-		sdf.setTimeZone(TimeZone.getTimeZone("Zulu"));
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		if (zapisane_ustawienia.getBoolean("utm_checkbox", false)) {
+			sdf.setTimeZone(TimeZone.getTimeZone("Zulu"));
 		}
-		
+
 		final Dialog dialog = new Dialog(v.getContext());
 		dialog.setContentView(R.layout.dialog_edit);
 		dialog.setTitle("Edit");
@@ -278,58 +264,59 @@ if (!WebBean_data1.isEmpty()){
 		final TextView textCzasDodaj = (TextView) dialog.findViewById(R.id.textCzasDodaj);
 		final TextView id = (TextView) dialog.findViewById(R.id.edit_id);
 		final ImageButton ok = (ImageButton) dialog.findViewById(R.id.buttonListaExport1);
-		
-		band.setText(rap.getFreq().replaceAll("\\s+",""));
-		callSign.setText(rap.getName().replaceAll("\\s+",""));
+
+		band.setText(rap.getFreq().replaceAll("\\s+", ""));
+		callSign.setText(rap.getName().replaceAll("\\s+", ""));
 		rstR.setText("");
 		rstS.setText("");
-	//	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		//id_tmp=rap.getId();
+ 
 		textCzasDodaj.setText("Data bedzie godzina zapisu");
-		//mode.setSelection(getIndex(mode, rap.getMode()));
-		//mode.setSelection(getIndex(mode, rap.getMode()));
+ 
 		note.setText("");
 		ok.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 
 				if (band.getText().toString().equals("")) {
 					Log.e("Dodawanie1", "band" + band.getText().toString());
-					Toast.makeText(v.getContext(), "Frequency nie może być puste",
-							Toast.LENGTH_SHORT).show();
-				} else if (callSign.getText().toString().isEmpty()) {
+					Toast.makeText(v.getContext(), "Frequency nie może być puste", Toast.LENGTH_SHORT).show();
+				}
+				else if (callSign.getText().toString().isEmpty()) {
 					Log.e("Dodawanie2", "call" + callSign.getText().toString());
-					Toast.makeText(v.getContext(), "Callsign nie może być puste",
-							Toast.LENGTH_SHORT).show();
-				} else if (rstR.getText().toString().isEmpty()) {
+					Toast.makeText(v.getContext(), "Callsign nie może być puste", Toast.LENGTH_SHORT).show();
+				}
+				else if (rstR.getText().toString().isEmpty()) {
 					Log.e("Dodawanie2", "call" + callSign.getText().toString());
-					Toast.makeText(v.getContext(), "rstt nie może być puste",
-							Toast.LENGTH_SHORT).show();
-				} else if (rstS.getText().toString().isEmpty()) {
+					Toast.makeText(v.getContext(), "rstt nie może być puste", Toast.LENGTH_SHORT).show();
+				}
+				else if (rstS.getText().toString().isEmpty()) {
 					Log.e("Dodawanie2", "call" + callSign.getText().toString());
-					Toast.makeText(v.getContext(), "rstS nie może być puste",
-							Toast.LENGTH_SHORT).show();
-				}else {
+					Toast.makeText(v.getContext(), "rstS nie może być puste", Toast.LENGTH_SHORT).show();
+				}
+				else {
 					String currentDateandTime = sdf.format(new Date());
-					
-					RaportBean rap = new RaportBean(0,band.getText().toString(), mode.getSelectedItem().toString(), currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
-					RaportDbAdapter    Raportdb = new RaportDbAdapter(v.getContext());
-				    Raportdb.open();
-				    Raportdb.insertRaport(rap);
-				    Raportdb.close();
-				    
-/*					RaportBean rap = new RaportBean(id_tmp,band.getText().toString(), mode.getSelectedItem().toString(), textCzasDodaj.getText().toString(), callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(), note.getText().toString());
-	
-			    Raportdb.open();
-			    Raportdb.updateRaport(rap);
-			    Raportdb.close();
-			    refreshList(null);*/
-			    dialog.cancel();
-			}}
+
+					RaportBean rap = new RaportBean(0, band.getText().toString(), mode.getSelectedItem().toString(),
+							currentDateandTime, callSign.getText().toString(), rstS.getText().toString(), rstR
+									.getText().toString(), note.getText().toString());
+					RaportDbAdapter Raportdb = new RaportDbAdapter(v.getContext());
+					Raportdb.open();
+					Raportdb.insertRaport(rap);
+					Raportdb.close();
+
+					/*
+					 * RaportBean rap = new RaportBean(id_tmp,band.getText().toString(),
+					 * mode.getSelectedItem().toString(), textCzasDodaj.getText().toString(),
+					 * callSign.getText().toString(), rstS.getText().toString(), rstR.getText().toString(),
+					 * note.getText().toString()); Raportdb.open(); Raportdb.updateRaport(rap); Raportdb.close();
+					 * refreshList(null);
+					 */
+					dialog.cancel();
+				}
+			}
 		});
 
-		
 		dialog.show();
 	}
 }
