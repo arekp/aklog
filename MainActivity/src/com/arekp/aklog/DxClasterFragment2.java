@@ -86,7 +86,7 @@ public class DxClasterFragment2 extends Fragment {
 	public static void init() {
 		codeHash.put("Wybierz Czestotliwość", "http://dxcluster.sdr-radio.com/top_250_ALL.html");
 		codeHash.put("ALL", "http://dxcluster.sdr-radio.com/top_250_ALL.html");
-		codeHash.put("HF", "http://dxcluster.sdr-radio.com/top_250_HF.html");
+		codeHash.put("HF", "http://dxcluster.sdr-radio.com/top_250_HF.html");		
 		codeHash.put("137kHz", "http://dxcluster.sdr-radio.com/top_250_137_kHz.html");
 		codeHash.put("1.8MHz", "http://dxcluster.sdr-radio.com/top_250_1.8_MHz.html");
 		codeHash.put("3.5MHz", "http://dxcluster.sdr-radio.com/top_250_3.5_MHz.html");
@@ -103,6 +103,21 @@ public class DxClasterFragment2 extends Fragment {
 		codeHash.put("144MHz", "http://dxcluster.sdr-radio.com/top_250_144_MHz.html");
 		codeHash.put("220MHz", "http://dxcluster.sdr-radio.com/top_250_220_MHz.html");
 		codeHash.put("430MHz", "http://dxcluster.sdr-radio.com/top_250_430_MHz.html");
+		
+		    codeHash.put("HF_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=HF");
+			codeHash.put("1.8MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=1.8MHz");
+			codeHash.put("3.5MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=3.5MHz");
+			codeHash.put("7MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=7MHz");
+			codeHash.put("10MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=10MHz");
+			codeHash.put("14MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=14MHz");
+			codeHash.put("18MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=18MHz");
+			codeHash.put("21MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=21MHz");
+			codeHash.put("24MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=24MHz");
+			codeHash.put("28MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=28MHz");
+			codeHash.put("50MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=50MHz");
+			codeHash.put("70MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=70MHz");
+			codeHash.put("144MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=144MHz");
+			codeHash.put("430MHz_dxsummit","http://www.dxsummit.fi/api/v1/spots?include=430MHz");
 	}
 
 	public DxClasterFragment2() {
