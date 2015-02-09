@@ -135,7 +135,10 @@ public class DxClasterFragment2 extends Fragment {
 
 		listView1 = (ListView) v.findViewById(R.id.listViewWeb);
 		auto = (CheckBox) v.findViewById(R.id.checkBoxAuto);
-		if (auto.isChecked() || auto.isClickable()){
+		if (auto.isClickable()){
+			handler.removeCallbacks(refreshRunnable);
+		}
+		if (auto.isChecked() && auto.isClickable()){
 			handler.postDelayed(refreshRunnable, 10000);
 			 
 		Log.d(DEBUG_TAG,"Wywolujemy dane pod spodem");
