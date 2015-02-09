@@ -28,6 +28,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -43,6 +44,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -61,7 +63,7 @@ public class DxClasterFragment2 extends Fragment {
 
 	private static final String DEBUG_TAG = "DxClasterFragment2";
 
-	private WebView web;
+
 
 	private ProgressBar progres;
 
@@ -69,11 +71,8 @@ public class DxClasterFragment2 extends Fragment {
 
 	private ListView listView1;
 
-	private WebAdapter adapter;
-
-	private Document doc = null;
-
-	private List<WebBean> WebBean_data1 = null;
+	  private CheckBox auto;
+	  private final Handler handler = new Handler();
 
 	SharedPreferences zapisane_ustawienia;
 
@@ -135,7 +134,13 @@ public class DxClasterFragment2 extends Fragment {
 		progres.setVisibility(View.GONE);
 
 		listView1 = (ListView) v.findViewById(R.id.listViewWeb);
-
+		auto = (CheckBox) v.findViewById(R.id.checkBoxAuto);
+		if (auto.isChecked() || auto.isClickable()){
+			handler.postDelayed(refreshRunnable, 10000);
+			 
+		Log.d(DEBUG_TAG,"Wywolujemy dane pod spodem");
+		}
+		
 		spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			// **
 			// Called when a new item is selected (in the Spinner)
@@ -150,7 +155,7 @@ public class DxClasterFragment2 extends Fragment {
  
 				if (pos != 0) {
 		 
-					new WebAsync(v.getContext(), listView1, progres).execute(codeHash.get(spin.getSelectedItem()
+					new WebAsync(v.getContext(), listView1, progres,spin).execute(codeHash.get(spin.getSelectedItem()
 							.toString()));
 				 
 				}
@@ -181,6 +186,13 @@ public class DxClasterFragment2 extends Fragment {
 		return v;
 	};
 
+	private final Runnable refreshRunnable = new Runnable() {
+	     public void run() {
+	    	 new WebAsync(v.getContext(), listView1, progres,spin).execute(codeHash.get(spin.getSelectedItem().toString()));
+	         handler.postDelayed(refreshRunnable, 10000);
+	     }
+	 };
+		  
 	@Override
 	public void onCreateContextMenu(ContextMenu menuWeb, View v, ContextMenuInfo menuInfoWeb) {
 		MenuInflater inflater = getActivity().getMenuInflater();

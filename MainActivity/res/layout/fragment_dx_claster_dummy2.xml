@@ -1,6 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-  
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -20,31 +19,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+        <Spinner
+            android:id="@+id/web_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/ListaSpinerWeb" />
 
-            <Spinner
-                android:id="@+id/web_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/ListaSpinerWeb" />
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="Wczytuje !!" />
 
-            <ProgressBar
-                android:id="@+id/progressBar1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="Wczytuje !!" />
-
-        </LinearLayout>
-
-  <!--        <WebView
+        <!--
+              <WebView
             android:id="@+id/webView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
--->            
+        -->
     </LinearLayout>
 
     <ListView
@@ -55,5 +48,13 @@
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="18dp" >
     </ListView>
+
+    <CheckBox
+        android:id="@+id/checkBoxAuto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edit_id"
+        android:layout_alignParentRight="true"
+        android:text="Auto odswierzanie" />
 
 </RelativeLayout>

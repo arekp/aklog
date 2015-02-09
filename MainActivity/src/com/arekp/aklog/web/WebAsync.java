@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 
@@ -44,6 +45,7 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 	private ListView listView1;
 
 	private ProgressBar progres;
+	private Spinner spin;
 
 	  private final static int GET = 1;
 	  private final static int POST = 2;
@@ -56,15 +58,16 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 		 super.onPreExecute();
 		Log.d(DEBUG_TAG, "jestesmy w onPreExecute przed preference");
 		progres.setVisibility(View.VISIBLE);
-		
+		spin.setVisibility(View.GONE);
 		
 	}
 
-	public WebAsync(Context context, ListView listView2, ProgressBar progres1) {
+	public WebAsync(Context context, ListView listView2, ProgressBar progres1, Spinner spin1 ) {
 		Log.d(DEBUG_TAG, "jestesmy w konstruktorze");
 		this.context = context;
 		this.listView1 = listView2;
-	
+		 this.spin = spin1;
+
 		 this.progres = progres1;
 
 	}
@@ -89,6 +92,7 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
 	protected void onPostExecute(List<WebBean> result) {
 		Log.d(DEBUG_TAG, "Wydalamy dane");
 		progres.setVisibility(View.GONE);
+		spin.setVisibility(View.VISIBLE);
 		WebBean_data = result;
 		// super.onPostExecute(result);
 		 adapter = new WebAdapter(this.context, R.layout.web_row, result);
