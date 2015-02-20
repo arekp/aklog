@@ -10,7 +10,11 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -174,14 +178,24 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
               //      url += "?" + paramString;
               //  }
                 HttpGet httpGet = new HttpGet(url);
- 
+                HttpParams httpParameters = new BasicHttpParams();
+                HttpConnectionParams.setConnectionTimeout(httpParameters, 30000);
+                HttpConnectionParams.setSoTimeout(httpParameters, 30000);
+                
+                httpClient = new DefaultHttpClient(httpParameters);
+                
                 httpResponse = httpClient.execute(httpGet);
  
             }
             httpEntity = httpResponse.getEntity();
             response = EntityUtils.toString(httpEntity);
  
-        } catch (UnsupportedEncodingException e) {
+        }catch (ConnectTimeoutException e) {
+
+        	 e.printStackTrace();
+        	 return null;
+        } 
+        catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ClientProtocolException e) {
             e.printStackTrace();
@@ -243,9 +257,13 @@ public class WebAsync extends AsyncTask<String, Void, List<WebBean>> {
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
+                
             }
         } else {
             Log.e(DEBUG_TAG, "Couldn't get any data from the url");
+            WebBean w = new WebBean("Problem z polaczeniem","Data error","","","","");
+			WebBean_data.add(w);
+			return WebBean_data;
         }
         Log.d(DEBUG_TAG, "Koniec pobierania danych");
         return WebBean_data;

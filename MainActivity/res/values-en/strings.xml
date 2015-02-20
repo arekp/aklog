@@ -33,7 +33,7 @@
         <item>Month</item>
     </string-array>
     <string-array name="ListaSpinerWeb">
-        <item>All</item>
+              <item>All</item>
         <item>HF</item>
         <item>137kHz</item>
         <item>1.8MHz</item>
@@ -49,7 +49,21 @@
         <item>70MHz</item>
         <item>144MHz</item>
         <item>220MHz</item>
-        <item>430MHz</item>
+        <item>430MHz</item>    
+        <item>HF_dxsummit</item>
+        <item>1.8MHz_dxsummit</item>
+        <item>3.5MHz_dxsummit</item>
+        <item>7MHz_dxsummit</item>
+        <item>10MHz_dxsummit</item>
+        <item>14MHz_dxsummit</item>
+        <item>18MHz_dxsummit</item>
+        <item>21MHz_dxsummit</item>
+        <item>24MHz_dxsummit</item>
+        <item>28MHz_dxsummit</item>
+        <item>50MHz_dxsummit</item>
+        <item>70MHz_dxsummit</item>
+        <item>144MHz_dxsummit</item>
+        <item>430MHz_dxsummit</item>  
     </string-array>
 
     <string name="menuusun">Remove</string>

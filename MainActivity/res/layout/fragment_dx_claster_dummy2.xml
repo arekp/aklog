@@ -1,12 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity$DummySectionFragment" >
+    tools:context=".MainActivity$DummySectionFragment"
+    tools:ignore="HardcodedText" >
 
     <TextView
         android:id="@+id/edit_id"
@@ -14,47 +15,43 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <Spinner
-            android:id="@+id/web_spinner"
+        <CheckBox
+            android:id="@+id/checkBoxAuto"
+            android:layout_width="210dp"
+            android:layout_height="17dp"
+            android:layout_marginBottom="5dp"
+            android:text="Auto odswierzanie" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:entries="@array/ListaSpinerWeb" />
+            android:orientation="vertical" >
 
-        <ProgressBar
-            android:id="@+id/progressBar1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:contentDescription="Wczytuje !!" />
+            <Spinner
+                android:id="@+id/web_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/ListaSpinerWeb" />
 
-        <!--
-              <WebView
-            android:id="@+id/webView1"
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:contentDescription="Wczytuje !!" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listViewWeb"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        -->
+            android:layout_height="wrap_content" >
+        </ListView>
+
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/listViewWeb"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout1"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="18dp" >
-    </ListView>
-
-    <CheckBox
-        android:id="@+id/checkBoxAuto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/edit_id"
-        android:layout_alignParentRight="true"
-        android:text="Auto odswierzanie" />
 
 </RelativeLayout>

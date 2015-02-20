@@ -16,6 +16,8 @@
     <string name="pref_title_display_qth">QTH</string>
         <string name="pref_default_display_callsign">KO11RD</string>
     <string name="pref_title_display_callsign">CALLSIGN</string>
+     <string name="pref_default_display_czasodswierzania">10000</string>
+     <string name="pref_title_display_czasodswierzania">Odswierzanie pobran w milisek</string>
     <string name="pref_default_display_katalog">aklog</string>
     <string name="pref_title_screen_off">Wyłącz wygaszacz</string>
     <string name="pref_description_screen_off">Opcja pozwala wyłączyć wygaszacz systemowy na tej usłudze</string>

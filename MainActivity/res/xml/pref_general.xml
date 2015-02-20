@@ -51,6 +51,15 @@
         android:selectAllOnFocus="true"
         android:singleLine="true"
         android:title="@string/pref_title_display_callsign" />
+         <EditTextPreference
+        android:capitalize="words"
+        android:defaultValue="@string/pref_default_display_czasodswierzania"
+        android:inputType="number"
+        android:key="czasodswierzania"
+        android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/pref_title_display_czasodswierzania" />
        </PreferenceCategory>    
     <PreferenceCategory android:title="QRZ Konfig">
                 <EditTextPreference

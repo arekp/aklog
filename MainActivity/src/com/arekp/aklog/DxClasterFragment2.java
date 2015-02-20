@@ -80,7 +80,7 @@ public class DxClasterFragment2 extends Fragment {
 	private WebBean bean;
 
 	private View v;
-
+private int czasodsw=10000;
 	static HashMap<String, String> codeHash = new HashMap<String, String>();
 
 	public static void init() {
@@ -126,13 +126,13 @@ public class DxClasterFragment2 extends Fragment {
 	public void onPause(){
 		Log.d(DEBUG_TAG,"PAUSE");
 		 super.onPause();
-		Toast.makeText(v.getContext(), "Jestesmy w Pause", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(v.getContext(), "Jestesmy w Pause", Toast.LENGTH_SHORT).show();
 		handler.removeCallbacks(refreshRunnable);
 	}
 	public void onResume(){
 		Log.d(DEBUG_TAG,"RESUME");
 		super.onResume();
-		Toast.makeText(v.getContext(), "Jestesmy w RESUME", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(v.getContext(), "Jestesmy w RESUME", Toast.LENGTH_SHORT).show();
 		
 	}
 	@Override
@@ -142,7 +142,8 @@ public class DxClasterFragment2 extends Fragment {
 		spin = (Spinner) v.findViewById(R.id.web_spinner);
 
 		zapisane_ustawienia = PreferenceManager.getDefaultSharedPreferences(v.getContext());
-
+ //  czasodsw = zapisane_ustawienia.getInt("czasodswierzania", 10000);
+   
 		progres = (ProgressBar) v.findViewById(R.id.progressBar1);
 		progres.setVisibility(View.GONE);
 
@@ -157,7 +158,8 @@ public class DxClasterFragment2 extends Fragment {
 		}
 		if (DxClasterFragment2.this.isVisible()){
 			Log.d(DEBUG_TAG,"WIDOCZNY ");
-			handler.postDelayed(refreshRunnable, 10000);
+			
+			handler.postDelayed(refreshRunnable, czasodsw);
 			 
 		Log.d(DEBUG_TAG,"Wywolujemy dane pod spodem");
 		}
@@ -215,7 +217,7 @@ public class DxClasterFragment2 extends Fragment {
 		                //is chkIos checked?
 				if (((CheckBox) v).isChecked()) {	
 					Log.d(DEBUG_TAG,"Wlanczamy po kliknieciu na przyciska");
-					handler.postDelayed(refreshRunnable, 10000);}
+					handler.postDelayed(refreshRunnable, czasodsw);}
 				if (!((CheckBox) v).isChecked()) {	
 					Log.d(DEBUG_TAG,"WYLANCZAMY po kliknieciu na przyciska");
 					handler.removeCallbacks(refreshRunnable);;}
@@ -232,7 +234,7 @@ public class DxClasterFragment2 extends Fragment {
 	 		}
 	 		if (DxClasterFragment2.this.isVisible()){
 	 			Log.d(DEBUG_TAG,"WIDOCZNY ");
-	 			handler.postDelayed(refreshRunnable, 10000);}
+	 			handler.postDelayed(refreshRunnable, czasodsw);}
 	    	 //handler.postDelayed(refreshRunnable, 10000);
 	     }
 	 };
