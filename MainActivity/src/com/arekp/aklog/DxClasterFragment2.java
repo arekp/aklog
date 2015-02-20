@@ -54,6 +54,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
 
 public class DxClasterFragment2 extends Fragment {
 	/**
@@ -121,7 +122,19 @@ public class DxClasterFragment2 extends Fragment {
 
 	public DxClasterFragment2() {
 	}
-
+	@Override
+	public void onPause(){
+		Log.d(DEBUG_TAG,"PAUSE");
+		 super.onPause();
+		Toast.makeText(v.getContext(), "Jestesmy w Pause", Toast.LENGTH_SHORT).show();
+		handler.removeCallbacks(refreshRunnable);
+	}
+	public void onResume(){
+		Log.d(DEBUG_TAG,"RESUME");
+		super.onResume();
+		Toast.makeText(v.getContext(), "Jestesmy w RESUME", Toast.LENGTH_SHORT).show();
+		
+	}
 	@Override
 	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
 		init();
@@ -134,11 +147,16 @@ public class DxClasterFragment2 extends Fragment {
 		progres.setVisibility(View.GONE);
 
 		listView1 = (ListView) v.findViewById(R.id.listViewWeb);
-		auto = (CheckBox) v.findViewById(R.id.checkBoxAuto);
-		if (auto.isClickable()){
+		 
+			 auto = (CheckBox) v.findViewById(R.id.checkBoxAuto);	 
+	
+		
+		if (!DxClasterFragment2.this.isVisible()){
+			Log.d(DEBUG_TAG,"NIE WIDOCZNY");
 			handler.removeCallbacks(refreshRunnable);
 		}
-		if (auto.isChecked() && auto.isClickable()){
+		if (DxClasterFragment2.this.isVisible()){
+			Log.d(DEBUG_TAG,"WIDOCZNY ");
 			handler.postDelayed(refreshRunnable, 10000);
 			 
 		Log.d(DEBUG_TAG,"Wywolujemy dane pod spodem");
@@ -185,14 +203,37 @@ public class DxClasterFragment2 extends Fragment {
 
 		// Podpinamy menu pod liste
 		registerForContextMenu(listView1);
-
+		addListenerOnChkIos();
 		return v;
 	};
-
+	 
+	public void addListenerOnChkIos() {
+		 
+			auto.setOnClickListener(new OnClickListener() {
+			  @Override
+			  public void onClick(View v) {
+		                //is chkIos checked?
+				if (((CheckBox) v).isChecked()) {	
+					Log.d(DEBUG_TAG,"Wlanczamy po kliknieciu na przyciska");
+					handler.postDelayed(refreshRunnable, 10000);}
+				if (!((CheckBox) v).isChecked()) {	
+					Log.d(DEBUG_TAG,"WYLANCZAMY po kliknieciu na przyciska");
+					handler.removeCallbacks(refreshRunnable);;}
+			  							}
+			}
+									);
+		  	}
 	private final Runnable refreshRunnable = new Runnable() {
 	     public void run() {
 	    	 new WebAsync(v.getContext(), listView1, progres,spin).execute(codeHash.get(spin.getSelectedItem().toString()));
-	         handler.postDelayed(refreshRunnable, 10000);
+	    	 if (!DxClasterFragment2.this.isVisible()){
+	 			Log.d(DEBUG_TAG,"NIE WIDOCZNY");
+	 			handler.removeCallbacks(refreshRunnable);
+	 		}
+	 		if (DxClasterFragment2.this.isVisible()){
+	 			Log.d(DEBUG_TAG,"WIDOCZNY ");
+	 			handler.postDelayed(refreshRunnable, 10000);}
+	    	 //handler.postDelayed(refreshRunnable, 10000);
 	     }
 	 };
 		  
