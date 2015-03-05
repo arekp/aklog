@@ -84,7 +84,7 @@ private int czasodsw=10000;
 	static HashMap<String, String> codeHash = new HashMap<String, String>();
 
 	public static void init() {
-		codeHash.put("Wybierz Czestotliwość", "http://dxcluster.sdr-radio.com/top_250_ALL.html");
+		codeHash.put("Wybierz Czestotliwosc", "http://dxcluster.sdr-radio.com/top_250_ALL.html");
 		codeHash.put("ALL", "http://dxcluster.sdr-radio.com/top_250_ALL.html");
 		codeHash.put("HF", "http://dxcluster.sdr-radio.com/top_250_HF.html");		
 		codeHash.put("137kHz", "http://dxcluster.sdr-radio.com/top_250_137_kHz.html");
@@ -175,7 +175,7 @@ private int czasodsw=10000;
 				// An spinnerItem was selected. You can retrieve the selected item using
 				// parent.getItemAtPosition(pos)
 				Log.d(DEBUG_TAG, "Wybrana pozycja listy " + new Integer(pos).toString());
- 
+				Log.d(DEBUG_TAG, "Wybrana wartosc listy " + codeHash.get(spin.getSelectedItem().toString()));
 				if (pos != 0) {
 		 
 					new WebAsync(v.getContext(), listView1, progres,spin).execute(codeHash.get(spin.getSelectedItem()
