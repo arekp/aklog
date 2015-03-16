@@ -1,0 +1,14 @@
+# Linki #
+
+W trakcie każdego zadania przegląda się masę stron i czasami trafię na ciekawy opis danego rozwiązania.
+
+I tak po kolei :
+  * Strona opisująca action bar http://www.androidhive.info/2013/11/android-working-with-action-bar/,
+  * i polska wersja opisu http://javastart.pl/programowanie-android/actionbar-przyklady-uzycia/
+  * Piekny przykład pisania tablicy http://mrbool.com/how-to-deal-with-table-layout-in-android/28008
+  * Przykłady do czytania http://www.cs.dartmouth.edu/~campbell/cs65/lecture08/lecture08.html
+  * podpięcie google drive https://www.youtube.com/watch?v=9GlFZ1wWUk4&noredirect=1
+  * http://www.compiletimeerror.com/2013/07/android-date-picker-example-android.html#.U1vZTPl_vhY
+  * http://www.mkyong.com/android/android-date-picker-example/
+  * http://jsoup.org/
+  * źródła danych http://cluster.sdr-radio.com/Spots/14MHz.aspx [http://www.dxsummit.fi/#/ ]

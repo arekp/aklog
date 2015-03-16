@@ -1,0 +1,43 @@
+# Wymagania do projektu #
+
+Bedziemy tutaj spisywać co jest do zrobienia
+
+
+# Szczegóły #
+
+## Wersja 2.0 ##
+
+  * logowanie do qrz.com
+  * export do logbook na qrz.com
+  * backup na drive.google.com
+  * pobieranie i wyświetlanie danych z qrz.com
+
+
+## W punktach: ##
+## na początek do wersji 0.11: ##
+  * ~~frequency - 4 miejsca po przecinku.~~
+  * ~~w simon dx cluster -po kliknięciu w link otwiera sie przeglądarka lub możliwość powrotu do aplikacji~~
+  * ~~eksport do ADIFF (http://www.adif.org/) http://www.adif.org/304/adx304.xsd~~
+  * ~~DX Cluster (http://cluster.sdr-radio.com/Spots/14MHz.aspx) http://dxcluster.sdr-radio.com/top_250_7_MHz.html~~
+  * ~~tekst w Callsighn - znak z dużych liter jak się da~~
+  * ~~raport do 3 cyfr~~
+  * ~~lista raportów wczytywana z automatu~~
+  * ~~lista raportów - tabela z nagłówkiem~~
+  * ~~guzik clear na pierwszej stronie (obok dodaj)~~
+  * ~~"lista QSO" scentrowana~~
+  * ~~przy dodawaniu QSO, automatyczne czyszczenie pola callsign~~
+  * ~~usunięcie 59~~
+  * ~~dodanie pola comment/notes~~
+  * ~~do simon dx cluster dodanie 3,5 MHz w liście rozwijalnej~~
+  * ~~w simon dx cluster usunięcie 5 MHz w liście rozwijalnej~~
+  * ~~brak wygaszania ekranu (może być w settings on/off)~~
+  * ~~dodanie edycji QSO~~
+  * ~~dodanie usunięcia QSO~~
+  * ~~bandplan KF http://sq5obu.com/viewpage.php?page_id=9~~
+  * ~~kod Q http://sq5obu.com/viewpage.php?page_id=12~~
+# Inne przydatne linki #
+
+  * http://jlog.org/index.htm
+  * http://cluster.sdr-radio.comDX Cluster
+  * http://www.javacodegeeks.com/2013/02/jaxb-tutorial-getting-started.html
+  * http://www.qrz.com/page/current_spec.html

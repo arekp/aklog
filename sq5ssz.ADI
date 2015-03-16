@@ -1,0 +1,193 @@
+#++
+#
+#   HRD Logbook version 5.0 build 2893, Copyright (C) 2009-2010 by Simon Brown, HB9DRV
+#   http://logbook.ham-radio-deluxe.com
+#
+#   Created:  29-Sep-2013 16:57:42
+#
+#--
+
+<ADIF_VERS:3>2.2
+<PROGRAMID:14>HamRadioDeluxe
+<PROGRAMVERSION:22>Version 5.0 build 2893
+<EOH>
+
+<address:40>AMATEUR RADIO CLUB STATION TUNIS
+Tunisia <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S 
+<band:3>15m <call:5>3V8ST <cont:2>AF <country:7>Tunisia <cqz:2>33 <distance:3>0.0 <dxcc:3>474 <eqsl_qslsdate:8>20130922 
+<eqsl_qsl_rcvd:1>N <eqsl_qsl_sent:1>Y <eqsl_status:142>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: 3V8ST Date: 20130922 Time: 1112 Band: 15M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:9>21.238000 <app_hamradiodeluxe_heading:3>0.0 <ituz:2>37 <k_index:3>0.0 <lat:11>N033 31.332 
+<lon:11>E009 04.668 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:32>AMATEUR RADIO CLUB STATION TUNIS <operator:8>SQ5SSZ/8 <pfx:2>3V <qsl_rcvd:1>N 
+<qsl_rcvd_via:1>D <qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 
+<rx_pwr:3>0.0 <sfi:5>110.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>112158 <time_on:6>111242 
+<qso_date:8>20130922 <tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 
+<app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:23>FERNANDO CORDOBA
+Brazil <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>15m 
+<call:6>PY2LED <cont:2>SA <country:6>Brazil <cqz:2>11 <distance:3>0.0 <dxcc:3>108 <eqsl_qslsdate:8>20130922 
+<eqsl_qsl_rcvd:1>N <eqsl_qsl_sent:1>Y <eqsl_status:143>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: PY2LED Date: 20130922 Time: 1103 Band: 15M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:9>21.285000 <app_hamradiodeluxe_heading:3>0.0 <ituz:2>12 <k_index:3>0.0 <lat:11>S011 31.998 
+<lon:11>W054 00.336 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:16>FERNANDO CORDOBA <operator:8>SQ5SSZ/8 <pfx:3>PY2 <qsl_rcvd:1>N <qsl_rcvd_via:1>D 
+<qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 
+<sfi:5>110.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>110339 <time_on:6>110339 <qso_date:8>20130922 
+<tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:31>Naranbaatar T. "NARAN"
+Mongolia <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S 
+<band:3>15m <call:5>JT1BV <cont:2>AS <country:8>Mongolia <cqz:2>23 <distance:3>0.0 <dxcc:3>363 <eqsl_qslsdate:8>20130922 
+<eqsl_qsl_rcvd:1>N <eqsl_qsl_sent:1>Y <eqsl_status:142>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: JT1BV Date: 20130922 Time: 0953 Band: 15M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:9>21.255000 <app_hamradiodeluxe_heading:3>0.0 <ituz:2>32 <k_index:3>0.0 <lat:11>N046 40.002 
+<lon:11>E103 07.668 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:22>Naranbaatar T. "NARAN" <operator:8>SQ5SSZ/8 <pfx:3>JT1 <qsl_rcvd:1>N 
+<qsl_rcvd_via:1>D <qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 
+<rx_pwr:3>0.0 <sfi:5>110.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>095400 <time_on:6>095340 
+<qso_date:8>20130922 <tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 
+<app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:27>RAFAEL BONANO
+United States <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>20m 
+<call:5>KP4RV <cont:2>NA <country:11>Puerto Rico <cqz:1>8 <distance:3>0.0 <dxcc:3>202 <eqsl_qslsdate:8>20130922 
+<eqsl_qsl_rcvd:1>N <eqsl_qsl_sent:1>Y <eqsl_status:142>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: KP4RV Date: 20130921 Time: 2147 Band: 20M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:9>14.211000 <app_hamradiodeluxe_heading:7>279.264 <ituz:2>11 <k_index:3>0.0 <lat:11>N018 10.332 
+<lon:11>W066 35.334 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:13>RAFAEL BONANO <operator:8>SQ5SSZ/8 <pfx:3>KP4 <qsl_rcvd:1>N <qsl_rcvd_via:1>D 
+<qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 
+<sfi:5>110.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>214734 <time_on:6>214734 <qso_date:8>20130921 
+<tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:17>Emily Thiel
+Aruba <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>20m <call:4>P43E 
+<comment:2>/8 <cont:2>SA <country:5>Aruba <cqz:1>9 <distance:3>0.0 <dxcc:2>91 <eqsl_qslsdate:8>20130922 
+<eqsl_qsl_rcvd:1>N <eqsl_qsl_sent:1>Y <eqsl_status:141>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: P43E Date: 20130921 Time: 2115 Band: 20M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:9>14.260000 <app_hamradiodeluxe_heading:7>278.257 <ituz:2>11 <k_index:3>0.0 <lat:11>N012 31.002 
+<lon:11>W069 59.334 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:11>Emily Thiel <operator:8>SQ5SSZ/8 <pfx:3>P43 <qsl_rcvd:1>N <qsl_rcvd_via:1>D 
+<qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 
+<sfi:5>110.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>211514 <time_on:6>211514 <qso_date:8>20130921 
+<tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:46>CLUB STATION Klub Kroktofalowcow LAMBDA
+Poland <a_index:3>6.0 <ant_az:3>0.0 <ant_el:3>0.0 
+<ant_path:1>S <band:3>80m <call:6>SP3PKC <comment:2>/8 <cont:2>EU <country:6>Poland <cqz:2>15 <distance:3>0.0 
+<dxcc:3>269 <eqsl_qslsdate:8>20130922 <eqsl_qsl_rcvd:1>N <eqsl_qsl_sent:1>Y <eqsl_status:143>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: SP3PKC Date: 20130921 Time: 1715 Band: 80M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:8>3.715000 <app_hamradiodeluxe_heading:3>0.0 <ituz:2>28 <k_index:3>0.0 <lat:11>N052 22.332 
+<lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:39>CLUB STATION Klub Kroktofalowcow LAMBDA <operator:8>SQ5SSZ/8 <pfx:3>SP3 
+<qsl_rcvd:1>N <qsl_rcvd_via:1>D <qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 
+<rst_sent:2>59 <rx_pwr:3>0.0 <sfi:5>109.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>171950 <time_on:6>171550 
+<qso_date:8>20130921 <tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 
+<app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:27>Waldemar(Waldi) Sabo
+Poland <a_index:3>6.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>40m 
+<call:8>SQ3PMX/1 <comment:12>spff027 (/8) <cont:2>EU <country:6>Poland <cqz:2>15 <distance:3>0.0 <dxcc:3>269 
+<eqsl_qslsdate:8>20130922 <eqsl_qsl_rcvd:1>N <eqsl_qsl_sent:1>Y <eqsl_status:145>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: SQ3PMX/1 Date: 20130921 Time: 1332 Band: 40M Mode: SSB RST: 55 SatMode: PropMode: 
+<force_init:1>0 <freq:8>7.150000 <app_hamradiodeluxe_heading:3>0.0 <ituz:2>28 <k_index:3>0.0 <lat:11>N052 22.332 
+<lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:20>Waldemar(Waldi) Sabo <operator:8>SQ5SSZ/8 <pfx:3>SQ3 <qsl_rcvd:1>N <qsl_rcvd_via:1>D 
+<qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>55 <rx_pwr:3>0.0 
+<sfi:5>109.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>133325 <time_on:6>133252 <qso_date:8>20130921 
+<tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<a_index:3>0.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>40m <call:7>HF450NS <comment:11>SP3KEY (/8) 
+<cont:2>EU <country:6>Poland <cqz:2>15 <distance:3>0.0 <dxcc:3>269 <eqsl_qslsdate:8>20130922 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>Y <eqsl_status:144>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: HF450NS Date: 20130813 Time: 1614 Band: 40M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:8>7.163000 <app_hamradiodeluxe_heading:3>0.0 <ituz:2>28 <k_index:3>0.0 <lat:11>N052 22.332 
+<lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:8>KO11SW55 <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:7>Andrzej <operator:8>SQ5SSZ/8 <pfx:5>HF450 <qsl_rcvd:1>N <qsl_rcvd_via:1>D 
+<qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 
+<sfi:3>0.0 <station_callsign:8>SQ5SSZ/8 <swl:1>0 <time_off:6>161400 <time_on:6>161400 <qso_date:8>20130813 
+<tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:20>Dariusz Socha
+Poland <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>80m 
+<call:6>SQ5SSX <comment:2>/4 <cont:2>EU <country:6>Poland <cqz:2>15 <distance:7>278.932 <dxcc:3>269 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>N <force_init:1>0 <freq:8>3.772000 <app_hamradiodeluxe_heading:7>232.664 <ituz:2>28 
+<k_index:3>0.0 <lat:11>N052 22.332 <lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y 
+<mode:3>SSB <my_cnty:6>POLAND <my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:6>KO03XW <my_itu_zone:2>28 
+<my_lat:11>N000 00.000 <my_lon:11>E000 00.000 <name:13>Dariusz Socha <operator:8>SQ5SSZ/4 <pfx:3>SQ5 
+<qsl_rcvd:1>N <qsl_rcvd_via:1>D <qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 
+<rst_sent:7>59+10dB <rx_pwr:3>0.0 <sfi:5>154.0 <station_callsign:8>SQ5SSZ/4 <swl:1>0 <time_off:6>205000 
+<time_on:6>205000 <qso_date:8>20130716 <tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 
+<app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>40m <call:7>SN150PS <comment:2>/4 <cont:2>EU 
+<country:6>Poland <cqz:2>15 <distance:7>278.932 <dxcc:3>269 <eqsl_qslsdate:8>20130922 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>Y <eqsl_status:144>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: SN150PS Date: 20130716 Time: 1410 Band: 40M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:8>7.152000 <app_hamradiodeluxe_heading:7>232.664 <ituz:2>28 <k_index:3>0.0 <lat:11>N052 22.332 
+<lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:6>KO03XW <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:6>Edward <operator:8>SQ5SSZ/4 <pfx:5>SN150 <qsl_rcvd:1>N <qsl_rcvd_via:1>D 
+<qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 
+<sfi:5>154.0 <station_callsign:8>SQ5SSZ/4 <swl:1>0 <time_off:6>141000 <time_on:6>141000 <qso_date:8>20130716 
+<tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>80m <call:7>HF450NS <comment:2>/4 <cont:2>EU 
+<country:6>Poland <cqz:2>15 <distance:7>278.932 <dxcc:3>269 <eqsl_qslsdate:8>20130922 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>Y <eqsl_status:144>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: HF450NS Date: 20130709 Time: 1838 Band: 80M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:8>3.727000 <app_hamradiodeluxe_heading:7>232.664 <ituz:2>28 <k_index:3>0.0 <lat:11>N052 22.332 
+<lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:6>KO03XW <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:7>Andrzej <operator:8>SQ5SSZ/4 <pfx:5>HF450 <qsl_rcvd:1>N <qsl_rcvd_via:1>D 
+<qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 
+<sfi:5>154.0 <station_callsign:8>SQ5SSZ/4 <swl:1>0 <time_off:6>183800 <time_on:6>183800 <qso_date:8>20130709 
+<tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>40m <call:4>3Z3P <comment:2>/4 <cont:2>EU 
+<country:6>Poland <cqz:2>15 <distance:7>278.932 <dxcc:3>269 <eqsl_qslsdate:8>20130922 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>Y <eqsl_status:141>Result: 1 out of 1 records added, Information: From: SQ5SSZ To: 3Z3P Date: 20130709 Time: 1743 Band: 40M Mode: SSB RST: 59 SatMode: PropMode: 
+<force_init:1>0 <freq:8>7.157000 <app_hamradiodeluxe_heading:7>232.664 <ituz:2>28 <k_index:3>0.0 <lat:11>N052 22.332 
+<lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND 
+<my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:6>KO03XW <my_itu_zone:2>28 <my_lat:11>N000 00.000 
+<my_lon:11>E000 00.000 <name:5>Jarek <operator:8>SQ5SSZ/4 <pfx:2>3Z <qsl_rcvd:1>N <qsl_rcvd_via:1>D <qsl_sent:1>N 
+<qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 <sfi:5>154.0 
+<station_callsign:8>SQ5SSZ/4 <swl:1>0 <time_off:6>174300 <time_on:6>174300 <qso_date:8>20130709 <tx_pwr:3>0.0 
+<app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 <app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:30>WITOLD ( WITEK) DEPTULA
+Poland <a_index:3>0.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>80m 
+<call:6>SP5TAA <comment:2>/4 <cont:2>EU <country:6>Poland <cqz:2>15 <distance:7>278.932 <dxcc:3>269 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>N <force_init:1>0 <freq:8>3.733000 <app_hamradiodeluxe_heading:7>232.664 <ituz:2>28 
+<k_index:3>0.0 <lat:11>N052 22.332 <lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y 
+<mode:3>SSB <my_cnty:6>POLAND <my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:6>KO03XW <my_itu_zone:2>28 
+<my_lat:11>N000 00.000 <my_lon:11>E000 00.000 <name:23>WITOLD ( WITEK) DEPTULA <operator:8>SQ5SSZ/4 <pfx:3>SP5 
+<qsl_rcvd:1>N <qsl_rcvd_via:1>D <qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:7>59+20dB 
+<rst_sent:7>59+20dB <rx_pwr:3>0.0 <sfi:3>0.0 <station_callsign:8>SQ5SSZ/4 <swl:1>0 <time_off:6>215530 
+<time_on:6>214530 <qso_date:8>20130430 <tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 
+<app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:20>Dariusz Socha
+Poland <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>80m 
+<call:6>SQ5SSX <comment:2>/4 <cont:2>EU <country:6>Poland <cqz:2>15 <distance:7>278.932 <dxcc:3>269 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>N <force_init:1>0 <freq:8>3.733000 <app_hamradiodeluxe_heading:7>232.664 <ituz:2>28 
+<k_index:3>0.0 <lat:11>N052 22.332 <lon:11>E018 41.664 <lotw_qslsdate:8>20130922 <lotw_qsl_rcvd:1>N <lotw_qsl_sent:1>Y 
+<mode:3>SSB <my_cnty:6>POLAND <my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:6>KO03XW <my_itu_zone:2>28 
+<my_lat:11>N000 00.000 <my_lon:11>E000 00.000 <name:13>Dariusz Socha <operator:8>SQ5SSZ/4 <pfx:3>SQ5 
+<qsl_rcvd:1>N <qsl_rcvd_via:1>D <qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 <rst_rcvd:2>59 
+<rst_sent:2>59 <rx_pwr:3>0.0 <sfi:5>154.0 <station_callsign:8>SQ5SSZ/4 <swl:1>0 <time_off:6>214517 <time_on:6>213017 
+<qso_date:8>20130430 <tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 
+<app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
+<address:23>Jarek Szwabinski
+Poland <a_index:3>7.0 <ant_az:3>0.0 <ant_el:3>0.0 <ant_path:1>S <band:3>80m 
+<call:6>SQ5SDN <comment:2>/4 <cont:2>EU <country:6>Poland <cqz:2>15 <distance:7>186.627 <dxcc:3>269 <eqsl_qsl_rcvd:1>N 
+<eqsl_qsl_sent:1>N <force_init:1>0 <freq:8>3.733000 <gridsquare:6>KO02ik <app_hamradiodeluxe_heading:7>360.000 
+<ituz:2>28 <k_index:3>0.0 <lat:11>N052 26.250 <lon:11>E020 42.500 <lotw_qslsdate:8>20130923 <lotw_qsl_rcvd:1>N 
+<lotw_qsl_sent:1>Y <mode:3>SSB <my_cnty:6>POLAND <my_country:6>Poland <my_cq_zone:2>15 <my_gridsquare:6>KO03XW 
+<my_itu_zone:2>28 <my_lat:11>N000 00.000 <my_lon:11>E000 00.000 <name:16>Jarek Szwabinski <operator:8>SQ5SSZ/4 
+<pfx:3>SQ5 <qsl_rcvd:1>N <qsl_rcvd_via:1>D <qsl_sent:1>N <qsl_sent_via:1>D <qso_complete:1>Y <qso_random:1>0 
+<rst_rcvd:2>59 <rst_sent:2>59 <rx_pwr:3>0.0 <sfi:5>154.0 <srx:2>59 <station_callsign:8>SQ5SSZ/4 <stx:2>59 
+<swl:1>0 <time_off:6>213047 <time_on:6>211547 <qso_date:8>20130430 <tx_pwr:3>0.0 <app_hamradiodeluxe_credit_granted:32>0          000000     0   00  00 
+<app_hamradiodeluxe_credit_submitted:32>0          000000     0   00  00 <EOR>
+
